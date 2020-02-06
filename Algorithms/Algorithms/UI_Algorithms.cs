@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using System.Windows.Forms;
 using Algorithms.Data;
 
@@ -18,15 +17,29 @@ namespace Algorithms
         {
             InitializeComponent();
             this.Init();
+            this.InitSortTab();
         }
+
+        double[] a;
 
         private void Init()
         {
-            this.comboBox_sort_algorithm.SelectedIndex = 0;
+            
+        }
+
+        private void InitSortTab()
+        {
+            
             this.label_sort_check.Text = "";
             this.richTextBox__sort_output.ReadOnly = true;
             this.richTextBox__sort_output.BackColor = System.Drawing.SystemColors.Window;
-        }
+
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Вставкой(В)", Func = (input) => { Tuple<double[],string> res = Sort.InsertionSortUp(input);  return res; }, Check=(input) => { this.DisplayCheckSortUp(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Вставкой(У)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name="Слиянием(В)",Func=(input)=> { Tuple<double[], string> res = Sort.MergeSortUpCaller(input);return res; }, Check=(input) => { this.DisplayCheckSortUp(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Слиянием(У)", Func = (input) => { Tuple<double[], string> res = Sort.MergeSortDownCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+            this.comboBox_sort_algorithm.SelectedIndex = 0;
+        }               
 
         #region Sort
         private void button_generate_input_Click(object sender, EventArgs e)
@@ -76,29 +89,11 @@ namespace Algorithms
 
                 double[] output_array= new double[input_array.Length];
 
-                Sort srt = new Sort();
+                Tuple<double[], string> res = ((CmbItems)this.comboBox_sort_algorithm.SelectedItem).Func(input_array);
+                output_array =res.Item1;
+                this.textBox_sort_time.Text = res.Item2;
 
-                Stopwatch sWatch = new Stopwatch();
-
-                
-                switch (this.comboBox_sort_algorithm.SelectedItem)
-                {
-                    case "Вставкой(В)":
-                        sWatch.Start();
-                        output_array = srt.InsertionSortUp(input_array);
-                        sWatch.Stop();
-                        if (srt.CheckSortUp(output_array)) this.label_check_sorted(); else this.label_check_unsorted();
-                        break;
-
-                    case "Вставкой(У)":
-                        sWatch.Start();
-                        output_array = srt.InsertionSortDown(input_array);
-                        sWatch.Stop();
-                        if (srt.CheckSortDown(output_array)) this.label_check_sorted(); else this.label_check_unsorted();
-                        break;
-                }
-
-                this.textBox_sort_time.Text = sWatch.Elapsed.ToString();
+                ((CmbItems)this.comboBox_sort_algorithm.SelectedItem).Check(output_array);
                 
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < output_array.Length; i++)
@@ -113,18 +108,17 @@ namespace Algorithms
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void label_check_sorted()
-        {
-            this.label_sort_check.Text = "Отсортировано";
-        }
-
-        private void label_check_unsorted()
-        {
-            this.label_sort_check.Text = "Не отсортировано";
-        }
-
         #endregion
 
+        #region Display
+        private void DisplayCheckSortUp(double[] input)
+        {
+            if (Sort.CheckSortUp(input)) this.label_sort_check.Text = "Отсортировано"; else this.label_sort_check.Text = "Не отсортировано";
+        }
+        private void DisplayCheckSortDown(double[] input)
+        {
+            if (Sort.CheckSortDown(input)) this.label_sort_check.Text = "Отсортировано"; else this.label_sort_check.Text = "Не отсортировано";
+        }
+        #endregion
     }
 }

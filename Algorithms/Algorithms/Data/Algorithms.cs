@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Algorithms.Data
 {
-    class Algorithms
+    class Algorithm
     {
-        private static Algorithms instance;
+        
     }
 }
