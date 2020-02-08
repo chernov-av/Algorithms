@@ -19,9 +19,7 @@ namespace Algorithms
             this.Init();
             this.InitSortTab();
         }
-
-        double[] a;
-
+        
         private void Init()
         {
             
@@ -38,6 +36,11 @@ namespace Algorithms
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Вставкой(У)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name="Слиянием(В)",Func=(input)=> { Tuple<double[], string> res = Sort.MergeSortUpCaller(input);return res; }, Check=(input) => { this.DisplayCheckSortUp(input); } });
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Слиянием(У)", Func = (input) => { Tuple<double[], string> res = Sort.MergeSortDownCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Пузырьковая(В)", Func = (input) => { Tuple<double[], string> res = Sort.BubbleSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Пузырьковая(У)", Func = (input) => { Tuple<double[], string> res = Sort.BubbleSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Пирамидальная(В)", Func = (input) => { Tuple<double[], string> res = Sort.HeapSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Пирамидальная(У)", Func = (input) => { Tuple<double[], string> res = Sort.HeapSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Быстрая(В)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSort(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
             this.comboBox_sort_algorithm.SelectedIndex = 0;
         }               
 
@@ -49,7 +52,7 @@ namespace Algorithms
 
             try
             {
-                int n = Int32.Parse(this.textBox__sort_input_length.Text);
+                int n = Int32.Parse(this.textBox_sort_input_length.Text);
                 int max = Int32.Parse(this.textBox_sort_max_value.Text);
 
                 double[] input_array = new double[n];
@@ -60,7 +63,15 @@ namespace Algorithms
 
                 for (int i = 0; i < n; i++)
                 {
-                    input_array[i] = rand.Next(max) + Math.Round(rand.NextDouble(), 2);
+                    if (this.checkBox_generate_int.Checked)
+                    {
+                        input_array[i] = rand.Next(max);
+                    }
+                    else
+                    {
+                        input_array[i] = rand.Next(max) + Math.Round(rand.NextDouble(), 2);
+                    }
+                    
                     sb.Append(input_array[i]);
                     sb.Append(' ');
                 }
@@ -75,7 +86,8 @@ namespace Algorithms
 
         private void button_sort_Click(object sender, EventArgs e)
         {
-            this.richTextBox__sort_output.Clear();            
+            this.richTextBox__sort_output.Clear();
+            this.label_sort_check.Text = "";
 
             try
             {
@@ -120,5 +132,80 @@ namespace Algorithms
             if (Sort.CheckSortDown(input)) this.label_sort_check.Text = "Отсортировано"; else this.label_sort_check.Text = "Не отсортировано";
         }
         #endregion
+
+        private void button_max_heap_Click(object sender, EventArgs e)
+        {
+            this.richTextBox__sort_output.Clear();
+            this.label_sort_check.Text = "";
+
+            try
+            {
+                string[] input_line = this.richTextBox_sort_input.Text.Split(' ');
+                double[] input_array = new double[input_line.Length];
+
+
+                for (int i = 0; i < input_array.Length; i++)
+                {
+                    input_array[i] = double.Parse(input_line[i]);
+                }
+
+                double[] output_array = new double[input_array.Length];
+
+                Heap heap = new Heap(input_array);
+
+                heap.BuildMaxHeap();
+                //heap.BuildMinHeap();
+                output_array = heap.GetHeap();
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < output_array.Length; i++)
+                {
+                    sb.Append(output_array[i]);
+                    sb.Append(' ');
+                }
+                this.richTextBox__sort_output.AppendText(sb.ToString().Trim());
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button_min_heap_Click(object sender, EventArgs e)
+        {
+            this.richTextBox__sort_output.Clear();
+            this.label_sort_check.Text = "";
+
+            try
+            {
+                string[] input_line = this.richTextBox_sort_input.Text.Split(' ');
+                double[] input_array = new double[input_line.Length];
+
+
+                for (int i = 0; i < input_array.Length; i++)
+                {
+                    input_array[i] = double.Parse(input_line[i]);
+                }
+
+                double[] output_array = new double[input_array.Length];
+
+                Heap heap = new Heap(input_array);
+
+                heap.BuildMinHeap();
+                output_array = heap.GetHeap();
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < output_array.Length; i++)
+                {
+                    sb.Append(output_array[i]);
+                    sb.Append(' ');
+                }
+                this.richTextBox__sort_output.AppendText(sb.ToString().Trim());
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

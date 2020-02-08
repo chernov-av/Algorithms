@@ -90,6 +90,88 @@ namespace Algorithms.Data
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
+        public static Tuple<double[],string> BubbleSortUp(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            
+            double[] output = new double[array_for_sorting.Length];
+
+            for (int i = 0; i < output.Length; i++)
+            {
+                for (int j = output.Length - 1; j >= i + 1; j--)
+                {
+                    if (array_for_sorting[j] < array_for_sorting[j - 1])
+                    {
+                        var temp = array_for_sorting[j];
+                        array_for_sorting[j] = array_for_sorting[j - 1];
+                        array_for_sorting[j - 1] = temp;
+                    }
+                }
+            }
+            output = array_for_sorting;
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
+        public static Tuple<double[], string> BubbleSortDown(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            double[] output = new double[array_for_sorting.Length];
+
+            for (int i = output.Length-1; i > -1; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (array_for_sorting[j] < array_for_sorting[j + 1])
+                    {
+                        var temp = array_for_sorting[j];
+                        array_for_sorting[j] = array_for_sorting[j + 1];
+                        array_for_sorting[j + 1] = temp;
+                    }
+                }
+            }
+            output = array_for_sorting;
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
+        public static Tuple<double[],string> HeapSortUp(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = new double[array_for_sorting.Length];
+            Heap heap = new Heap(array_for_sorting);
+            heap.HeapMaxSort();
+            output = heap.GetHeap();
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
+        public static Tuple<double[], string> HeapSortDown(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = new double[array_for_sorting.Length];
+            Heap heap = new Heap(array_for_sorting);
+            heap.HeapMinSort();
+            output = heap.GetHeap();
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
+        public static Tuple<double[], string> QuickSort(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = new double[array_for_sorting.Length];
+
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
         public static double[] MergeSortUp(double[] array, int p, int r)
         {
             if (p < r)
@@ -143,8 +225,6 @@ namespace Algorithms.Data
                 }
             }
 
-
-
             return array;
         }
         public static double[] MergeSortDown(double[] array, int p, int r)
@@ -153,7 +233,7 @@ namespace Algorithms.Data
             {
                 double val = (p + r) / 2;
                 //int q = (int)Math.Round(val);
-                int q = (p + r) / 2;
+                int q = p+(r -p) / 2;
                 array = MergeSortDown(array, p, q);
                 array = MergeSortDown(array, q + 1, r);
                 array = MergeDown(array, p, q, r);
@@ -162,7 +242,7 @@ namespace Algorithms.Data
         }
         public static double[] MergeDown(double[] array, int p, int q, int r)
         {
-            int n1 = q - p + 1; //Length A[p..q]
+            /*int n1 = q - p + 1; //Length A[p..q]
             int n2 = r - q;//length A[q+1..r]
 
             double[] L = new double[n1 + 1];
@@ -188,18 +268,32 @@ namespace Algorithms.Data
 
             for (int k = p; k <= r; k++)
             {
-                if (L[i] <= R[j])
+                if (L[i] >= R[j])
                 {
-                    array[k] = L[i];
-                    i++;
+                    array[k] = L[j];
+                    j++;
                 }
                 else
                 {
-                    array[k] = R[j];
-                    j++;
+                    array[k] = R[i];
+                    i++;
                 }
             }
+            */
+            double[] aux = new double[array.Length];
 
+            int i = p;
+            int j = q + 1;
+            
+
+            for (int k=p; k <= r; k++)
+            {
+                aux[k] = array[k];
+                if (i > q) { array[k] = aux[j]; j++; }
+                else if (j > r) { array[k] = aux[i]; i++; }
+                else if (aux[j] > aux[i]) { array[k] = aux[j]; j++; }
+                else { array[k] = aux[i]; i++; }
+            }
 
 
             return array;

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Data\Algorithms.cs" />
     <Compile Include="Data\Controller.cs" />
+    <Compile Include="Data\Heap.cs" />
     <Compile Include="Data\Sort.cs" />
     <Compile Include="UI_Algorithms.cs">
       <SubType>Form</SubType>

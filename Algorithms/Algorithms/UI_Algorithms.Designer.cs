@@ -34,7 +34,7 @@
             this.label_sort_time = new System.Windows.Forms.Label();
             this.label_sort_check = new System.Windows.Forms.Label();
             this.textBox_sort_max_value = new System.Windows.Forms.TextBox();
-            this.textBox__sort_input_length = new System.Windows.Forms.TextBox();
+            this.textBox_sort_input_length = new System.Windows.Forms.TextBox();
             this.comboBox_sort_algorithm = new System.Windows.Forms.ComboBox();
             this.button_sort = new System.Windows.Forms.Button();
             this.label_sort_algorithm = new System.Windows.Forms.Label();
@@ -44,8 +44,13 @@
             this.richTextBox__sort_output = new System.Windows.Forms.RichTextBox();
             this.richTextBox_sort_input = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button_max_heap = new System.Windows.Forms.Button();
+            this.checkBox_generate_int = new System.Windows.Forms.CheckBox();
+            this.panel_heap = new System.Windows.Forms.Panel();
+            this.button_min_heap = new System.Windows.Forms.Button();
             this.tabControl_algorithms.SuspendLayout();
             this.tabPage_sort.SuspendLayout();
+            this.panel_heap.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl_algorithms
@@ -60,11 +65,13 @@
             // 
             // tabPage_sort
             // 
+            this.tabPage_sort.Controls.Add(this.panel_heap);
+            this.tabPage_sort.Controls.Add(this.checkBox_generate_int);
             this.tabPage_sort.Controls.Add(this.textBox_sort_time);
             this.tabPage_sort.Controls.Add(this.label_sort_time);
             this.tabPage_sort.Controls.Add(this.label_sort_check);
             this.tabPage_sort.Controls.Add(this.textBox_sort_max_value);
-            this.tabPage_sort.Controls.Add(this.textBox__sort_input_length);
+            this.tabPage_sort.Controls.Add(this.textBox_sort_input_length);
             this.tabPage_sort.Controls.Add(this.comboBox_sort_algorithm);
             this.tabPage_sort.Controls.Add(this.button_sort);
             this.tabPage_sort.Controls.Add(this.label_sort_algorithm);
@@ -114,13 +121,13 @@
             this.textBox_sort_max_value.TabIndex = 6;
             this.textBox_sort_max_value.Text = "1000";
             // 
-            // textBox__sort_input_length
+            // textBox_sort_input_length
             // 
-            this.textBox__sort_input_length.Location = new System.Drawing.Point(122, 18);
-            this.textBox__sort_input_length.Name = "textBox__sort_input_length";
-            this.textBox__sort_input_length.Size = new System.Drawing.Size(121, 20);
-            this.textBox__sort_input_length.TabIndex = 6;
-            this.textBox__sort_input_length.Text = "10";
+            this.textBox_sort_input_length.Location = new System.Drawing.Point(122, 18);
+            this.textBox_sort_input_length.Name = "textBox_sort_input_length";
+            this.textBox_sort_input_length.Size = new System.Drawing.Size(121, 20);
+            this.textBox_sort_input_length.TabIndex = 6;
+            this.textBox_sort_input_length.Text = "10";
             // 
             // comboBox_sort_algorithm
             // 
@@ -203,6 +210,45 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button_max_heap
+            // 
+            this.button_max_heap.Location = new System.Drawing.Point(19, 7);
+            this.button_max_heap.Name = "button_max_heap";
+            this.button_max_heap.Size = new System.Drawing.Size(153, 23);
+            this.button_max_heap.TabIndex = 10;
+            this.button_max_heap.Text = "Построить пирамиду (нв)";
+            this.button_max_heap.UseVisualStyleBackColor = true;
+            this.button_max_heap.Click += new System.EventHandler(this.button_max_heap_Click);
+            // 
+            // checkBox_generate_int
+            // 
+            this.checkBox_generate_int.AutoSize = true;
+            this.checkBox_generate_int.Location = new System.Drawing.Point(283, 53);
+            this.checkBox_generate_int.Name = "checkBox_generate_int";
+            this.checkBox_generate_int.Size = new System.Drawing.Size(98, 17);
+            this.checkBox_generate_int.TabIndex = 12;
+            this.checkBox_generate_int.Text = "Только целые";
+            this.checkBox_generate_int.UseVisualStyleBackColor = true;
+            // 
+            // panel_heap
+            // 
+            this.panel_heap.Controls.Add(this.button_min_heap);
+            this.panel_heap.Controls.Add(this.button_max_heap);
+            this.panel_heap.Location = new System.Drawing.Point(508, 13);
+            this.panel_heap.Name = "panel_heap";
+            this.panel_heap.Size = new System.Drawing.Size(249, 100);
+            this.panel_heap.TabIndex = 13;
+            // 
+            // button_min_heap
+            // 
+            this.button_min_heap.Location = new System.Drawing.Point(19, 34);
+            this.button_min_heap.Name = "button_min_heap";
+            this.button_min_heap.Size = new System.Drawing.Size(153, 23);
+            this.button_min_heap.TabIndex = 10;
+            this.button_min_heap.Text = "Построить пирамиду (ну)";
+            this.button_min_heap.UseVisualStyleBackColor = true;
+            this.button_min_heap.Click += new System.EventHandler(this.button_min_heap_Click);
+            // 
             // UI_Algorithms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,6 +260,7 @@
             this.tabControl_algorithms.ResumeLayout(false);
             this.tabPage_sort.ResumeLayout(false);
             this.tabPage_sort.PerformLayout();
+            this.panel_heap.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -230,12 +277,16 @@
         private System.Windows.Forms.Button button__sort_generate_input;
         private System.Windows.Forms.RichTextBox richTextBox__sort_output;
         private System.Windows.Forms.RichTextBox richTextBox_sort_input;
-        private System.Windows.Forms.TextBox textBox__sort_input_length;
+        private System.Windows.Forms.TextBox textBox_sort_input_length;
         private System.Windows.Forms.Label label_sort_check;
         private System.Windows.Forms.Label label_sort_time;
         private System.Windows.Forms.TextBox textBox_sort_time;
         private System.Windows.Forms.TextBox textBox_sort_max_value;
         private System.Windows.Forms.Label label_sort_max_value;
+        private System.Windows.Forms.Button button_max_heap;
+        private System.Windows.Forms.CheckBox checkBox_generate_int;
+        private System.Windows.Forms.Panel panel_heap;
+        private System.Windows.Forms.Button button_min_heap;
     }
 }
 
