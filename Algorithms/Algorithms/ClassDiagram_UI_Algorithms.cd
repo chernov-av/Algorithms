@@ -7,14 +7,14 @@
       <FileName>Data\Algorithms.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Algorithms.Data.Controller">
+  <Class Name="Algorithms.Controller">
     <Position X="3.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Controller.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Algorithms.Data.CmbItems">
+  <Class Name="Algorithms.CmbItems">
     <Position X="3.75" Y="1.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
