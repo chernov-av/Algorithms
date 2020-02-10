@@ -30,6 +30,7 @@
         {
             this.tabControl_algorithms = new System.Windows.Forms.TabControl();
             this.tabPage_sort = new System.Windows.Forms.TabPage();
+            this.button_test = new System.Windows.Forms.Button();
             this.panel_heap = new System.Windows.Forms.Panel();
             this.button_min_heap = new System.Windows.Forms.Button();
             this.button_max_heap = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.richTextBox__sort_output = new System.Windows.Forms.RichTextBox();
             this.richTextBox_sort_input = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button_test = new System.Windows.Forms.Button();
             this.tabControl_algorithms.SuspendLayout();
             this.tabPage_sort.SuspendLayout();
             this.panel_heap.SuspendLayout();
@@ -89,6 +89,16 @@
             this.tabPage_sort.TabIndex = 0;
             this.tabPage_sort.Text = "Сортировки";
             this.tabPage_sort.UseVisualStyleBackColor = true;
+            // 
+            // button_test
+            // 
+            this.button_test.Location = new System.Drawing.Point(343, 127);
+            this.button_test.Name = "button_test";
+            this.button_test.Size = new System.Drawing.Size(75, 23);
+            this.button_test.TabIndex = 14;
+            this.button_test.Text = "Тест";
+            this.button_test.UseVisualStyleBackColor = true;
+            this.button_test.Click += new System.EventHandler(this.button_test_Click);
             // 
             // panel_heap
             // 
@@ -239,7 +249,7 @@
             this.richTextBox_sort_input.Name = "richTextBox_sort_input";
             this.richTextBox_sort_input.Size = new System.Drawing.Size(744, 96);
             this.richTextBox_sort_input.TabIndex = 0;
-            this.richTextBox_sort_input.Text = "4 1 3 2 16 9 10 14 8 7";
+            this.richTextBox_sort_input.Text = "";
             // 
             // tabPage2
             // 
@@ -250,16 +260,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button_test
-            // 
-            this.button_test.Location = new System.Drawing.Point(343, 127);
-            this.button_test.Name = "button_test";
-            this.button_test.Size = new System.Drawing.Size(75, 23);
-            this.button_test.TabIndex = 14;
-            this.button_test.Text = "button1";
-            this.button_test.UseVisualStyleBackColor = true;
-            this.button_test.Click += new System.EventHandler(this.button_test_Click);
             // 
             // UI_Algorithms
             // 

@@ -90,6 +90,24 @@ namespace Algorithms.Data
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
+        public static Tuple<double[], string> QuickSortUpCaller(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = QuickSortUp(array_for_sorting, 0, array_for_sorting.Length - 1);
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
+        public static Tuple<double[], string> QuickSortDownCaller(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = QuickSortDown(array_for_sorting, 0, array_for_sorting.Length - 1);
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
         public static Tuple<double[],string> BubbleSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
@@ -162,14 +180,64 @@ namespace Algorithms.Data
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        public static Tuple<double[], string> QuickSort(double[] array_for_sorting)
+        public static double[] QuickSortUp(double[] array,int p,int r)
+        {   
+            if (p < r)
+            {
+                int q = PartitionUp(array, p, r);
+                array = QuickSortUp(array, p, q - 1);
+                array = QuickSortUp(array, q + 1, r);
+            }            
+            return array;
+        }
+        public static double[] QuickSortDown(double[] array, int p, int r)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            double[] output = new double[array_for_sorting.Length];
+            if (p < r)
+            {
+                int q = PartitionDown(array, p, r);
+                array = QuickSortDown(array, p, q - 1);
+                array = QuickSortDown(array, q + 1, r);
+            }
+            return array;
+        }
 
-            sw.Stop();
-            return Tuple.Create(output, sw.Elapsed.ToString());
+        public static int PartitionUp(double[] array, int p, int r)
+        {
+            var x = array[r];
+            int i = p;
+            for (int j = p; j < r; j++)
+            {
+                if (array[j] <= x)
+                {                    
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                }
+            }
+            var temp2 = array[i];
+            array[i] = array[r];
+            array[r] = temp2;
+            return i;
+        }
+        public static int PartitionDown(double[] array, int p, int r)
+        {
+            var x = array[r];
+            int i = p;
+            for (int j = p; j < r; j++)
+            {
+                if (array[j] >= x)
+                {
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                }
+            }
+            var temp2 = array[i];
+            array[i] = array[r];
+            array[r] = temp2;
+            return i;
         }
 
         public static double[] MergeSortUp(double[] array, int p, int r)
