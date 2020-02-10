@@ -16,6 +16,8 @@ namespace Algorithms.Data
             this.A = A;
         }
         
+
+        //MAX HEAP
         public void MaxHeapify(int i)
         {
             int l = this.Left(i);
@@ -50,8 +52,60 @@ namespace Algorithms.Data
             {
                 this.MaxHeapify(i);
             }
+        }        
+
+        public void HeapMaxSort()
+        {
+            this.BuildMaxHeap();
+            for (int i = this.A.Length - 1; i >= 0; i--)
+            {
+                this.Swap(0, i);
+                this.heapSize--;
+                this.MaxHeapify(0);
+            }
         }
 
+        //insert new element with key to heap
+        public void MaxHeapInsert(double key)
+        {
+            this.heapSize++;
+            Array.Resize(ref this.A, this.heapSize);
+            this.A[this.heapSize-1] = Double.NegativeInfinity;
+            this.HeapIncreaseKey(this.heapSize - 1, key);
+        }
+
+        //delete and return max node
+        public double HeapExtractMax()
+        {
+            if (this.heapSize < 1) { throw new System.ArgumentException("Queue is empty", "original"); }
+            double max = this.A[0];
+            this.A[0] = this.A[this.heapSize];
+            this.heapSize--;
+            this.MaxHeapify(0);
+            return max;
+        }
+
+        //increase key value of x to k
+        public void HeapIncreaseKey(int i, double key)
+        {
+            if (key < this.A[i]) { throw new System.ArgumentException("New key is less than current one", "original"); }
+            A[i] = key;
+
+            while ((i > 0) && (this.A[this.Parent(i)]<this.A[i]))
+            {
+                this.Swap(i, this.Parent(i));
+                i = this.Parent(i);
+            }
+        }
+
+        //return max node
+        public double HeapMaximum()
+        {
+            return this.A[0];
+        }
+
+        
+        //MIN HEAP
         public void MinHeapify(int i)
         {
             int l = this.Left(i);
@@ -74,7 +128,7 @@ namespace Algorithms.Data
 
             if (smallest != i)
             {
-                this.Swap(i, smallest);                
+                this.Swap(i, smallest);
                 this.MinHeapify(smallest);
             }
         }
@@ -85,17 +139,6 @@ namespace Algorithms.Data
             for (int i = (this.A.Length - 1) / 2; i >= 0; i--)
             {
                 this.MinHeapify(i);
-            }
-        }
-
-        public void HeapMaxSort()
-        {
-            this.BuildMaxHeap();
-            for (int i = this.A.Length - 1; i >= 0; i--)
-            {
-                this.Swap(0, i);
-                this.heapSize--;
-                this.MaxHeapify(0);
             }
         }
 
@@ -110,26 +153,47 @@ namespace Algorithms.Data
             }
         }
 
-        public void MaxHeapInsert()
+        //insert new element with key to heap
+        public void MinHeapInsert(double key)
         {
-
+            this.heapSize++;
+            Array.Resize(ref this.A, this.heapSize);
+            this.A[this.heapSize - 1] = Double.NegativeInfinity;
+            this.HeapDecreaseKey(this.heapSize - 1, key);
         }
 
-        public void HeapExtractMax()
+        //delete and return max node
+        public double HeapExtractMin()
         {
-
+            if (this.heapSize < 1) { throw new System.ArgumentException("Queue is empty", "original"); }
+            double max = this.A[0];
+            this.A[0] = this.A[this.heapSize];
+            this.heapSize--;
+            this.MinHeapify(0);
+            return max;
         }
 
-        public void HeapIncreaseKey()
+        //increase key value of x to k
+        public void HeapDecreaseKey(int i, double key)
         {
+            if (key < this.A[i]) { throw new System.ArgumentException("New key is less than current one", "original"); }
+            A[i] = key;
 
+            while ((i > 0) && (this.A[this.Parent(i)] > this.A[i]))
+            {
+                this.Swap(i, this.Parent(i));
+                i = this.Parent(i);
+            }
         }
 
-        public void HeapMaximum()
+        //return min node
+        public double HeapMinimum()
         {
-
+            return this.A[0];
         }
 
+
+        //supply
         public double[] GetHeap()
         {
             return this.A;
@@ -138,7 +202,7 @@ namespace Algorithms.Data
         //get parent node number
         public int Parent(int i)
         {
-            return i / 2;
+            return (i - 1) / 2 ;
         }
 
         //get left child node number

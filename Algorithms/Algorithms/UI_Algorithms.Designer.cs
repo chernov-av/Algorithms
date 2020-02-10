@@ -30,6 +30,10 @@
         {
             this.tabControl_algorithms = new System.Windows.Forms.TabControl();
             this.tabPage_sort = new System.Windows.Forms.TabPage();
+            this.panel_heap = new System.Windows.Forms.Panel();
+            this.button_min_heap = new System.Windows.Forms.Button();
+            this.button_max_heap = new System.Windows.Forms.Button();
+            this.checkBox_generate_int = new System.Windows.Forms.CheckBox();
             this.textBox_sort_time = new System.Windows.Forms.TextBox();
             this.label_sort_time = new System.Windows.Forms.Label();
             this.label_sort_check = new System.Windows.Forms.Label();
@@ -44,10 +48,7 @@
             this.richTextBox__sort_output = new System.Windows.Forms.RichTextBox();
             this.richTextBox_sort_input = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button_max_heap = new System.Windows.Forms.Button();
-            this.checkBox_generate_int = new System.Windows.Forms.CheckBox();
-            this.panel_heap = new System.Windows.Forms.Panel();
-            this.button_min_heap = new System.Windows.Forms.Button();
+            this.button_test = new System.Windows.Forms.Button();
             this.tabControl_algorithms.SuspendLayout();
             this.tabPage_sort.SuspendLayout();
             this.panel_heap.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // tabPage_sort
             // 
+            this.tabPage_sort.Controls.Add(this.button_test);
             this.tabPage_sort.Controls.Add(this.panel_heap);
             this.tabPage_sort.Controls.Add(this.checkBox_generate_int);
             this.tabPage_sort.Controls.Add(this.textBox_sort_time);
@@ -87,6 +89,45 @@
             this.tabPage_sort.TabIndex = 0;
             this.tabPage_sort.Text = "Сортировки";
             this.tabPage_sort.UseVisualStyleBackColor = true;
+            // 
+            // panel_heap
+            // 
+            this.panel_heap.Controls.Add(this.button_min_heap);
+            this.panel_heap.Controls.Add(this.button_max_heap);
+            this.panel_heap.Location = new System.Drawing.Point(508, 13);
+            this.panel_heap.Name = "panel_heap";
+            this.panel_heap.Size = new System.Drawing.Size(249, 100);
+            this.panel_heap.TabIndex = 13;
+            // 
+            // button_min_heap
+            // 
+            this.button_min_heap.Location = new System.Drawing.Point(19, 34);
+            this.button_min_heap.Name = "button_min_heap";
+            this.button_min_heap.Size = new System.Drawing.Size(153, 23);
+            this.button_min_heap.TabIndex = 10;
+            this.button_min_heap.Text = "Построить пирамиду (ну)";
+            this.button_min_heap.UseVisualStyleBackColor = true;
+            this.button_min_heap.Click += new System.EventHandler(this.button_min_heap_Click);
+            // 
+            // button_max_heap
+            // 
+            this.button_max_heap.Location = new System.Drawing.Point(19, 7);
+            this.button_max_heap.Name = "button_max_heap";
+            this.button_max_heap.Size = new System.Drawing.Size(153, 23);
+            this.button_max_heap.TabIndex = 10;
+            this.button_max_heap.Text = "Построить пирамиду (нв)";
+            this.button_max_heap.UseVisualStyleBackColor = true;
+            this.button_max_heap.Click += new System.EventHandler(this.button_max_heap_Click);
+            // 
+            // checkBox_generate_int
+            // 
+            this.checkBox_generate_int.AutoSize = true;
+            this.checkBox_generate_int.Location = new System.Drawing.Point(283, 53);
+            this.checkBox_generate_int.Name = "checkBox_generate_int";
+            this.checkBox_generate_int.Size = new System.Drawing.Size(98, 17);
+            this.checkBox_generate_int.TabIndex = 12;
+            this.checkBox_generate_int.Text = "Только целые";
+            this.checkBox_generate_int.UseVisualStyleBackColor = true;
             // 
             // textBox_sort_time
             // 
@@ -198,7 +239,7 @@
             this.richTextBox_sort_input.Name = "richTextBox_sort_input";
             this.richTextBox_sort_input.Size = new System.Drawing.Size(744, 96);
             this.richTextBox_sort_input.TabIndex = 0;
-            this.richTextBox_sort_input.Text = "";
+            this.richTextBox_sort_input.Text = "4 1 3 2 16 9 10 14 8 7";
             // 
             // tabPage2
             // 
@@ -210,44 +251,15 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button_max_heap
+            // button_test
             // 
-            this.button_max_heap.Location = new System.Drawing.Point(19, 7);
-            this.button_max_heap.Name = "button_max_heap";
-            this.button_max_heap.Size = new System.Drawing.Size(153, 23);
-            this.button_max_heap.TabIndex = 10;
-            this.button_max_heap.Text = "Построить пирамиду (нв)";
-            this.button_max_heap.UseVisualStyleBackColor = true;
-            this.button_max_heap.Click += new System.EventHandler(this.button_max_heap_Click);
-            // 
-            // checkBox_generate_int
-            // 
-            this.checkBox_generate_int.AutoSize = true;
-            this.checkBox_generate_int.Location = new System.Drawing.Point(283, 53);
-            this.checkBox_generate_int.Name = "checkBox_generate_int";
-            this.checkBox_generate_int.Size = new System.Drawing.Size(98, 17);
-            this.checkBox_generate_int.TabIndex = 12;
-            this.checkBox_generate_int.Text = "Только целые";
-            this.checkBox_generate_int.UseVisualStyleBackColor = true;
-            // 
-            // panel_heap
-            // 
-            this.panel_heap.Controls.Add(this.button_min_heap);
-            this.panel_heap.Controls.Add(this.button_max_heap);
-            this.panel_heap.Location = new System.Drawing.Point(508, 13);
-            this.panel_heap.Name = "panel_heap";
-            this.panel_heap.Size = new System.Drawing.Size(249, 100);
-            this.panel_heap.TabIndex = 13;
-            // 
-            // button_min_heap
-            // 
-            this.button_min_heap.Location = new System.Drawing.Point(19, 34);
-            this.button_min_heap.Name = "button_min_heap";
-            this.button_min_heap.Size = new System.Drawing.Size(153, 23);
-            this.button_min_heap.TabIndex = 10;
-            this.button_min_heap.Text = "Построить пирамиду (ну)";
-            this.button_min_heap.UseVisualStyleBackColor = true;
-            this.button_min_heap.Click += new System.EventHandler(this.button_min_heap_Click);
+            this.button_test.Location = new System.Drawing.Point(343, 127);
+            this.button_test.Name = "button_test";
+            this.button_test.Size = new System.Drawing.Size(75, 23);
+            this.button_test.TabIndex = 14;
+            this.button_test.Text = "button1";
+            this.button_test.UseVisualStyleBackColor = true;
+            this.button_test.Click += new System.EventHandler(this.button_test_Click);
             // 
             // UI_Algorithms
             // 
@@ -287,6 +299,7 @@
         private System.Windows.Forms.CheckBox checkBox_generate_int;
         private System.Windows.Forms.Panel panel_heap;
         private System.Windows.Forms.Button button_min_heap;
+        private System.Windows.Forms.Button button_test;
     }
 }
 

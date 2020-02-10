@@ -207,5 +207,44 @@ namespace Algorithms
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button_test_Click(object sender, EventArgs e)
+        {
+            this.richTextBox__sort_output.Clear();
+            this.label_sort_check.Text = "";
+
+            try
+            {
+                string[] input_line = this.richTextBox_sort_input.Text.Split(' ');
+                double[] input_array = new double[input_line.Length];
+
+
+                for (int i = 0; i < input_array.Length; i++)
+                {
+                    input_array[i] = double.Parse(input_line[i]);
+                }
+
+                double[] output_array = new double[input_array.Length];
+
+                Heap heap = new Heap(input_array);
+
+                heap.BuildMaxHeap();
+                //heap.BuildMinHeap();
+                heap.MaxHeapInsert(15);
+                output_array = heap.GetHeap();
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < output_array.Length; i++)
+                {
+                    sb.Append(output_array[i]);
+                    sb.Append(' ');
+                }
+                this.richTextBox__sort_output.AppendText(sb.ToString().Trim());
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
