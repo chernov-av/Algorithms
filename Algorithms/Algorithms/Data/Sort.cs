@@ -85,7 +85,7 @@ namespace Algorithms.Data
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            double[] output = MergeSortDown(array_for_sorting,0,array_for_sorting.Length-1);
+            double[] output = MergeSortDown(array_for_sorting, 0, array_for_sorting.Length - 1);
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
@@ -198,7 +198,76 @@ namespace Algorithms.Data
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        public static double[] QuickSortUp(double[] array,int p,int r)
+        public static Tuple<double[], string> CountingSortUp(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = new double[array_for_sorting.Length];
+            try
+            {                
+                double k = array_for_sorting.Max() + 1;
+                double[] C = new double[(int)Math.Floor(k)];
+
+                for (int i = 0; i < k; i++)
+                {
+                    C[i] = 0;
+                }
+
+                for (int j = 0; j < array_for_sorting.Length; j++)
+                {
+                    ++C[(int)array_for_sorting[j]];
+                }
+                for (int i = 1; i < k; i++)
+                {
+                    C[i] += C[i - 1];
+                }
+                for (int j = array_for_sorting.Length - 1; j >= 0; j--)
+                {
+                    output[(int)C[(int)array_for_sorting[j]] - 1] = array_for_sorting[j];
+                    --C[(int)array_for_sorting[j]];
+                }
+            }
+            catch (IndexOutOfRangeException) { }             
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
+        public static Tuple<double[], string> CountingSortDown(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = new double[array_for_sorting.Length];
+
+            try
+            {
+                double k = array_for_sorting.Max() + 1;
+                double[] C = new double[(int)Math.Floor(k)];
+
+                for (int i = 0; i < k; i++)
+                {
+                    C[i] = 0;
+                }
+
+                for (int j = 0; j < array_for_sorting.Length; j++)
+                {
+                    C[(int)array_for_sorting[j]]++;
+                }
+
+                int l = array_for_sorting.Length - 1;
+                for (int i = 0; i < k; i++)
+                {
+                    for (int j = 0; j < C[i]; j++)
+                    {
+                        output[l--] = i;
+                    }
+                }
+            }
+            catch (IndexOutOfRangeException) { }
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
+        private static double[] QuickSortUp(double[] array,int p,int r)
         {   
             if (p < r)
             {
@@ -208,7 +277,7 @@ namespace Algorithms.Data
             }            
             return array;
         }
-        public static double[] QuickSortDown(double[] array, int p, int r)
+        private static double[] QuickSortDown(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -219,7 +288,7 @@ namespace Algorithms.Data
             return array;
         }
 
-        public static double[] QuickSortRandomizedUp(double[] array, int p, int r)
+        private static double[] QuickSortRandomizedUp(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -229,7 +298,7 @@ namespace Algorithms.Data
             }
             return array;
         }
-        public static double[] QuickSortRandomizedDown(double[] array, int p, int r)
+        private static double[] QuickSortRandomizedDown(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -240,7 +309,7 @@ namespace Algorithms.Data
             return array;
         }
 
-        public static int PartitionUp(double[] array, int p, int r)
+        private static int PartitionUp(double[] array, int p, int r)
         {
             var x = array[r];
             int i = p;
@@ -259,7 +328,7 @@ namespace Algorithms.Data
             array[r] = temp2;
             return i;
         }
-        public static int PartitionDown(double[] array, int p, int r)
+        private static int PartitionDown(double[] array, int p, int r)
         {
             var x = array[r];
             int i = p;
@@ -279,7 +348,7 @@ namespace Algorithms.Data
             return i;
         }
 
-        public static int PartitionRandomizedUp(double[] array, int p, int r)
+        private static int PartitionRandomizedUp(double[] array, int p, int r)
         {
             Random rand = new Random();
             int i = rand.Next(p, r);
@@ -288,7 +357,7 @@ namespace Algorithms.Data
             array[i] = temp;
             return PartitionUp(array,p,r);
         }
-        public static int PartitionRandomizedDown(double[] array, int p, int r)
+        private static int PartitionRandomizedDown(double[] array, int p, int r)
         {
             Random rand = new Random();
             int i = rand.Next(p, r);
@@ -298,7 +367,7 @@ namespace Algorithms.Data
             return PartitionDown(array, p, r);
         }
 
-        public static double[] MergeSortUp(double[] array, int p, int r)
+        private static double[] MergeSortUp(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -311,7 +380,7 @@ namespace Algorithms.Data
             }
             return array;
         }
-        public static double[] MergeUp(double[] array, int p, int q, int r)
+        private static double[] MergeUp(double[] array, int p, int q, int r)
         {
             int n1 = q - p + 1; //Length A[p..q]
             int n2 = r - q;//length A[q+1..r]
@@ -353,74 +422,37 @@ namespace Algorithms.Data
 
             return array;
         }
-        public static double[] MergeSortDown(double[] array, int p, int r)
+        private static double[] MergeSortDown(double[] array, int p, int r)
         {
             if (p < r)
             {
-                double val = (p + r) / 2;
-                //int q = (int)Math.Round(val);
-                int q = p+(r -p) / 2;
+                int q = p + (r - p) / 2;
                 array = MergeSortDown(array, p, q);
                 array = MergeSortDown(array, q + 1, r);
                 array = MergeDown(array, p, q, r);
             }
             return array;
         }
-        public static double[] MergeDown(double[] array, int p, int q, int r)
-        {
-            /*int n1 = q - p + 1; //Length A[p..q]
-            int n2 = r - q;//length A[q+1..r]
-
-            double[] L = new double[n1 + 1];
-            double[] R = new double[n2 + 1];
-            int i;
-            int j;
-
-            for (i = 0; i < n1; i++)
-            {
-                L[i] = array[p + i];//copy A[p..q] to L[0..n1-1]
-            }
-
-            for (j = 0; j < n2; j++)
-            {
-                R[j] = array[q + j + 1];//copy A[q+1..r] to R[0..n2-1]
-            }
-
-            L[n1] = Double.PositiveInfinity;//limiter
-            R[n2] = Double.PositiveInfinity;//limiter
-
-            i = 0;
-            j = 0;
-
-            for (int k = p; k <= r; k++)
-            {
-                if (L[i] >= R[j])
-                {
-                    array[k] = L[j];
-                    j++;
-                }
-                else
-                {
-                    array[k] = R[i];
-                    i++;
-                }
-            }
-            */
+        private static double[] MergeDown(double[] array, int p, int q, int r)
+        {            
             double[] aux = new double[array.Length];
 
             int i = p;
             int j = q + 1;
-            
 
-            for (int k=p; k <= r; k++)
+            for (int k = p; k <= r; k++)
             {
                 aux[k] = array[k];
+            }
+
+            for (int k = p; k <= r; k++)
+            {
+                
                 if (i > q) { array[k] = aux[j]; j++; }
                 else if (j > r) { array[k] = aux[i]; i++; }
                 else if (aux[j] > aux[i]) { array[k] = aux[j]; j++; }
                 else { array[k] = aux[i]; i++; }
             }
-
 
             return array;
         }

@@ -44,6 +44,9 @@ namespace Algorithms
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Быстрая(У)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortDownCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Быстрая(Сл,В)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedUpCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Быстрая(Сл,У)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedDownCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Подсчетом(В)", Func = (input) => { Tuple<double[], string> res = Sort.CountingSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Подсчетом(У)", Func = (input) => { Tuple<double[], string> res = Sort.CountingSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+
             this.comboBox_sort_algorithm.SelectedIndex = 0;
         }               
 
@@ -106,12 +109,12 @@ namespace Algorithms
 
                 Tuple<double[], string> res = ((CmbItems)this.comboBox_sort_algorithm.SelectedItem).Func(input_array);
                 output_array =res.Item1;
-                this.textBox_sort_time.Text = res.Item2;
+                this.textBox_sort_time.Text = res.Item2;                
+
+                ((CmbItems)this.comboBox_sort_algorithm.SelectedItem).Check(output_array);
 
                 this.DisplayAction(this.tabControl_algorithms.SelectedTab.Text, this.comboBox_sort_algorithm.SelectedItem.ToString(), res.Item2);
 
-                ((CmbItems)this.comboBox_sort_algorithm.SelectedItem).Check(output_array);
-                
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < output_array.Length; i++)
                 {
@@ -144,6 +147,7 @@ namespace Algorithms
             sb.Append(algorithm+'\n');
             sb.Append(method + '\n');
             sb.Append(time + '\n');
+            sb.Append(this.label_sort_check.Text + '\n');
             sb.Append("--------------------------------------------------------------------------");
             this.richTextBox_actions.AppendText(sb.ToString().Trim()+'\n');
             this.richTextBox_actions.ScrollToCaret();
