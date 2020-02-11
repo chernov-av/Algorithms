@@ -46,12 +46,15 @@
             this.label_sort_max_value = new System.Windows.Forms.Label();
             this.label__sort_input_length = new System.Windows.Forms.Label();
             this.button__sort_generate_input = new System.Windows.Forms.Button();
-            this.richTextBox__sort_output = new System.Windows.Forms.RichTextBox();
+            this.richTextBox_sort_output = new System.Windows.Forms.RichTextBox();
             this.richTextBox_sort_input = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel_actions = new System.Windows.Forms.Panel();
+            this.richTextBox_actions = new System.Windows.Forms.RichTextBox();
             this.tabControl_algorithms.SuspendLayout();
             this.tabPage_sort.SuspendLayout();
             this.panel_heap.SuspendLayout();
+            this.panel_actions.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl_algorithms
@@ -80,7 +83,7 @@
             this.tabPage_sort.Controls.Add(this.label_sort_max_value);
             this.tabPage_sort.Controls.Add(this.label__sort_input_length);
             this.tabPage_sort.Controls.Add(this.button__sort_generate_input);
-            this.tabPage_sort.Controls.Add(this.richTextBox__sort_output);
+            this.tabPage_sort.Controls.Add(this.richTextBox_sort_output);
             this.tabPage_sort.Controls.Add(this.richTextBox_sort_input);
             this.tabPage_sort.Location = new System.Drawing.Point(4, 22);
             this.tabPage_sort.Name = "tabPage_sort";
@@ -92,7 +95,7 @@
             // 
             // button_test
             // 
-            this.button_test.Location = new System.Drawing.Point(343, 127);
+            this.button_test.Location = new System.Drawing.Point(584, 18);
             this.button_test.Name = "button_test";
             this.button_test.Size = new System.Drawing.Size(75, 23);
             this.button_test.TabIndex = 14;
@@ -104,9 +107,9 @@
             // 
             this.panel_heap.Controls.Add(this.button_min_heap);
             this.panel_heap.Controls.Add(this.button_max_heap);
-            this.panel_heap.Location = new System.Drawing.Point(508, 13);
+            this.panel_heap.Location = new System.Drawing.Point(374, 18);
             this.panel_heap.Name = "panel_heap";
-            this.panel_heap.Size = new System.Drawing.Size(249, 100);
+            this.panel_heap.Size = new System.Drawing.Size(190, 70);
             this.panel_heap.TabIndex = 13;
             // 
             // button_min_heap
@@ -132,7 +135,7 @@
             // checkBox_generate_int
             // 
             this.checkBox_generate_int.AutoSize = true;
-            this.checkBox_generate_int.Location = new System.Drawing.Point(283, 53);
+            this.checkBox_generate_int.Location = new System.Drawing.Point(258, 18);
             this.checkBox_generate_int.Name = "checkBox_generate_int";
             this.checkBox_generate_int.Size = new System.Drawing.Size(98, 17);
             this.checkBox_generate_int.TabIndex = 12;
@@ -141,7 +144,7 @@
             // 
             // textBox_sort_time
             // 
-            this.textBox_sort_time.Location = new System.Drawing.Point(639, 135);
+            this.textBox_sort_time.Location = new System.Drawing.Point(122, 145);
             this.textBox_sort_time.Name = "textBox_sort_time";
             this.textBox_sort_time.Size = new System.Drawing.Size(121, 20);
             this.textBox_sort_time.TabIndex = 9;
@@ -149,7 +152,7 @@
             // label_sort_time
             // 
             this.label_sort_time.AutoSize = true;
-            this.label_sort_time.Location = new System.Drawing.Point(524, 138);
+            this.label_sort_time.Location = new System.Drawing.Point(15, 148);
             this.label_sort_time.Name = "label_sort_time";
             this.label_sort_time.Size = new System.Drawing.Size(105, 13);
             this.label_sort_time.TabIndex = 8;
@@ -158,7 +161,7 @@
             // label_sort_check
             // 
             this.label_sort_check.AutoSize = true;
-            this.label_sort_check.Location = new System.Drawing.Point(672, 372);
+            this.label_sort_check.Location = new System.Drawing.Point(263, 114);
             this.label_sort_check.Name = "label_sort_check";
             this.label_sort_check.Size = new System.Drawing.Size(85, 13);
             this.label_sort_check.TabIndex = 7;
@@ -183,14 +186,14 @@
             // comboBox_sort_algorithm
             // 
             this.comboBox_sort_algorithm.FormattingEnabled = true;
-            this.comboBox_sort_algorithm.Location = new System.Drawing.Point(343, 15);
+            this.comboBox_sort_algorithm.Location = new System.Drawing.Point(122, 80);
             this.comboBox_sort_algorithm.Name = "comboBox_sort_algorithm";
             this.comboBox_sort_algorithm.Size = new System.Drawing.Size(121, 21);
             this.comboBox_sort_algorithm.TabIndex = 5;
             // 
             // button_sort
             // 
-            this.button_sort.Location = new System.Drawing.Point(343, 90);
+            this.button_sort.Location = new System.Drawing.Point(258, 78);
             this.button_sort.Name = "button_sort";
             this.button_sort.Size = new System.Drawing.Size(90, 23);
             this.button_sort.TabIndex = 4;
@@ -201,7 +204,7 @@
             // label_sort_algorithm
             // 
             this.label_sort_algorithm.AutoSize = true;
-            this.label_sort_algorithm.Location = new System.Drawing.Point(280, 18);
+            this.label_sort_algorithm.Location = new System.Drawing.Point(15, 83);
             this.label_sort_algorithm.Name = "label_sort_algorithm";
             this.label_sort_algorithm.Size = new System.Drawing.Size(56, 13);
             this.label_sort_algorithm.TabIndex = 3;
@@ -227,7 +230,7 @@
             // 
             // button__sort_generate_input
             // 
-            this.button__sort_generate_input.Location = new System.Drawing.Point(122, 90);
+            this.button__sort_generate_input.Location = new System.Drawing.Point(258, 49);
             this.button__sort_generate_input.Name = "button__sort_generate_input";
             this.button__sort_generate_input.Size = new System.Drawing.Size(90, 23);
             this.button__sort_generate_input.TabIndex = 1;
@@ -235,13 +238,13 @@
             this.button__sort_generate_input.UseVisualStyleBackColor = true;
             this.button__sort_generate_input.Click += new System.EventHandler(this.button_generate_input_Click);
             // 
-            // richTextBox__sort_output
+            // richTextBox_sort_output
             // 
-            this.richTextBox__sort_output.Location = new System.Drawing.Point(18, 273);
-            this.richTextBox__sort_output.Name = "richTextBox__sort_output";
-            this.richTextBox__sort_output.Size = new System.Drawing.Size(744, 96);
-            this.richTextBox__sort_output.TabIndex = 0;
-            this.richTextBox__sort_output.Text = "";
+            this.richTextBox_sort_output.Location = new System.Drawing.Point(18, 273);
+            this.richTextBox_sort_output.Name = "richTextBox_sort_output";
+            this.richTextBox_sort_output.Size = new System.Drawing.Size(744, 96);
+            this.richTextBox_sort_output.TabIndex = 0;
+            this.richTextBox_sort_output.Text = "";
             // 
             // richTextBox_sort_input
             // 
@@ -261,11 +264,28 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // panel_actions
+            // 
+            this.panel_actions.Controls.Add(this.richTextBox_actions);
+            this.panel_actions.Location = new System.Drawing.Point(795, 34);
+            this.panel_actions.Name = "panel_actions";
+            this.panel_actions.Size = new System.Drawing.Size(257, 404);
+            this.panel_actions.TabIndex = 1;
+            // 
+            // richTextBox_actions
+            // 
+            this.richTextBox_actions.Location = new System.Drawing.Point(4, 4);
+            this.richTextBox_actions.Name = "richTextBox_actions";
+            this.richTextBox_actions.Size = new System.Drawing.Size(250, 396);
+            this.richTextBox_actions.TabIndex = 0;
+            this.richTextBox_actions.Text = "";
+            // 
             // UI_Algorithms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1064, 450);
+            this.Controls.Add(this.panel_actions);
             this.Controls.Add(this.tabControl_algorithms);
             this.Name = "UI_Algorithms";
             this.Text = "Алгоритмы";
@@ -273,6 +293,7 @@
             this.tabPage_sort.ResumeLayout(false);
             this.tabPage_sort.PerformLayout();
             this.panel_heap.ResumeLayout(false);
+            this.panel_actions.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -287,7 +308,7 @@
         private System.Windows.Forms.Label label_sort_algorithm;
         private System.Windows.Forms.Label label__sort_input_length;
         private System.Windows.Forms.Button button__sort_generate_input;
-        private System.Windows.Forms.RichTextBox richTextBox__sort_output;
+        private System.Windows.Forms.RichTextBox richTextBox_sort_output;
         private System.Windows.Forms.RichTextBox richTextBox_sort_input;
         private System.Windows.Forms.TextBox textBox_sort_input_length;
         private System.Windows.Forms.Label label_sort_check;
@@ -300,6 +321,8 @@
         private System.Windows.Forms.Panel panel_heap;
         private System.Windows.Forms.Button button_min_heap;
         private System.Windows.Forms.Button button_test;
+        private System.Windows.Forms.Panel panel_actions;
+        private System.Windows.Forms.RichTextBox richTextBox_actions;
     }
 }
 

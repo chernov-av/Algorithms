@@ -29,8 +29,8 @@ namespace Algorithms
         {
             
             this.label_sort_check.Text = "";
-            this.richTextBox__sort_output.ReadOnly = true;
-            this.richTextBox__sort_output.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBox_sort_output.ReadOnly = true;
+            this.richTextBox_sort_output.BackColor = System.Drawing.SystemColors.Window;
 
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Вставкой(В)", Func = (input) => { Tuple<double[],string> res = Sort.InsertionSortUp(input);  return res; }, Check=(input) => { this.DisplayCheckSortUp(input); } });
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Вставкой(У)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
@@ -89,7 +89,7 @@ namespace Algorithms
 
         private void button_sort_Click(object sender, EventArgs e)
         {
-            this.richTextBox__sort_output.Clear();
+            this.richTextBox_sort_output.Clear();
             this.label_sort_check.Text = "";
 
             try
@@ -108,6 +108,8 @@ namespace Algorithms
                 output_array =res.Item1;
                 this.textBox_sort_time.Text = res.Item2;
 
+                this.DisplayAction(this.tabControl_algorithms.SelectedTab.Text, this.comboBox_sort_algorithm.SelectedItem.ToString(), res.Item2);
+
                 ((CmbItems)this.comboBox_sort_algorithm.SelectedItem).Check(output_array);
                 
                 StringBuilder sb = new StringBuilder();
@@ -116,7 +118,7 @@ namespace Algorithms
                     sb.Append(output_array[i]);
                     sb.Append(' ');
                 }
-                this.richTextBox__sort_output.AppendText(sb.ToString().Trim());
+                this.richTextBox_sort_output.AppendText(sb.ToString().Trim());
             }
             catch (FormatException ex)
             {
@@ -130,15 +132,27 @@ namespace Algorithms
         {
             if (Sort.CheckSortUp(input)) this.label_sort_check.Text = "Отсортировано"; else this.label_sort_check.Text = "Не отсортировано";
         }
+
         private void DisplayCheckSortDown(double[] input)
         {
             if (Sort.CheckSortDown(input)) this.label_sort_check.Text = "Отсортировано"; else this.label_sort_check.Text = "Не отсортировано";
+        }
+
+        private void DisplayAction(string algorithm, string method, string time)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(algorithm+'\n');
+            sb.Append(method + '\n');
+            sb.Append(time + '\n');
+            sb.Append("--------------------------------------------------------------------------");
+            this.richTextBox_actions.AppendText(sb.ToString().Trim()+'\n');
+            this.richTextBox_actions.ScrollToCaret();
         }
         #endregion
 
         private void button_max_heap_Click(object sender, EventArgs e)
         {
-            this.richTextBox__sort_output.Clear();
+            this.richTextBox_sort_output.Clear();
             this.label_sort_check.Text = "";
 
             try
@@ -166,7 +180,7 @@ namespace Algorithms
                     sb.Append(output_array[i]);
                     sb.Append(' ');
                 }
-                this.richTextBox__sort_output.AppendText(sb.ToString().Trim());
+                this.richTextBox_sort_output.AppendText(sb.ToString().Trim());
             }
             catch (FormatException ex)
             {
@@ -176,7 +190,7 @@ namespace Algorithms
 
         private void button_min_heap_Click(object sender, EventArgs e)
         {
-            this.richTextBox__sort_output.Clear();
+            this.richTextBox_sort_output.Clear();
             this.label_sort_check.Text = "";
 
             try
@@ -203,7 +217,7 @@ namespace Algorithms
                     sb.Append(output_array[i]);
                     sb.Append(' ');
                 }
-                this.richTextBox__sort_output.AppendText(sb.ToString().Trim());
+                this.richTextBox_sort_output.AppendText(sb.ToString().Trim());
             }
             catch (FormatException ex)
             {
@@ -213,7 +227,7 @@ namespace Algorithms
 
         private void button_test_Click(object sender, EventArgs e)
         {
-            this.richTextBox__sort_output.Clear();
+            this.richTextBox_sort_output.Clear();
             this.label_sort_check.Text = "";
 
             try
@@ -242,7 +256,7 @@ namespace Algorithms
                     sb.Append(output_array[i]);
                     sb.Append(' ');
                 }
-                this.richTextBox__sort_output.AppendText(sb.ToString().Trim());
+                this.richTextBox_sort_output.AppendText(sb.ToString().Trim());
             }
             catch (FormatException ex)
             {
