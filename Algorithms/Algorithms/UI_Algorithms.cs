@@ -42,6 +42,8 @@ namespace Algorithms
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Пирамидальная(У)", Func = (input) => { Tuple<double[], string> res = Sort.HeapSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Быстрая(В)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortUpCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
             this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Быстрая(У)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortDownCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Быстрая(Сл,В)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedUpCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
+            this.comboBox_sort_algorithm.Items.Add(new CmbItems { Name = "Быстрая(Сл,У)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedDownCaller(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
             this.comboBox_sort_algorithm.SelectedIndex = 0;
         }               
 

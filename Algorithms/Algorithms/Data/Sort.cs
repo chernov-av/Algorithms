@@ -108,6 +108,24 @@ namespace Algorithms.Data
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
+        public static Tuple<double[], string> QuickSortRandomizedUpCaller(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = QuickSortRandomizedUp(array_for_sorting, 0, array_for_sorting.Length - 1);
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
+        public static Tuple<double[], string> QuickSortRandomizedDownCaller(double[] array_for_sorting)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            double[] output = QuickSortRandomizedDown(array_for_sorting, 0, array_for_sorting.Length - 1);
+            sw.Stop();
+            return Tuple.Create(output, sw.Elapsed.ToString());
+        }
+
         public static Tuple<double[],string> BubbleSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
@@ -201,6 +219,27 @@ namespace Algorithms.Data
             return array;
         }
 
+        public static double[] QuickSortRandomizedUp(double[] array, int p, int r)
+        {
+            if (p < r)
+            {
+                int q = PartitionRandomizedUp(array, p, r);
+                array = QuickSortRandomizedUp(array, p, q - 1);
+                array = QuickSortRandomizedUp(array, q + 1, r);
+            }
+            return array;
+        }
+        public static double[] QuickSortRandomizedDown(double[] array, int p, int r)
+        {
+            if (p < r)
+            {
+                int q = PartitionRandomizedDown(array, p, r);
+                array = QuickSortRandomizedDown(array, p, q - 1);
+                array = QuickSortRandomizedDown(array, q + 1, r);
+            }
+            return array;
+        }
+
         public static int PartitionUp(double[] array, int p, int r)
         {
             var x = array[r];
@@ -238,6 +277,25 @@ namespace Algorithms.Data
             array[i] = array[r];
             array[r] = temp2;
             return i;
+        }
+
+        public static int PartitionRandomizedUp(double[] array, int p, int r)
+        {
+            Random rand = new Random();
+            int i = rand.Next(p, r);
+            var temp = array[r];
+            array[r] = array[i];
+            array[i] = temp;
+            return PartitionUp(array,p,r);
+        }
+        public static int PartitionRandomizedDown(double[] array, int p, int r)
+        {
+            Random rand = new Random();
+            int i = rand.Next(p, r);
+            var temp = array[r];
+            array[r] = array[i];
+            array[i] = temp;
+            return PartitionDown(array, p, r);
         }
 
         public static double[] MergeSortUp(double[] array, int p, int r)
