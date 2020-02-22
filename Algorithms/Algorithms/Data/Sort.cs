@@ -72,56 +72,56 @@ namespace Algorithms.Data
             return Tuple.Create(array_for_sorting, sw.Elapsed.ToString());
         }
 
-        public static Tuple<double[],string> MergeSortUpCaller(double[] array_for_sorting)
+        public static Tuple<double[],string> MergeSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            double[] output = MergeSortUp(array_for_sorting, 0, array_for_sorting.Length-1);
+            double[] output = MergeSUp(array_for_sorting, 0, array_for_sorting.Length-1);
             sw.Stop();
             return Tuple.Create(output,sw.Elapsed.ToString());
         }
 
-        public static Tuple<double[], string> MergeSortDownCaller(double[] array_for_sorting)
+        public static Tuple<double[], string> MergeSortDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            double[] output = MergeSortDown(array_for_sorting, 0, array_for_sorting.Length - 1);
+            double[] output = MergeSDown(array_for_sorting, 0, array_for_sorting.Length - 1);
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        public static Tuple<double[], string> QuickSortUpCaller(double[] array_for_sorting)
+        public static Tuple<double[], string> QuickSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            double[] output = QuickSortUp(array_for_sorting, 0, array_for_sorting.Length - 1);
+            double[] output = QuickUp(array_for_sorting, 0, array_for_sorting.Length - 1);
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        public static Tuple<double[], string> QuickSortDownCaller(double[] array_for_sorting)
+        public static Tuple<double[], string> QuickSortDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            double[] output = QuickSortDown(array_for_sorting, 0, array_for_sorting.Length - 1);
+            double[] output = QuickDown(array_for_sorting, 0, array_for_sorting.Length - 1);
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        public static Tuple<double[], string> QuickSortRandomizedUpCaller(double[] array_for_sorting)
+        public static Tuple<double[], string> QuickSortRandomizedUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            double[] output = QuickSortRandomizedUp(array_for_sorting, 0, array_for_sorting.Length - 1);
+            double[] output = QuickRandomizedUp(array_for_sorting, 0, array_for_sorting.Length - 1);
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        public static Tuple<double[], string> QuickSortRandomizedDownCaller(double[] array_for_sorting)
+        public static Tuple<double[], string> QuickSortRandomizedDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            double[] output = QuickSortRandomizedDown(array_for_sorting, 0, array_for_sorting.Length - 1);
+            double[] output = QuickRandomizedDown(array_for_sorting, 0, array_for_sorting.Length - 1);
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
@@ -267,49 +267,49 @@ namespace Algorithms.Data
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        private static double[] QuickSortUp(double[] array,int p,int r)
+        internal static double[] QuickUp(double[] array,int p,int r)
         {   
             if (p < r)
             {
                 int q = PartitionUp(array, p, r);
-                array = QuickSortUp(array, p, q - 1);
-                array = QuickSortUp(array, q + 1, r);
+                array = QuickUp(array, p, q - 1);
+                array = QuickUp(array, q + 1, r);
             }            
             return array;
         }
-        private static double[] QuickSortDown(double[] array, int p, int r)
+        internal static double[] QuickDown(double[] array, int p, int r)
         {
             if (p < r)
             {
                 int q = PartitionDown(array, p, r);
-                array = QuickSortDown(array, p, q - 1);
-                array = QuickSortDown(array, q + 1, r);
+                array = QuickDown(array, p, q - 1);
+                array = QuickDown(array, q + 1, r);
             }
             return array;
         }
 
-        private static double[] QuickSortRandomizedUp(double[] array, int p, int r)
+        internal static double[] QuickRandomizedUp(double[] array, int p, int r)
         {
             if (p < r)
             {
                 int q = PartitionRandomizedUp(array, p, r);
-                array = QuickSortRandomizedUp(array, p, q - 1);
-                array = QuickSortRandomizedUp(array, q + 1, r);
+                array = QuickRandomizedUp(array, p, q - 1);
+                array = QuickRandomizedUp(array, q + 1, r);
             }
             return array;
         }
-        private static double[] QuickSortRandomizedDown(double[] array, int p, int r)
+        internal static double[] QuickRandomizedDown(double[] array, int p, int r)
         {
             if (p < r)
             {
                 int q = PartitionRandomizedDown(array, p, r);
-                array = QuickSortRandomizedDown(array, p, q - 1);
-                array = QuickSortRandomizedDown(array, q + 1, r);
+                array = QuickRandomizedDown(array, p, q - 1);
+                array = QuickRandomizedDown(array, q + 1, r);
             }
             return array;
         }
 
-        private static int PartitionUp(double[] array, int p, int r)
+        internal static int PartitionUp(double[] array, int p, int r)
         {
             var x = array[r];
             int i = p;
@@ -328,7 +328,7 @@ namespace Algorithms.Data
             array[r] = temp2;
             return i;
         }
-        private static int PartitionDown(double[] array, int p, int r)
+        internal static int PartitionDown(double[] array, int p, int r)
         {
             var x = array[r];
             int i = p;
@@ -348,7 +348,7 @@ namespace Algorithms.Data
             return i;
         }
 
-        private static int PartitionRandomizedUp(double[] array, int p, int r)
+        internal static int PartitionRandomizedUp(double[] array, int p, int r)
         {
             Random rand = new Random();
             int i = rand.Next(p, r);
@@ -357,7 +357,7 @@ namespace Algorithms.Data
             array[i] = temp;
             return PartitionUp(array,p,r);
         }
-        private static int PartitionRandomizedDown(double[] array, int p, int r)
+        internal static int PartitionRandomizedDown(double[] array, int p, int r)
         {
             Random rand = new Random();
             int i = rand.Next(p, r);
@@ -367,20 +367,19 @@ namespace Algorithms.Data
             return PartitionDown(array, p, r);
         }
 
-        private static double[] MergeSortUp(double[] array, int p, int r)
+        internal static double[] MergeSUp(double[] array, int p, int r)
         {
             if (p < r)
             {
                 double val = (p + r) / 2;
-                //int q = (int)Math.Round(val);
                 int q = (p + r) / 2;
-                array= MergeSortUp(array, p, q);
-                array = MergeSortUp(array, q + 1, r);
+                array= MergeSUp(array, p, q);
+                array = MergeSUp(array, q + 1, r);
                 array = MergeUp(array, p, q, r);
             }
             return array;
         }
-        private static double[] MergeUp(double[] array, int p, int q, int r)
+        internal static double[] MergeUp(double[] array, int p, int q, int r)
         {
             int n1 = q - p + 1; //Length A[p..q]
             int n2 = r - q;//length A[q+1..r]
@@ -422,18 +421,18 @@ namespace Algorithms.Data
 
             return array;
         }
-        private static double[] MergeSortDown(double[] array, int p, int r)
+        internal static double[] MergeSDown(double[] array, int p, int r)
         {
             if (p < r)
             {
                 int q = p + (r - p) / 2;
-                array = MergeSortDown(array, p, q);
-                array = MergeSortDown(array, q + 1, r);
+                array = MergeSDown(array, p, q);
+                array = MergeSDown(array, q + 1, r);
                 array = MergeDown(array, p, q, r);
             }
             return array;
         }
-        private static double[] MergeDown(double[] array, int p, int q, int r)
+        internal static double[] MergeDown(double[] array, int p, int q, int r)
         {            
             double[] aux = new double[array.Length];
 
