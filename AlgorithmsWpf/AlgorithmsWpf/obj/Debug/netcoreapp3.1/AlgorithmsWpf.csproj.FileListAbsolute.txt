@@ -1,0 +1,17 @@
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\bin\Debug\netcoreapp3.1\AlgorithmsWpf.exe
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\bin\Debug\netcoreapp3.1\AlgorithmsWpf.deps.json
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\bin\Debug\netcoreapp3.1\AlgorithmsWpf.runtimeconfig.json
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\bin\Debug\netcoreapp3.1\AlgorithmsWpf.runtimeconfig.dev.json
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\bin\Debug\netcoreapp3.1\AlgorithmsWpf.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\bin\Debug\netcoreapp3.1\AlgorithmsWpf.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.csprojAssemblyReference.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\UI_Algorithms.g.cs
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\App.g.cs
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf_MarkupCompile.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf_MarkupCompile.lref
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\UI_Algorithms.baml
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.g.resources
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.AssemblyInfoInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.AssemblyInfo.cs
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.pdb

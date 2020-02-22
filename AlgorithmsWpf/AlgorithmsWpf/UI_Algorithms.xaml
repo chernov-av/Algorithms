@@ -1,0 +1,65 @@
+﻿<Window x:Class="AlgorithmsWpf.UI_Algorithms"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlgorithmsWpf"
+        mc:Ignorable="d"
+        Title="Алгоритмы" Height="450" Width="1047">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="36*"/>
+            <ColumnDefinition Width="633*"/>
+            <ColumnDefinition Width="131*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="TabControl_Algorithms" Grid.ColumnSpan="2" Margin="0,0,121,0">
+            <TabItem x:Name="TabItem_Sort" Header="Сортировки">
+                <Grid Background="#FFE5E5E5" Margin="10,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="181*"/>
+                        <ColumnDefinition Width="863*"/>
+                    </Grid.ColumnDefinitions>
+                    <RichTextBox x:Name="RichTextBox_sort_input" Margin="10,175,10,115" Grid.ColumnSpan="2">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <RichTextBox x:Name="RichTextBox_sort_output" Margin="10,283,10,7" Grid.ColumnSpan="2">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <TextBox x:Name="TextBox_sort_length" Grid.Column="1" HorizontalAlignment="Left" Margin="1,19,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TextBox_sort_max_value" Grid.Column="1" HorizontalAlignment="Left" Margin="1,50,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="Label_sort_length" Content="Длина:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="Label_sort_max_value" Content="Макс. значение:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="CheckBox_sort_gen_only_int" Content="Только целые" Grid.Column="1" HorizontalAlignment="Left" Margin="139,20,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="Button_sort_gen_rand" Content="Генерировать" Grid.Column="1" HorizontalAlignment="Left" Margin="139,50,0,0" VerticalAlignment="Top" Width="82" Click="Button_sort_gen_rand_Click"/>
+                    <Label x:Name="Label_sort_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="ComboBox_sort_algorithms" HorizontalAlignment="Left" Margin="128,79,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Button x:Name="Button_sort" Content="Сортировать" Grid.Column="1" HorizontalAlignment="Left" Margin="139,80,0,0" VerticalAlignment="Top" Width="82" Click="Button_sort_Click"/>
+                    <Label x:Name="Label_sort_check" Content="Отсортировано" HorizontalAlignment="Left" Margin="139,105,0,0" VerticalAlignment="Top" Grid.Column="1" Width="110" FontStretch="Normal"/>
+                    <TextBox x:Name="TextBox_sort_time" HorizontalAlignment="Left" Margin="128,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label x:Name="Label_sort_time" Content="Время работы:" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="Button_sort_build_max_heap" Content="Построить пирамиду (НВ)" Grid.Column="1" HorizontalAlignment="Left" Margin="289,19,0,0" VerticalAlignment="Top" Click="Button_sort_build_max_heap_Click"/>
+                    <Button x:Name="Button_sort_build_min_heap" Content="Построить пирамиду (НУ)" Grid.Column="1" HorizontalAlignment="Left" Margin="289,50,0,0" VerticalAlignment="Top" Click="Button_sort_build_min_heap_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <RichTextBox x:Name="Richtextbox_log" Grid.Column="1" Grid.ColumnSpan="2" Margin="715,24,10,10">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+    </Grid>
+</Window>

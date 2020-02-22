@@ -1,9 +1,0 @@
-D:\Project\devAlgorithms\Algorithms\Algorithms\bin\Debug\Algorithms.exe.config
-D:\Project\devAlgorithms\Algorithms\Algorithms\bin\Debug\Algorithms.exe
-D:\Project\devAlgorithms\Algorithms\Algorithms\bin\Debug\Algorithms.pdb
-D:\Project\devAlgorithms\Algorithms\Algorithms\obj\Debug\Algorithms.csprojAssemblyReference.cache
-D:\Project\devAlgorithms\Algorithms\Algorithms\obj\Debug\Algorithms.Properties.Resources.resources
-D:\Project\devAlgorithms\Algorithms\Algorithms\obj\Debug\Algorithms.UI_Algorithms.resources
-D:\Project\devAlgorithms\Algorithms\Algorithms\obj\Debug\Algorithms.csproj.GenerateResource.cache
-D:\Project\devAlgorithms\Algorithms\Algorithms\obj\Debug\Algorithms.exe
-D:\Project\devAlgorithms\Algorithms\Algorithms\obj\Debug\Algorithms.pdb
