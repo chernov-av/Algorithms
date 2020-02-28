@@ -28,14 +28,7 @@ namespace AlgorithmsWpf
         }
 
         private void InitSortTab()
-        {
-            this.Label_sort_check.Content = "";
-            this.RichTextBox_sort_output.IsReadOnly = true;
-            this.RichTextBox_sort_output.Background = Brushes.White;
-            this.Richtextbox_log.SetValue(Paragraph.LineHeightProperty, 1.5);
-
-            this.Richtextbox_log.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-
+        {          
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(В)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(У)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(В)", Func = (input) => { Tuple<double[], string> res = Sort.MergeSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });

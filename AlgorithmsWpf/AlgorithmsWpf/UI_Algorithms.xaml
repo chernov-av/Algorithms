@@ -26,7 +26,7 @@
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>
-                    <RichTextBox x:Name="RichTextBox_sort_output" Margin="10,283,10,7" Grid.ColumnSpan="2">
+                    <RichTextBox x:Name="RichTextBox_sort_output" Margin="10,283,10,7" Grid.ColumnSpan="2" IsReadOnly="True" Background="White">
                         <FlowDocument>
                             <Paragraph>
                                 <Run Text=""/>
@@ -42,7 +42,7 @@
                     <Label x:Name="Label_sort_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="ComboBox_sort_algorithms" HorizontalAlignment="Left" Margin="128,79,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                     <Button x:Name="Button_sort" Content="Сортировать" Grid.Column="1" HorizontalAlignment="Left" Margin="139,80,0,0" VerticalAlignment="Top" Width="82" Click="Button_sort_Click"/>
-                    <Label x:Name="Label_sort_check" Content="Отсортировано" HorizontalAlignment="Left" Margin="139,105,0,0" VerticalAlignment="Top" Grid.Column="1" Width="110" FontStretch="Normal"/>
+                    <Label x:Name="Label_sort_check" Content="" HorizontalAlignment="Left" Margin="139,105,0,0" VerticalAlignment="Top" Grid.Column="1" Width="110" FontStretch="Normal"/>
                     <TextBox x:Name="TextBox_sort_time" HorizontalAlignment="Left" Margin="128,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                     <Label x:Name="Label_sort_time" Content="Время работы:" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="Button_sort_build_max_heap" Content="Построить пирамиду (НВ)" Grid.Column="1" HorizontalAlignment="Left" Margin="289,19,0,0" VerticalAlignment="Top" Click="Button_sort_build_max_heap_Click"/>
@@ -53,7 +53,7 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <RichTextBox x:Name="Richtextbox_log" Grid.Column="1" Grid.ColumnSpan="2" Margin="715,24,10,10">
+        <RichTextBox x:Name="Richtextbox_log" Grid.Column="1" Grid.ColumnSpan="2" Margin="715,24,10,10" VerticalScrollBarVisibility="Visible" TextBlock.LineHeight="1.5">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
