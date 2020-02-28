@@ -51,7 +51,7 @@ namespace AlgorithmsWpf
         private void InitChoosingTab()
         {
             this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Минимум", FuncChoose = (input) => { Tuple<double, string> res = Choosings.Minimum(input); return res; } });
-            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Максимум", FuncChoose = (input) => { Tuple<double, string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Максимум", FuncChoose = (input) => { Tuple<double, string> res = Choosings.Maximum(input); return res; } });
 
             this.ComboBox_choosing_algorithms.SelectedIndex = 0;
         }
@@ -233,6 +233,10 @@ namespace AlgorithmsWpf
             }
         }
         #endregion
+
+        #endregion
+
+        #region Choosing
 
         #endregion
 

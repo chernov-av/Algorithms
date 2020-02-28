@@ -21,5 +21,20 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(min, sw.Elapsed.ToString());
         }
+
+        public static Tuple<double, string> Maximum(double[] array)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            double max = array[0];
+            foreach (double a in array)
+            {
+                if (a > max) { max = a; }
+            }
+
+            sw.Stop();
+            return Tuple.Create(max, sw.Elapsed.ToString());
+        }
     }
 }
