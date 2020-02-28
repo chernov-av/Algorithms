@@ -29,7 +29,7 @@ namespace AlgorithmsWpf
         }
 
         private void InitSortTab()
-        {          
+        {
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.MergeSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
@@ -55,7 +55,7 @@ namespace AlgorithmsWpf
 
             this.ComboBox_choosing_algorithms.SelectedIndex = 0;
         }
-  
+
         #region Display
         private void DisplayCheckSortUp(double[] input)
         {
@@ -103,8 +103,8 @@ namespace AlgorithmsWpf
                         input_array[i] = rand.Next(max);
                     }
                     else
-                    {                        
-                        input_array[i] = Math.Round(rand.NextDouble()*max,2);
+                    {
+                        input_array[i] = Math.Round(rand.NextDouble() * max, 2);
                     }
 
                     sb.Append(input_array[i]);
@@ -123,41 +123,27 @@ namespace AlgorithmsWpf
             this.RichTextBox_output.Document.Blocks.Clear();
             this.Label_sort_check.Content = "";
 
-            try
+            double[] input_array = this.readInput(this.RichTextBox_input);
+            double[] output_array = new double[input_array.Length];
+
+            Tuple<double[], string> res = ((CmbItems)this.ComboBox_sort_algorithms.SelectedItem).FuncSort(input_array);
+            output_array = res.Item1;
+            this.TextBox_time.Text = res.Item2;
+
+            ((CmbItems)this.ComboBox_sort_algorithms.SelectedItem).CheckSort(output_array);
+
+            TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
+            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_sort_algorithms.SelectedValue.ToString(), res.Item2);
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < output_array.Length; i++)
             {
-                string[] input_line = this.readRichtextbox(this.RichTextBox_input).Split(' ');
-                double[] input_array = new double[input_line.Length];
-
-                for (int i = 0; i < input_array.Length; i++)
-                {
-                    input_array[i] = double.Parse(input_line[i]);
-                }
-
-                double[] output_array = new double[input_array.Length];
-
-                Tuple<double[], string> res = ((CmbItems)this.ComboBox_sort_algorithms.SelectedItem).Func(input_array);
-                output_array = res.Item1;
-                this.TextBox_time.Text = res.Item2;
-
-                ((CmbItems)this.ComboBox_sort_algorithms.SelectedItem).Check(output_array);
-
-                TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
-                this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_sort_algorithms.SelectedValue.ToString(), res.Item2);
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < output_array.Length; i++)
-                {
-                    sb.Append(output_array[i]);
-                    sb.Append(' ');
-                }
-                this.RichTextBox_output.AppendText(sb.ToString().Trim());
+                sb.Append(output_array[i]);
+                sb.Append(' ');
             }
-            catch (FormatException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            this.RichTextBox_output.AppendText(sb.ToString().Trim());
         }
-        
+
         #region Heap
         private void Button_sort_build_max_heap_Click(object sender, RoutedEventArgs e)
         {
@@ -238,16 +224,58 @@ namespace AlgorithmsWpf
 
         #region Choosing
 
-        #endregion
+        private void Button_choose_Click(object sender, RoutedEventArgs e)
+        {
+            this.RichTextBox_output.Document.Blocks.Clear();
 
-        #region helpFunctions
-        private string readRichtextbox(RichTextBox RTB)
-        {             
-            return new TextRange(RTB.Document.ContentStart,RTB.Document.ContentEnd).Text;
+            double[] input_array = this.readInput(this.RichTextBox_input);
+
+            Tuple<double, string> res = ((CmbItems)this.ComboBox_choosing_algorithms.SelectedItem).FuncChoose(input_array);
+            double output = res.Item1;
+            this.TextBox_time.Text = res.Item2;
+
+            TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
+            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_choosing_algorithms.SelectedValue.ToString(), res.Item2);
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(output);
+            sb.Append(' ');
+
+            this.RichTextBox_output.AppendText(sb.ToString().Trim());
         }
+
         #endregion
 
-        
+        #region helpFunctions        
+
+        private double[] readInput(RichTextBox RTB)
+        {
+            double[] input_array = new double[1];
+            try
+            {
+                string[] input_line = this.readRichtextbox(RTB).Split(' ');
+                input_array = new double[input_line.Length];
+
+                for (int i = 0; i < input_array.Length; i++)
+                {
+                    input_array[i] = double.Parse(input_line[i]);
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return input_array;
+        }
+
+        private string readRichtextbox(RichTextBox RTB)
+        {
+            return new TextRange(RTB.Document.ContentStart, RTB.Document.ContentEnd).Text;
+        }
+
+        #endregion
+
 
     }
 }
