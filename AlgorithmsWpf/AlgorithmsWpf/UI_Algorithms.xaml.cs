@@ -25,17 +25,11 @@ namespace AlgorithmsWpf
         {
             InitializeComponent();
             InitSortTab();
+            InitChoosingTab();
         }
 
         private void InitSortTab()
-        {
-            this.Label_sort_check.Content = "";
-            this.RichTextBox_sort_output.IsReadOnly = true;
-            this.RichTextBox_sort_output.Background = Brushes.White;
-            this.Richtextbox_log.SetValue(Paragraph.LineHeightProperty, 1.5);
-
-            this.Richtextbox_log.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-
+        {          
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(В)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(У)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(В)", Func = (input) => { Tuple<double[], string> res = Sort.MergeSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
@@ -52,6 +46,14 @@ namespace AlgorithmsWpf
             this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Подсчетом(У)", Func = (input) => { Tuple<double[], string> res = Sort.CountingSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
 
             this.ComboBox_sort_algorithms.SelectedIndex = 0;
+        }
+
+        private void InitChoosingTab()
+        {
+            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Минимум", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Максимум", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
+
+            this.ComboBox_choosing_algorithms.SelectedIndex = 0;
         }
   
         #region Display
@@ -81,7 +83,7 @@ namespace AlgorithmsWpf
         #region Sort
         private void Button_sort_gen_rand_Click(object sender, RoutedEventArgs e)
         {
-            this.RichTextBox_sort_input.Document.Blocks.Clear();
+            this.RichTextBox_input.Document.Blocks.Clear();
 
             try
             {
@@ -108,7 +110,7 @@ namespace AlgorithmsWpf
                     sb.Append(input_array[i]);
                     sb.Append(' ');
                 }
-                this.RichTextBox_sort_input.AppendText(sb.ToString().Trim());
+                this.RichTextBox_input.AppendText(sb.ToString().Trim());
             }
             catch (FormatException ex)
             {
@@ -118,12 +120,12 @@ namespace AlgorithmsWpf
 
         private void Button_sort_Click(object sender, RoutedEventArgs e)
         {
-            this.RichTextBox_sort_output.Document.Blocks.Clear();
+            this.RichTextBox_output.Document.Blocks.Clear();
             this.Label_sort_check.Content = "";
 
             try
             {
-                string[] input_line = this.readRichtextbox(this.RichTextBox_sort_input).Split(' ');
+                string[] input_line = this.readRichtextbox(this.RichTextBox_input).Split(' ');
                 double[] input_array = new double[input_line.Length];
 
                 for (int i = 0; i < input_array.Length; i++)
@@ -135,7 +137,7 @@ namespace AlgorithmsWpf
 
                 Tuple<double[], string> res = ((CmbItems)this.ComboBox_sort_algorithms.SelectedItem).Func(input_array);
                 output_array = res.Item1;
-                this.TextBox_sort_time.Text = res.Item2;
+                this.TextBox_time.Text = res.Item2;
 
                 ((CmbItems)this.ComboBox_sort_algorithms.SelectedItem).Check(output_array);
 
@@ -148,7 +150,7 @@ namespace AlgorithmsWpf
                     sb.Append(output_array[i]);
                     sb.Append(' ');
                 }
-                this.RichTextBox_sort_output.AppendText(sb.ToString().Trim());
+                this.RichTextBox_output.AppendText(sb.ToString().Trim());
             }
             catch (FormatException ex)
             {
@@ -159,12 +161,12 @@ namespace AlgorithmsWpf
         #region Heap
         private void Button_sort_build_max_heap_Click(object sender, RoutedEventArgs e)
         {
-            this.RichTextBox_sort_output.Document.Blocks.Clear();
+            this.RichTextBox_output.Document.Blocks.Clear();
             this.Label_sort_check.Content = "";
 
             try
             {
-                string[] input_line = this.readRichtextbox(this.RichTextBox_sort_input).Split(' ');
+                string[] input_line = this.readRichtextbox(this.RichTextBox_input).Split(' ');
                 double[] input_array = new double[input_line.Length];
 
 
@@ -186,7 +188,7 @@ namespace AlgorithmsWpf
                     sb.Append(output_array[i]);
                     sb.Append(' ');
                 }
-                this.RichTextBox_sort_output.AppendText(sb.ToString().Trim());
+                this.RichTextBox_output.AppendText(sb.ToString().Trim());
             }
             catch (FormatException ex)
             {
@@ -196,12 +198,12 @@ namespace AlgorithmsWpf
 
         private void Button_sort_build_min_heap_Click(object sender, RoutedEventArgs e)
         {
-            this.RichTextBox_sort_output.Document.Blocks.Clear();
+            this.RichTextBox_output.Document.Blocks.Clear();
             this.Label_sort_check.Content = "";
 
             try
             {
-                string[] input_line = this.readRichtextbox(this.RichTextBox_sort_input).Split(' ');
+                string[] input_line = this.readRichtextbox(this.RichTextBox_input).Split(' ');
                 double[] input_array = new double[input_line.Length];
 
 
@@ -223,7 +225,7 @@ namespace AlgorithmsWpf
                     sb.Append(output_array[i]);
                     sb.Append(' ');
                 }
-                this.RichTextBox_sort_output.AppendText(sb.ToString().Trim());
+                this.RichTextBox_output.AppendText(sb.ToString().Trim());
             }
             catch (FormatException ex)
             {
