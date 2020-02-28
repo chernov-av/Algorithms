@@ -54,6 +54,8 @@ namespace AlgorithmsWpf
             this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Максимум", FuncSelect = (input) => { Tuple<double, string> res = Select.Maximum(input); return res; } });
             this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Сл. выбор макс.", FuncSelect = (input) => { Tuple<double, string> res = Select.SelectRandomizedMax(input); return res; } });
             this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Сл. выбор мин.", FuncSelect = (input) => { Tuple<double, string> res = Select.SelectRandomizedMin(input); return res; } });
+            this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Медиана О(nlogn)", FuncSelect = (input) => { Tuple<double, string> res = Select.Median_nlogn(input); return res; } });
+            this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Медиана О(n)", FuncSelect = (input) => { Tuple<double, string> res = Select.Median_n(input); return res; } });
 
             this.ComboBox_select_algorithms.SelectedIndex = 0;
         }

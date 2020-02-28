@@ -267,7 +267,7 @@ namespace Algorithms.Data
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        internal static double[] QuickUp(double[] array,int p,int r)
+        private static double[] QuickUp(double[] array,int p,int r)
         {   
             if (p < r)
             {
@@ -277,7 +277,7 @@ namespace Algorithms.Data
             }            
             return array;
         }
-        internal static double[] QuickDown(double[] array, int p, int r)
+        private static double[] QuickDown(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -288,7 +288,7 @@ namespace Algorithms.Data
             return array;
         }
 
-        internal static double[] QuickRandomizedUp(double[] array, int p, int r)
+        private static double[] QuickRandomizedUp(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -298,7 +298,7 @@ namespace Algorithms.Data
             }
             return array;
         }
-        internal static double[] QuickRandomizedDown(double[] array, int p, int r)
+        private static double[] QuickRandomizedDown(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -309,7 +309,7 @@ namespace Algorithms.Data
             return array;
         }
 
-        internal static int PartitionUp(double[] array, int p, int r)
+        public static int PartitionUp(double[] array, int p, int r)
         {
             var x = array[r];
             int i = p;
@@ -328,7 +328,7 @@ namespace Algorithms.Data
             array[r] = temp2;
             return i;
         }
-        internal static int PartitionDown(double[] array, int p, int r)
+        public static int PartitionDown(double[] array, int p, int r)
         {
             var x = array[r];
             int i = p;
@@ -348,7 +348,7 @@ namespace Algorithms.Data
             return i;
         }
 
-        internal static int PartitionRandomizedUp(double[] array, int p, int r)
+        public static int PartitionRandomizedUp(double[] array, int p, int r)
         {
             Random rand = new Random();
             int i = rand.Next(p, r);
@@ -357,7 +357,7 @@ namespace Algorithms.Data
             array[i] = temp;
             return PartitionUp(array,p,r);
         }
-        internal static int PartitionRandomizedDown(double[] array, int p, int r)
+        public static int PartitionRandomizedDown(double[] array, int p, int r)
         {
             Random rand = new Random();
             int i = rand.Next(p, r);
@@ -367,7 +367,7 @@ namespace Algorithms.Data
             return PartitionDown(array, p, r);
         }
 
-        internal static double[] MergeSUp(double[] array, int p, int r)
+        private static double[] MergeSUp(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -379,7 +379,7 @@ namespace Algorithms.Data
             }
             return array;
         }
-        internal static double[] MergeUp(double[] array, int p, int q, int r)
+        private static double[] MergeUp(double[] array, int p, int q, int r)
         {
             int n1 = q - p + 1; //Length A[p..q]
             int n2 = r - q;//length A[q+1..r]
@@ -421,7 +421,7 @@ namespace Algorithms.Data
 
             return array;
         }
-        internal static double[] MergeSDown(double[] array, int p, int r)
+        private static double[] MergeSDown(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -432,7 +432,7 @@ namespace Algorithms.Data
             }
             return array;
         }
-        internal static double[] MergeDown(double[] array, int p, int q, int r)
+        private static double[] MergeDown(double[] array, int p, int q, int r)
         {            
             double[] aux = new double[array.Length];
 

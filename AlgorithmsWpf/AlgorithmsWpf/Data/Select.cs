@@ -7,7 +7,8 @@ namespace Algorithms.Data
 {
     static class Select
     {
-        public static Tuple<double,string> Minimum(double[] array)
+        static int counter = 0;
+        public static Tuple<double, string> Minimum(double[] array)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -37,6 +38,71 @@ namespace Algorithms.Data
             return Tuple.Create(max, sw.Elapsed.ToString());
         }
 
+        public static Tuple<double, string> Median_nlogn(double[] array)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            double median;
+            array = Sort.QuickSortUp(array).Item1;
+            if (array.Length % 2 == 1) { median = array[array.Length / 2]; }
+            else { median = (array[array.Length / 2 - 1] + array[array.Length / 2]) / 2; }
+
+            sw.Stop();
+            return Tuple.Create(median, sw.Elapsed.ToString());
+        }
+        public static Tuple<double, string> Median_n(double[] array)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            double median = -1;
+            // array = Sort.QuickSortUp(array).Item1;
+
+            if (array.Length % 2 == 1)
+            { median = quickSelect(array, array.Length / 2); }
+            else
+            { median = (quickSelect(array, array.Length / 2 - 1) + quickSelect(array, array.Length / 2)) / 2; }
+
+            sw.Stop();
+            return Tuple.Create(median, sw.Elapsed.ToString());
+        }
+
+        private static double quickSelect(double[] array, int index)
+        {
+            double res;
+            counter++;
+            
+            if (array.Length == 1) { index = 0; return res = array[0]; }
+
+            List<double> lows = new List<double>();
+            List<double> highs = new List<double>();
+            List<double> pivots = new List<double>();
+
+            Random rnd = new Random();
+            int pivot = rnd.Next(array.Length);
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < array[pivot])
+                {
+                    lows.Add(array[i]);
+                }
+                else if (array[i] >= array[pivot])
+                {
+                    highs.Add(array[i]);
+                }
+                //else if (array[i]==array[pivot])
+                //{
+                //    pivots.Add(array[i]);
+                //}
+            }
+
+            if (index < lows.ToArray().Length) { return res = quickSelect(lows.ToArray(), index); }
+            //else if (index<=lows.ToArray().Length+pivots.ToArray().Length) { return pivots[0]; }
+            else { return res = quickSelect(highs.ToArray(), index - lows.ToArray().Length)-pivots.ToArray().Length; }
+        }
+
         public static Tuple<double, string> SelectRandomizedMax(double[] array)
         {
             Stopwatch sw = new Stopwatch();
@@ -59,81 +125,23 @@ namespace Algorithms.Data
             return Tuple.Create(element, sw.Elapsed.ToString());
         }
 
-        internal static double SelectRandMax(double[] array, int p, int r, int i)
+        private static double SelectRandMax(double[] array, int p, int r, int i)
         {
             if (p == r) { return array[p]; }
-            int q = PartitionRandomizedUp(array, p, r);
+            int q = Sort.PartitionRandomizedUp(array, p, r);
             int k = q - p + 1;
             if (i == k) { return array[q]; }
             else if (i < k) { return SelectRandMax(array, p, q - 1, i); }
             else return SelectRandMax(array, q + 1, r, i - k);
         }
-        internal static double SelectRandMin(double[] array, int p, int r, int i)
+        private static double SelectRandMin(double[] array, int p, int r, int i)
         {
             if (p == r) { return array[p]; }
-            int q = PartitionRandomizedDown(array, p, r);
+            int q = Sort.PartitionRandomizedDown(array, p, r);
             int k = q - p + 1;
             if (i == k) { return array[q]; }
             else if (i < k) { return SelectRandMin(array, p, q - 1, i); }
             else return SelectRandMin(array, q + 1, r, i - k);
-        }
-
-        internal static int PartitionUp(double[] array, int p, int r)
-        {
-            var x = array[r];
-            int i = p;
-            for (int j = p; j < r; j++)
-            {
-                if (array[j] <= x)
-                {
-                    var temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                    i++;
-                }
-            }
-            var temp2 = array[i];
-            array[i] = array[r];
-            array[r] = temp2;
-            return i;
-        }
-        internal static int PartitionDown(double[] array, int p, int r)
-        {
-            var x = array[r];
-            int i = p;
-            for (int j = p; j < r; j++)
-            {
-                if (array[j] >= x)
-                {
-                    var temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                    i++;
-                }
-            }
-            var temp2 = array[i];
-            array[i] = array[r];
-            array[r] = temp2;
-            return i;
-        }
-
-        internal static int PartitionRandomizedUp(double[] array, int p, int r)
-        {
-            Random rand = new Random();
-            int i = rand.Next(p, r);
-            var temp = array[r];
-            array[r] = array[i];
-            array[i] = temp;
-            return PartitionUp(array, p, r);
-        }
-        internal static int PartitionRandomizedDown(double[] array, int p, int r)
-        {
-            Random rand = new Random();
-            int i = rand.Next(p, r);
-            var temp = array[r];
-            array[r] = array[i];
-            array[i] = temp;
-            return PartitionDown(array, p, r);
         }
     }
 }

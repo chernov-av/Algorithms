@@ -24,7 +24,7 @@
                     <Label x:Name="Label_sort_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="0,80,0,0" VerticalAlignment="Top" Height="26" Width="66" Grid.Column="1"/>
                     <ComboBox x:Name="ComboBox_sort_algorithms" HorizontalAlignment="Left" Margin="0,84,0,0" VerticalAlignment="Top" Width="120" Height="22" Grid.Column="2"/>
                     <Button x:Name="Button_sort" Content="Сортировать" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="82" Click="Button_sort_Click" Height="20" Grid.Column="3"/>
-                    <Label x:Name="Label_sort_check" Content="" HorizontalAlignment="Left" Margin="2,105,0,0" VerticalAlignment="Top" Width="110" FontStretch="Normal" Height="26" Grid.Column="3"/>
+                    <Label x:Name="Label_sort_check" Content="" HorizontalAlignment="Left" Margin="152,82,0,0" VerticalAlignment="Top" Width="110" FontStretch="Normal" Height="26" Grid.Column="3"/>
                     <Button x:Name="Button_sort_build_max_heap" Content="Построить пирамиду (НВ)" HorizontalAlignment="Left" Margin="152,19,0,0" VerticalAlignment="Top" Click="Button_sort_build_max_heap_Click" Height="20" Width="146" Grid.Column="3"/>
                     <Button x:Name="Button_sort_build_min_heap" Content="Построить пирамиду (НУ)" HorizontalAlignment="Left" Margin="152,50,0,0" VerticalAlignment="Top" Click="Button_sort_build_min_heap_Click" Height="20" Width="146" Grid.Column="3"/>
                 </Grid>
