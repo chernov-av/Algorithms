@@ -373,7 +373,7 @@ namespace Algorithms.Data
             {
                 double val = (p + r) / 2;
                 int q = (p + r) / 2;
-                array= MergeSUp(array, p, q);
+                array = MergeSUp(array, p, q);
                 array = MergeSUp(array, q + 1, r);
                 array = MergeUp(array, p, q, r);
             }

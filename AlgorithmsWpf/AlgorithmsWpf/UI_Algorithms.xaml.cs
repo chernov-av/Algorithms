@@ -50,10 +50,12 @@ namespace AlgorithmsWpf
 
         private void InitChoosingTab()
         {
-            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Минимум", FuncChoose = (input) => { Tuple<double, string> res = Choosings.Minimum(input); return res; } });
-            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Максимум", FuncChoose = (input) => { Tuple<double, string> res = Choosings.Maximum(input); return res; } });
+            this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Минимум", FuncSelect = (input) => { Tuple<double, string> res = Select.Minimum(input); return res; } });
+            this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Максимум", FuncSelect = (input) => { Tuple<double, string> res = Select.Maximum(input); return res; } });
+            this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Сл. выбор макс.", FuncSelect = (input) => { Tuple<double, string> res = Select.SelectRandomizedMax(input); return res; } });
+            this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Сл. выбор мин.", FuncSelect = (input) => { Tuple<double, string> res = Select.SelectRandomizedMin(input); return res; } });
 
-            this.ComboBox_choosing_algorithms.SelectedIndex = 0;
+            this.ComboBox_select_algorithms.SelectedIndex = 0;
         }
 
         #region Display
@@ -224,18 +226,18 @@ namespace AlgorithmsWpf
 
         #region Choosing
 
-        private void Button_choose_Click(object sender, RoutedEventArgs e)
+        private void Button_select_Click(object sender, RoutedEventArgs e)
         {
             this.RichTextBox_output.Document.Blocks.Clear();
 
             double[] input_array = this.readInput(this.RichTextBox_input);
 
-            Tuple<double, string> res = ((CmbItems)this.ComboBox_choosing_algorithms.SelectedItem).FuncChoose(input_array);
+            Tuple<double, string> res = ((CmbItems)this.ComboBox_select_algorithms.SelectedItem).FuncSelect(input_array);
             double output = res.Item1;
             this.TextBox_time.Text = res.Item2;
 
             TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
-            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_choosing_algorithms.SelectedValue.ToString(), res.Item2);
+            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_select_algorithms.SelectedValue.ToString(), res.Item2);
 
             StringBuilder sb = new StringBuilder();
 

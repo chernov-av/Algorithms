@@ -19,7 +19,7 @@ namespace AlgorithmsWpf
         public Func<double[], Tuple<double[],string>> FuncSort { get; set; }
         public Action<double[]> CheckSort { get; set; }
 
-        public Func<double[], Tuple<double,string>> FuncChoose { get; set; }
+        public Func<double[], Tuple<double,string>> FuncSelect { get; set; }
 
 
         public override string ToString()

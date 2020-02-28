@@ -29,7 +29,7 @@
                     <Button x:Name="Button_sort_build_min_heap" Content="Построить пирамиду (НУ)" HorizontalAlignment="Left" Margin="152,50,0,0" VerticalAlignment="Top" Click="Button_sort_build_min_heap_Click" Height="20" Width="146" Grid.Column="3"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="TabItem_Choosing" Header="Выборы">
+            <TabItem x:Name="TabItem_Select" Header="Выборы">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="18*"/>
@@ -38,9 +38,9 @@
                         <ColumnDefinition Width="218*"/>
                         <ColumnDefinition Width="245*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="Label_choosing_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="66"/>
-                    <ComboBox x:Name="ComboBox_choosing_algorithms" HorizontalAlignment="Left" Margin="0,84,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="22"/>
-                    <Button x:Name="Button_choose" Content="Выбор" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="82" Click="Button_choose_Click" Grid.Column="3" Height="20"/>
+                    <Label x:Name="Label_select_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="66"/>
+                    <ComboBox x:Name="ComboBox_select_algorithms" HorizontalAlignment="Left" Margin="0,84,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="22"/>
+                    <Button x:Name="Button_select" Content="Выбор" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="82" Click="Button_select_Click" Grid.Column="3" Height="20"/>
                 </Grid>
             </TabItem>
         </TabControl>
