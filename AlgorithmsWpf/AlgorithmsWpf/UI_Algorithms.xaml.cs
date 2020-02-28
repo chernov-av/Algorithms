@@ -30,28 +30,28 @@ namespace AlgorithmsWpf
 
         private void InitSortTab()
         {          
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(В)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(У)", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(В)", Func = (input) => { Tuple<double[], string> res = Sort.MergeSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(У)", Func = (input) => { Tuple<double[], string> res = Sort.MergeSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пузырьковая(В)", Func = (input) => { Tuple<double[], string> res = Sort.BubbleSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пузырьковая(У)", Func = (input) => { Tuple<double[], string> res = Sort.BubbleSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пирамидальная(В)", Func = (input) => { Tuple<double[], string> res = Sort.HeapSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пирамидальная(У)", Func = (input) => { Tuple<double[], string> res = Sort.HeapSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(В)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(У)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(Сл,В)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(Сл,У)", Func = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Подсчетом(В)", Func = (input) => { Tuple<double[], string> res = Sort.CountingSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Подсчетом(У)", Func = (input) => { Tuple<double[], string> res = Sort.CountingSortDown(input); return res; }, Check = (input) => { this.DisplayCheckSortDown(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.MergeSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.MergeSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пузырьковая(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.BubbleSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пузырьковая(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.BubbleSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пирамидальная(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.HeapSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пирамидальная(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.HeapSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.QuickSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.QuickSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(Сл,В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(Сл,У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Подсчетом(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.CountingSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Подсчетом(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.CountingSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
 
             this.ComboBox_sort_algorithms.SelectedIndex = 0;
         }
 
         private void InitChoosingTab()
         {
-            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Минимум", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Максимум", Func = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
+            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Минимум", FuncChoose = (input) => { Tuple<double, string> res = Choosings.Minimum(input); return res; } });
+            this.ComboBox_choosing_algorithms.Items.Add(new CmbItems { Name = "Максимум", FuncChoose = (input) => { Tuple<double, string> res = Sort.InsertionSortUp(input); return res; }, Check = (input) => { this.DisplayCheckSortUp(input); } });
 
             this.ComboBox_choosing_algorithms.SelectedIndex = 0;
         }

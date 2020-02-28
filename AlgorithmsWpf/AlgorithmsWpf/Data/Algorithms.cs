@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms.Data
 {
-    class Algorithm
+    static class Algorithm
     {
         
     }
