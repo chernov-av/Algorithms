@@ -103,7 +103,6 @@ namespace AlgorithmsWpf
         private void Button_sort_Click(object sender, RoutedEventArgs e)
         {
             this.RichTextBox_output.Document.Blocks.Clear();
-            this.Label_sort_check.Content = "";
 
             double[] input_array = this.readInput(this.RichTextBox_input);
             double[] output_array = new double[input_array.Length];
@@ -129,8 +128,7 @@ namespace AlgorithmsWpf
         #region Heap
         private void Button_sort_build_max_heap_Click(object sender, RoutedEventArgs e)
         {
-            this.RichTextBox_output.Document.Blocks.Clear();
-            this.Label_sort_check.Content = "";
+            this.RichTextBox_output.Document.Blocks.Clear();            
 
             try
             {
@@ -166,8 +164,7 @@ namespace AlgorithmsWpf
 
         private void Button_sort_build_min_heap_Click(object sender, RoutedEventArgs e)
         {
-            this.RichTextBox_output.Document.Blocks.Clear();
-            this.Label_sort_check.Content = "";
+            this.RichTextBox_output.Document.Blocks.Clear();            
 
             try
             {

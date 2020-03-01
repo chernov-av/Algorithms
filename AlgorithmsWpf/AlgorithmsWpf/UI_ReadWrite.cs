@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 using Algorithms.Data;
 
 
@@ -54,26 +55,31 @@ namespace AlgorithmsWpf
 
         }
 
+        private void readFromFile(string fileName)
+        {
+
+        }
+
         private void DisplayAction(string algorithm, string method, string time)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(algorithm + '\n');
             sb.Append(method + '\n');
             sb.Append(time + '\n');
-            sb.Append(this.Label_sort_check.Content.ToString() + '\n');
+            sb.Append(this.TextBlockLog.Text + '\n');
             sb.Append("----------------------");
             this.Richtextbox_log.AppendText(sb.ToString().Trim() + '\n');
             this.Richtextbox_log.ScrollToEnd();
         }
 
         private void DisplayCheckSortUp(double[] input)
-        {
-            if (Sort.CheckSortUp(input)) this.Label_sort_check.Content = "Отсортировано"; else this.Label_sort_check.Content = "Не отсортировано";
+        {            
+            if (Sort.CheckSortUp(input)) this.TextBlockLog.Text = "Отсортировано"; else this.TextBlockLog.Text = "Не отсортировано";
         }
 
         private void DisplayCheckSortDown(double[] input)
         {
-            if (Sort.CheckSortDown(input)) this.Label_sort_check.Content = "Отсортировано"; else this.Label_sort_check.Content = "Не отсортировано";
+            if (Sort.CheckSortDown(input)) this.TextBlockLog.Text = "Отсортировано"; else this.TextBlockLog.Text = "Не отсортировано";
         }
 
         #endregion
