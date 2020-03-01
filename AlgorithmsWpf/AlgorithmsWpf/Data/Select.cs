@@ -56,8 +56,7 @@ namespace Algorithms.Data
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            double median = -1;
-            // array = Sort.QuickSortUp(array).Item1;
+            double median = -1;            
 
             if (array.Length % 2 == 1)
             { median = quickSelect(array, array.Length / 2); }
@@ -71,7 +70,6 @@ namespace Algorithms.Data
         private static double quickSelect(double[] array, int index)
         {
             double res;
-            counter++;
             
             if (array.Length == 1) { index = 0; return res = array[0]; }
 
@@ -88,19 +86,16 @@ namespace Algorithms.Data
                 {
                     lows.Add(array[i]);
                 }
-                else if (array[i] >= array[pivot])
+                else if (array[i] > array[pivot])
                 {
                     highs.Add(array[i]);
                 }
-                //else if (array[i]==array[pivot])
-                //{
-                //    pivots.Add(array[i]);
-                //}
+                else if (array[i]==array[pivot]) { pivots.Add(array[i]); }
             }
 
             if (index < lows.ToArray().Length) { return res = quickSelect(lows.ToArray(), index); }
-            //else if (index<=lows.ToArray().Length+pivots.ToArray().Length) { return pivots[0]; }
-            else { return res = quickSelect(highs.ToArray(), index - lows.ToArray().Length)-pivots.ToArray().Length; }
+            else if (index < lows.ToArray().Length + pivots.ToArray().Length) { return pivots[0]; }
+            else { return res = quickSelect(highs.ToArray(), index - lows.ToArray().Length - pivots.ToArray().Length); }
         }
 
         public static Tuple<double, string> SelectRandomizedMax(double[] array)

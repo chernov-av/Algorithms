@@ -245,5 +245,17 @@ namespace AlgorithmsWpf
         {
             this.Close();
         }
+
+        private void MenuItemTest_Click(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random();
+            int[] array = new int[20];
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = rnd.Next(5);
+            }
+            string toDisplay = string.Join(Environment.NewLine, array);
+            MessageBox.Show(toDisplay);
+        }
     }
 }
