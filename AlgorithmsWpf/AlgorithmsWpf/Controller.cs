@@ -11,7 +11,7 @@ namespace AlgorithmsWpf
         
     }
 
-    class CmbItems
+    class CmbItems : Controller
     {
         public string Name { get; set; }
         public Action Action { get; set; }
@@ -27,4 +27,5 @@ namespace AlgorithmsWpf
             return Name;
         }
     }
+
 }

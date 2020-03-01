@@ -60,31 +60,6 @@ namespace AlgorithmsWpf
             this.ComboBox_select_algorithms.SelectedIndex = 0;
         }
 
-        #region Display
-        private void DisplayCheckSortUp(double[] input)
-        {
-            if (Sort.CheckSortUp(input)) this.Label_sort_check.Content = "Отсортировано"; else this.Label_sort_check.Content = "Не отсортировано";
-        }
-
-        private void DisplayCheckSortDown(double[] input)
-        {
-            if (Sort.CheckSortDown(input)) this.Label_sort_check.Content = "Отсортировано"; else this.Label_sort_check.Content = "Не отсортировано";
-        }
-
-        private void DisplayAction(string algorithm, string method, string time)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(algorithm + '\n');
-            sb.Append(method + '\n');
-            sb.Append(time + '\n');
-            sb.Append(this.Label_sort_check.Content.ToString() + '\n');
-            sb.Append("----------------------");
-            this.Richtextbox_log.AppendText(sb.ToString().Trim() + '\n');
-            this.Richtextbox_log.ScrollToEnd();
-        }
-        #endregion
-
-        #region Sort
         private void Button_sort_gen_rand_Click(object sender, RoutedEventArgs e)
         {
             this.RichTextBox_input.Document.Blocks.Clear();
@@ -121,6 +96,8 @@ namespace AlgorithmsWpf
                 MessageBox.Show(ex.Message);
             }
         }
+
+        #region Sort
 
         private void Button_sort_Click(object sender, RoutedEventArgs e)
         {
@@ -249,37 +226,6 @@ namespace AlgorithmsWpf
             this.RichTextBox_output.AppendText(sb.ToString().Trim());
         }
 
-        #endregion
-
-        #region helpFunctions        
-
-        private double[] readInput(RichTextBox RTB)
-        {
-            double[] input_array = new double[1];
-            try
-            {
-                string[] input_line = this.readRichtextbox(RTB).Split(' ');
-                input_array = new double[input_line.Length];
-
-                for (int i = 0; i < input_array.Length; i++)
-                {
-                    input_array[i] = double.Parse(input_line[i]);
-                }
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return input_array;
-        }
-
-        private string readRichtextbox(RichTextBox RTB)
-        {
-            return new TextRange(RTB.Document.ContentStart, RTB.Document.ContentEnd).Text;
-        }
-
-        #endregion
-
-
+        #endregion               
     }
 }
