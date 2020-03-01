@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Algorithms.Data;
+using Microsoft.Win32;
 
 namespace AlgorithmsWpf
 {
@@ -226,6 +227,23 @@ namespace AlgorithmsWpf
             this.RichTextBox_output.AppendText(sb.ToString().Trim());
         }
 
-        #endregion               
+        #endregion
+
+        private void MenuItemOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openDlg = new OpenFileDialog();
+            openDlg.ShowDialog();
+        }
+
+        private void MenuItemSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.ShowDialog();
+        }
+
+        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

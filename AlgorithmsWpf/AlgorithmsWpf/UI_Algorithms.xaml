@@ -5,74 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlgorithmsWpf"
         mc:Ignorable="d"
-        Title="Алгоритмы" Height="450" Width="1047" WindowStyle="ThreeDBorderWindow">
-    <Grid>
+        Title="Алгоритмы" Height="536" Width="1030" WindowStyle="ThreeDBorderWindow" ResizeMode="CanResize" SizeToContent="Height">
+    <Grid Height="499">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="483*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="36*"/>
-            <ColumnDefinition Width="633*"/>
-            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="TabControl_Algorithms" Grid.ColumnSpan="2" Margin="10,0,121,266">
+        <TabControl x:Name="TabControl_Algorithms" Margin="10,5,290,283" Grid.Row="1">
             <TabItem x:Name="TabItem_Sort" Header="Сортировки">
-                <Grid Background="#FFE5E5E5" Height="143">
+                <Grid Background="#FFE5E5E5" Height="153">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="21*"/>
-                        <ColumnDefinition Width="117*"/>
-                        <ColumnDefinition Width="136*"/>
-                        <ColumnDefinition Width="465*"/>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="88*"/>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition Width="450*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="Label_sort_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="0,80,0,0" VerticalAlignment="Top" Height="26" Width="66" Grid.Column="1"/>
-                    <ComboBox x:Name="ComboBox_sort_algorithms" HorizontalAlignment="Left" Margin="0,84,0,0" VerticalAlignment="Top" Width="120" Height="22" Grid.Column="2"/>
-                    <Button x:Name="Button_sort" Content="Сортировать" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="82" Click="Button_sort_Click" Height="20" Grid.Column="3"/>
-                    <Label x:Name="Label_sort_check" Content="" HorizontalAlignment="Left" Margin="152,82,0,0" VerticalAlignment="Top" Width="110" FontStretch="Normal" Height="26" Grid.Column="3"/>
-                    <Button x:Name="Button_sort_build_max_heap" Content="Построить пирамиду (НВ)" HorizontalAlignment="Left" Margin="152,19,0,0" VerticalAlignment="Top" Click="Button_sort_build_max_heap_Click" Height="20" Width="146" Grid.Column="3"/>
-                    <Button x:Name="Button_sort_build_min_heap" Content="Построить пирамиду (НУ)" HorizontalAlignment="Left" Margin="152,50,0,0" VerticalAlignment="Top" Click="Button_sort_build_min_heap_Click" Height="20" Width="146" Grid.Column="3"/>
+                    <Label x:Name="Label_sort_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="2,75,0,0" VerticalAlignment="Top" Height="26" Width="66" Grid.Column="1"/>
+                    <ComboBox x:Name="ComboBox_sort_algorithms" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Grid.Column="3" Margin="0,77,0,0"/>
+                    <Button x:Name="Button_sort" Content="Сортировать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Click="Button_sort_Click" Height="20" Grid.Column="4" Margin="0,78,0,0"/>
+                    <Label x:Name="Label_sort_check" Content="" HorizontalAlignment="Left" Margin="152,82,0,0" VerticalAlignment="Top" Width="110" FontStretch="Normal" Height="26" Grid.Column="4"/>
+                    <Button x:Name="Button_sort_build_max_heap" Content="Построить пирамиду (НВ)" HorizontalAlignment="Center" Margin="0,19,0,0" VerticalAlignment="Top" Click="Button_sort_build_max_heap_Click" Height="20" Width="146" Grid.Column="4"/>
+                    <Button x:Name="Button_sort_build_min_heap" Content="Построить пирамиду (НУ)" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Click="Button_sort_build_min_heap_Click" Height="20" Width="146" Grid.Column="4"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItem_Select" Header="Выборы">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="18*"/>
-                        <ColumnDefinition Width="119*"/>
+                        <ColumnDefinition Width="117*"/>
                         <ColumnDefinition Width="139*"/>
-                        <ColumnDefinition Width="218*"/>
-                        <ColumnDefinition Width="245*"/>
+                        <ColumnDefinition Width="211*"/>
+                        <ColumnDefinition Width="240*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="Label_select_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="66"/>
-                    <ComboBox x:Name="ComboBox_select_algorithms" HorizontalAlignment="Left" Margin="0,84,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="22"/>
-                    <Button x:Name="Button_select" Content="Выбор" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="82" Click="Button_select_Click" Grid.Column="3" Height="20"/>
+                    <Label x:Name="Label_select_algorithm" Content="Алгоритм:" HorizontalAlignment="Left" Margin="0,71,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="66"/>
+                    <ComboBox x:Name="ComboBox_select_algorithms" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="22"/>
+                    <Button x:Name="Button_select" Content="Выбор" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top" Width="82" Click="Button_select_Click" Grid.Column="3" Height="20"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <RichTextBox x:Name="RichTextBox_input" Margin="10,200,121,130" Grid.ColumnSpan="2">
+        <RichTextBox x:Name="RichTextBox_input" Margin="10,193,290,159" Grid.Row="1">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <RichTextBox x:Name="RichTextBox_output" IsReadOnly="True" Background="White" Margin="10,309,121,21" Grid.ColumnSpan="2">
+        <RichTextBox x:Name="RichTextBox_output" IsReadOnly="True" Background="White" Margin="10,327,290,25" Grid.Row="1">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <TextBox x:Name="TextBox_time" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="95,177,0,0"/>
-        <Label x:Name="Label_time" Content="Время работы:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,173,0,0" Grid.ColumnSpan="2"/>
-        <RichTextBox x:Name="Richtextbox_log" Grid.Column="1" Grid.ColumnSpan="2" Margin="715,24,10,10" VerticalScrollBarVisibility="Visible" TextBlock.LineHeight="1.5">
+        <TextBox x:Name="TextBox_time" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="147,144,0,0" Grid.Row="1" Height="18"/>
+        <Label x:Name="Label_time" Content="Время работы:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,140,0,0" Grid.Row="1" Height="26" Width="91"/>
+        <RichTextBox x:Name="Richtextbox_log" Margin="760,5,10,10" VerticalScrollBarVisibility="Visible" TextBlock.LineHeight="1.5" Grid.Row="1">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <TextBox x:Name="TextBox_sort_length" Grid.Column="1" HorizontalAlignment="Left" Margin="102,43,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TextBox_sort_max_value" Grid.Column="1" HorizontalAlignment="Left" Margin="102,74,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="Label_sort_length" Content="Длина:" HorizontalAlignment="Left" Margin="29,39,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Label x:Name="Label_sort_max_value" Content="Макс. значение:" HorizontalAlignment="Left" Margin="29,70,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <CheckBox x:Name="CheckBox_sort_gen_only_int" Content="Только целые" Grid.Column="1" HorizontalAlignment="Left" Margin="240,44,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Button_sort_gen_rand" Content="Генерировать" Grid.Column="1" HorizontalAlignment="Left" Margin="240,74,0,0" VerticalAlignment="Top" Width="82" Click="Button_sort_gen_rand_Click"/>
+        <TextBox x:Name="TextBox_sort_length" HorizontalAlignment="Left" Margin="147,39,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="18"/>
+        <TextBox x:Name="TextBox_sort_max_value" HorizontalAlignment="Left" Margin="147,70,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="18"/>
+        <Label x:Name="Label_sort_length" Content="Длина:" HorizontalAlignment="Left" Margin="29,35,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="47"/>
+        <Label x:Name="Label_sort_max_value" Content="Макс. значение:" HorizontalAlignment="Left" Margin="29,66,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="98"/>
+        <CheckBox x:Name="CheckBox_sort_gen_only_int" Content="Только целые" HorizontalAlignment="Left" Margin="285,40,0,0" VerticalAlignment="Top" Grid.Row="1" Height="15" Width="97"/>
+        <Button x:Name="Button_sort_gen_rand" Content="Генерировать" HorizontalAlignment="Left" Margin="285,70,0,0" VerticalAlignment="Top" Width="82" Click="Button_sort_gen_rand_Click" Grid.Row="1" Height="20"/>
+        <Menu x:Name="Menu_UI">
+            <MenuItem x:Name="MenuItemFile" Header="Файл">
+                <MenuItem x:Name="MenuItemOpen" Header="Открыть" Click="MenuItemOpen_Click"/>
+                <MenuItem x:Name="MenuItemSave" Header="Сохранить" Click="MenuItemSave_Click"/>
+                <Separator/>
+                <MenuItem x:Name="MenuItemExit" Header="Выход" Click="MenuItemExit_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="MenuItemView" Header="Вид"/>
+            <MenuItem x:Name="MenuItemInfo" Header="Справка"/>
+        </Menu>
 
     </Grid>
 </Window>
