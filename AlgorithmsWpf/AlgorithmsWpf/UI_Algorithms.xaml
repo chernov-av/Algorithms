@@ -45,10 +45,22 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem x:Name="TabItem_Select" Header="Выборы">
-                    <StackPanel x:Name="StackPanelSelect" Height="119">
+                    <StackPanel x:Name="StackPanelSelect" Height="119" Margin="0,0,0,0" Width="330">
                         <Label x:Name="Label_select_algorithm" Content="Алгоритм:" Height="26" Width="66" HorizontalAlignment="Left"/>
                         <ComboBox x:Name="ComboBox_select_algorithms" Width="328" Height="22" HorizontalAlignment="Left" Margin="1,0,1,0"/>
                         <Button x:Name="Button_select" Content="Выбор" Width="90" Click="Button_select_Click" Height="20" Margin="0,2,1,0" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="TabItem_Struct" Header="Структуры">
+                    <StackPanel x:Name="StackPanelStruct" Height="119" Width="330" Margin="0,0,0,0">
+                        <Label x:Name="Label_struct" Content="Алгоритм:" Height="26" Width="66" HorizontalAlignment="Left"/>
+                        <ComboBox x:Name="ComboBox_struct" Width="328" Height="22" HorizontalAlignment="Left" Margin="1,0,1,0"/>
+                        <Button x:Name="Button_struct" Content="Создать" Width="90" Height="20" HorizontalAlignment="Right" Margin="0,2,1,0" Click="Button_struct_Click"/>
+                        <Grid x:Name="GridStruct_1" Height="19" Margin="0,2,0,0">
+                            <TextBox x:Name="TextBox_struct" Text="0" TextWrapping="Wrap" Width="90" HorizontalAlignment="Left" Margin="1,0,0,0"/>
+                            <Button x:Name="Button_struct_add" Content="Добавить" HorizontalAlignment="Center" Width="90" Click="Button_struct_add_Click"/>
+                            <Button x:Name="Button_struct_remove" Content="Удалить" HorizontalAlignment="Right" Width="90" Margin="0,0,1,0" Click="Button_struct_remove_Click"/>
+                        </Grid>
                     </StackPanel>
                 </TabItem>
             </TabControl>

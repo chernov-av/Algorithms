@@ -21,6 +21,8 @@ namespace AlgorithmsWpf
 
         public Func<double[], Tuple<double,string>> FuncSelect { get; set; }
 
+        public Action FuncStruct { get; set; }
+
 
         public override string ToString()
         {
