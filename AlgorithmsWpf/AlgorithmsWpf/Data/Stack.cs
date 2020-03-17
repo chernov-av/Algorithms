@@ -21,7 +21,6 @@ namespace Algorithms.Data
             if (StackIsEmpty())
             {
                 throw new System.ArgumentException("Stack is empty");
-                //return 0;
             }
             else
             {

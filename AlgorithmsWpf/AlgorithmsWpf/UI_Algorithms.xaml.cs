@@ -246,15 +246,7 @@ namespace AlgorithmsWpf
 
             TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
 
-            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), "Cоздан");
-
-           /* StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < res.GetStruct(); i++)
-            {
-                sb.Append(output_array[i]);
-                sb.Append(' ');
-            }
-            this.RichTextBox_output.AppendText(sb.ToString().Trim());*/
+            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), "Cоздан");           
         }
 
         private void Button_struct_add_Click(object sender, RoutedEventArgs e)
@@ -262,20 +254,24 @@ namespace AlgorithmsWpf
             this.RichTextBox_output.Document.Blocks.Clear();
             try
             {
+                double newElement;
+                TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
+
                 switch (this.ComboBox_struct.SelectedItem.ToString())
                 {
                     case "Стек":
-                        double newElement = Double.Parse(this.TextBox_struct.Text);
-                        st.Push(newElement);
+                        newElement = Double.Parse(this.TextBox_struct.Text);
+                        st.Push(newElement);                        
+                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
                         break;
 
                     case "Очередь":
+                        newElement = Double.Parse(this.TextBox_struct.Text);
+                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
                         break;
                 }
-                TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
-                this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), "Добавлен");
+                
                 DisplayStruct();
-
             }
             catch (NullReferenceException ex)
             {
@@ -288,17 +284,27 @@ namespace AlgorithmsWpf
             this.RichTextBox_output.Document.Blocks.Clear();
             try
             {
+                double insertedElement = 0;
+                TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
+
                 switch (this.ComboBox_struct.SelectedItem.ToString())
                 {
-                    case "Стек":                        
-                        st.Pop();
+                    case "Стек":
+                        try
+                        {
+                            insertedElement = st.Pop();
+                            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), insertedElement.ToString() + " извлечен");
+                        }
+                        catch (SystemException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                         break;
 
                     case "Очередь":
                         break;
-                }
-                TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
-                this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), "Добавлен");
+                }              
+                
                 DisplayStruct();
 
             }
