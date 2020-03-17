@@ -82,6 +82,30 @@ namespace AlgorithmsWpf
             if (Sort.CheckSortDown(input)) this.TextBlockLog.Text = "Отсортировано"; else this.TextBlockLog.Text = "Не отсортировано";
         }
 
+        private void DisplayStruct()
+        {
+            double[] output_array= new double[0];
+            switch (this.ComboBox_struct.SelectedItem.ToString())
+            {
+                case "Стек":
+                    //output_array = new double[st.Size];
+                    output_array = st.GetStruct;
+                    break;
+
+                case "Очередь":
+                    
+                    break;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < output_array.Length; i++)
+            {
+                sb.Append(output_array[i]);
+                sb.Append(' ');
+            }
+            this.RichTextBox_output.AppendText(sb.ToString().Trim());
+        }
+
         #endregion
     }
 }

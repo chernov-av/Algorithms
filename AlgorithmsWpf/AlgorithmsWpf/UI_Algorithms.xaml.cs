@@ -22,11 +22,14 @@ namespace AlgorithmsWpf
     /// </summary>
     public partial class UI_Algorithms : Window
     {
+        StructStack st;
+
         public UI_Algorithms()
         {
             InitializeComponent();
             InitSortTab();
-            InitChoosingTab();
+            InitSelectTab();
+            InitStructTab();
         }
 
         private void InitSortTab()
@@ -49,7 +52,7 @@ namespace AlgorithmsWpf
             this.ComboBox_sort_algorithms.SelectedIndex = 0;
         }
 
-        private void InitChoosingTab()
+        private void InitSelectTab()
         {
             this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Минимум", FuncSelect = (input) => { Tuple<double, string> res = Select.Minimum(input); return res; } });
             this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Максимум", FuncSelect = (input) => { Tuple<double, string> res = Select.Maximum(input); return res; } });
@@ -59,6 +62,13 @@ namespace AlgorithmsWpf
             this.ComboBox_select_algorithms.Items.Add(new CmbItems { Name = "Медиана О(n)", FuncSelect = (input) => { Tuple<double, string> res = Select.Median_n(input); return res; } });
 
             this.ComboBox_select_algorithms.SelectedIndex = 0;
+        }
+
+        private void InitStructTab()
+        {
+            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Стек", FuncStruct = ()=> { st = new StructStack(); } });
+            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Очередь" });
+            this.ComboBox_struct.SelectedIndex = 0;
         }
 
         private void Button_sort_gen_rand_Click(object sender, RoutedEventArgs e)
@@ -226,6 +236,86 @@ namespace AlgorithmsWpf
 
         #endregion
 
+        #region Struct
+
+
+        private void Button_struct_Click(object sender, RoutedEventArgs e)
+        {
+            this.RichTextBox_output.Document.Blocks.Clear();
+            ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStruct();
+
+            TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
+
+            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), "Cоздан");           
+        }
+
+        private void Button_struct_add_Click(object sender, RoutedEventArgs e)
+        {
+            this.RichTextBox_output.Document.Blocks.Clear();
+            try
+            {
+                double newElement;
+                TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
+
+                switch (this.ComboBox_struct.SelectedItem.ToString())
+                {
+                    case "Стек":
+                        newElement = Double.Parse(this.TextBox_struct.Text);
+                        st.Push(newElement);                        
+                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
+                        break;
+
+                    case "Очередь":
+                        newElement = Double.Parse(this.TextBox_struct.Text);
+                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
+                        break;
+                }
+                
+                DisplayStruct();
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Button_struct_remove_Click(object sender, RoutedEventArgs e)
+        {
+            this.RichTextBox_output.Document.Blocks.Clear();
+            try
+            {
+                double insertedElement = 0;
+                TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
+
+                switch (this.ComboBox_struct.SelectedItem.ToString())
+                {
+                    case "Стек":
+                        try
+                        {
+                            insertedElement = st.Pop();
+                            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), insertedElement.ToString() + " извлечен");
+                        }
+                        catch (SystemException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        break;
+
+                    case "Очередь":
+                        break;
+                }              
+                
+                DisplayStruct();
+
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+#endregion
+
+        #region  Menu
         private void MenuItemOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openDlg = new OpenFileDialog();
@@ -254,5 +344,10 @@ namespace AlgorithmsWpf
             string toDisplay = string.Join(Environment.NewLine, array);
             MessageBox.Show(toDisplay);
         }
+
+
+        #endregion
+
+        
     }
 }
