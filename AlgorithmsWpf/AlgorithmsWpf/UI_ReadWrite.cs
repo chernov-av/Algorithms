@@ -88,12 +88,11 @@ namespace AlgorithmsWpf
             switch (this.ComboBox_struct.SelectedItem.ToString())
             {
                 case "Стек":
-                    //output_array = new double[st.Size];
                     output_array = st.GetStruct;
                     break;
 
                 case "Очередь":
-                    
+                    output_array = qu.GetStruct;
                     break;
             }
 
