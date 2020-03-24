@@ -66,6 +66,9 @@
                         </Grid>
                     </StackPanel>
                 </TabItem>
+                <TabItem x:Name="TabItem_Tree" Width="73" Header="Деревья">
+                    <StackPanel x:Name="StackPanelTree" Width="330" Height="119"/>
+                </TabItem>
             </TabControl>
             <RichTextBox x:Name="RichTextBox_input" Margin="10,11,10,12" Grid.Row="2" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Height="120">
                 <FlowDocument>
