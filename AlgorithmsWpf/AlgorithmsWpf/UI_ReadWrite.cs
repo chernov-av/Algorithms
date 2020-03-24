@@ -94,6 +94,9 @@ namespace AlgorithmsWpf
                 case "Очередь":
                     output_array = qu.GetStruct;
                     break;
+                case "Дек":
+                    output_array = dq.GetStruct;
+                    break;
             }
 
             StringBuilder sb = new StringBuilder();

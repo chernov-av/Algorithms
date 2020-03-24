@@ -24,6 +24,7 @@ namespace AlgorithmsWpf
     {
         StructStack st;
         StructQueue qu;
+        StructDeque dq;
 
         public UI_Algorithms()
         {
@@ -69,6 +70,7 @@ namespace AlgorithmsWpf
         {
             this.ComboBox_struct.Items.Add(new CmbItems { Name = "Стек", FuncStruct = ()=> { st = new StructStack(); } });
             this.ComboBox_struct.Items.Add(new CmbItems { Name = "Очередь", FuncStruct = () => { qu = new StructQueue(Int32.Parse(this.TextBox_struct.Text)); } });
+            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Дек", FuncStruct = () => { dq = new StructDeque(); } });
             this.ComboBox_struct.SelectedIndex = 0;
         }
 
@@ -271,6 +273,19 @@ namespace AlgorithmsWpf
                         qu.Enqueue(newElement);
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
                         break;
+
+                    case "Дек":
+                        newElement = Double.Parse(this.TextBox_struct.Text);
+                        if (this.SliderDeque.Value == 0)
+                        {
+                            dq.PushLeft(newElement);
+                        }
+                        else
+                        {
+                            dq.PushRight(newElement);
+                        }
+                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
+                        break;
                 }                
             }
             catch (SystemException ex)
@@ -306,6 +321,25 @@ namespace AlgorithmsWpf
                         try
                         {
                             extractedElement = qu.Dequeue();
+                            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
+                        }
+                        catch (SystemException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        break;
+
+                    case "Дек":
+                        try
+                        {
+                            if (this.SliderDeque.Value == 0)
+                            {
+                                extractedElement = dq.PopLeft();
+                            }
+                            else
+                            {
+                                extractedElement = dq.PopRight();
+                            }
                             this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         }
                         catch (SystemException ex)
