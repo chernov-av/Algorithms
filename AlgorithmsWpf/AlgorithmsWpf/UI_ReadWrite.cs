@@ -97,6 +97,10 @@ namespace AlgorithmsWpf
                 case "Дек":
                     output_array = dq.GetStruct;
                     break;
+                case "Связанный список":
+                    sll.MakeArray();
+                    output_array = sll.GetStruct;
+                    break;
             }
 
             StringBuilder sb = new StringBuilder();

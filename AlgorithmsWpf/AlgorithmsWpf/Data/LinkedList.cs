@@ -56,6 +56,18 @@ namespace Algorithms.Data
             get { return this.linkedListSize; }
         }
 
+        public void MakeArray()
+        {
+            Node current = head;
+            List<double> nodeList = new List<double>();
+            while (current != null)
+            {
+                nodeList.Add(current.key);
+                current = current.next;
+            }
+            this.list = nodeList.ToArray();
+        }
+
         public double[] GetStruct
         {
             get { return this.list; }
