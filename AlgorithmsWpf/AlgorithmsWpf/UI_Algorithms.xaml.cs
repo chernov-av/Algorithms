@@ -25,6 +25,7 @@ namespace AlgorithmsWpf
         StructStack st;
         StructQueue qu;
         StructDeque dq;
+        StructLinkedList sll;
 
         public UI_Algorithms()
         {
@@ -71,6 +72,7 @@ namespace AlgorithmsWpf
             this.ComboBox_struct.Items.Add(new CmbItems { Name = "Стек", FuncStruct = ()=> { st = new StructStack(); } });
             this.ComboBox_struct.Items.Add(new CmbItems { Name = "Очередь", FuncStruct = () => { qu = new StructQueue(Int32.Parse(this.TextBox_struct.Text)); } });
             this.ComboBox_struct.Items.Add(new CmbItems { Name = "Дек", FuncStruct = () => { dq = new StructDeque(); } });
+            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Связанный список", FuncStruct = () => { sll = new StructLinkedList(); } });
             this.ComboBox_struct.SelectedIndex = 0;
         }
 
@@ -286,6 +288,11 @@ namespace AlgorithmsWpf
                         }
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
                         break;
+                    case "Связанный список":
+                        newElement = Double.Parse(this.TextBox_struct.Text);
+                        sll.ListInsert(newElement);
+                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
+                        break;
                 }                
             }
             catch (SystemException ex)
@@ -340,6 +347,19 @@ namespace AlgorithmsWpf
                             {
                                 extractedElement = dq.PopRight();
                             }
+                            this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
+                        }
+                        catch (SystemException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        break;
+
+                    case "Связанный список":
+                        try
+                        {
+                            extractedElement = Double.Parse(this.TextBox_struct.Text);
+                            sll.ListDelete(sll.ListSearch(extractedElement));
                             this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         }
                         catch (SystemException ex)
