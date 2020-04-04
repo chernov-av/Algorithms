@@ -23,6 +23,8 @@ namespace AlgorithmsWpf
 
         public Action FuncStruct { get; set; }
 
+        public Action FuncTree { get; set; }
+
 
         public override string ToString()
         {

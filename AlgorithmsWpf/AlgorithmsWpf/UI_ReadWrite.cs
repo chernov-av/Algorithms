@@ -88,19 +88,40 @@ namespace AlgorithmsWpf
             switch (this.ComboBox_struct.SelectedItem.ToString())
             {
                 case "Стек":
-                    output_array = st.GetStruct;
+                    output_array = stackStruct.GetStruct;
                     break;
 
                 case "Очередь":
-                    output_array = qu.GetStruct;
+                    output_array = queueStruct.GetStruct;
                     break;
+
                 case "Дек":
-                    output_array = dq.GetStruct;
+                    output_array = dequeStruct.GetStruct;
                     break;
+
                 case "Связанный список":
-                    sll.MakeArray();
-                    output_array = sll.GetStruct;
+                    linkedListStruct.MakeArray();
+                    output_array = linkedListStruct.GetStruct;
                     break;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < output_array.Length; i++)
+            {
+                sb.Append(output_array[i]);
+                sb.Append(' ');
+            }
+            this.RichTextBox_output.AppendText(sb.ToString().Trim());
+        }
+
+        private void DisplayTree()
+        {
+            double[] output_array = new double[0];
+            switch (this.ComboBox_tree.SelectedItem.ToString())
+            {
+                case "Бинарное":
+                    output_array = binaryTree.GetTree;
+                    break;               
             }
 
             StringBuilder sb = new StringBuilder();

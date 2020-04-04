@@ -36,7 +36,7 @@ namespace Algorithms.Data
             if (this.stackSize == 0) { return true; } else { return false; }
         }
         
-        public int Size
+        public int GetSize
         {
             get { return this.stackSize; }
         }
