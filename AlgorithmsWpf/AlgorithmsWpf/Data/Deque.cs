@@ -58,7 +58,7 @@ namespace Algorithms.Data
             if (this.dequeSize == 0) { return true; } else { return false; }
         }
 
-        public int Size
+        public int GetSize
         {
             get { return this.dequeSize; }
         }

@@ -63,7 +63,7 @@ namespace Algorithms.Data
             } 
         }
         
-        public int Size
+        public int GetSize
         {
             get { return this.tail; }
         }

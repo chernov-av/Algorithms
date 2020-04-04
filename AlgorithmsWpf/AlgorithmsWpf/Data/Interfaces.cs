@@ -6,9 +6,16 @@ namespace Algorithms.Data
 {
     interface IStructures
     {
-        int Size { get; }
+        int GetSize { get; }
 
         double[] GetStruct { get; }
         
-    }        
+    }
+
+    interface ITrees<T>
+    {
+        int GetSize { get; }
+
+        T[] GetTree { get; }
+    }
 }

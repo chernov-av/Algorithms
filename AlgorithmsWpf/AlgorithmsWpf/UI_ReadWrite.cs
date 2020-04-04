@@ -94,13 +94,34 @@ namespace AlgorithmsWpf
                 case "Очередь":
                     output_array = queueStruct.GetStruct;
                     break;
+
                 case "Дек":
                     output_array = dequeStruct.GetStruct;
                     break;
+
                 case "Связанный список":
                     linkedListStruct.MakeArray();
                     output_array = linkedListStruct.GetStruct;
                     break;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < output_array.Length; i++)
+            {
+                sb.Append(output_array[i]);
+                sb.Append(' ');
+            }
+            this.RichTextBox_output.AppendText(sb.ToString().Trim());
+        }
+
+        private void DisplayTree()
+        {
+            double[] output_array = new double[0];
+            switch (this.ComboBox_tree.SelectedItem.ToString())
+            {
+                case "Бинарное":
+                    output_array = binaryTree.GetTree;
+                    break;               
             }
 
             StringBuilder sb = new StringBuilder();

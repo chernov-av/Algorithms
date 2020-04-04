@@ -70,11 +70,11 @@
                     <StackPanel x:Name="StackPanelTree" Width="330" Height="119">
                         <Label x:Name="Label_tree" Content="Алгоритм:" Height="26" Width="66" HorizontalAlignment="Left"/>
                         <ComboBox x:Name="ComboBox_tree" Width="328" Height="22" Margin="1,0,1,0"/>
-                        <Button x:Name="Button_tree" Content="Создать" Width="90" Click="Button_struct_Click" Height="19" HorizontalAlignment="Right" Margin="0,2,1,0"/>
+                        <Button x:Name="Button_tree" Content="Создать" Width="90" Click="Button_tree_Click" Height="19" HorizontalAlignment="Right" Margin="0,2,1,0"/>
                         <Grid x:Name="GridTree" Height="19" Margin="0,2,0,0">
                             <TextBox x:Name="TextBox_tree" Text="0" TextWrapping="Wrap" Width="90" HorizontalAlignment="Left" Margin="1,0,0,0"/>
-                            <Button x:Name="Button_tree_add" Content="Добавить" HorizontalAlignment="Center" Width="90" Click="Button_struct_add_Click"/>
-                            <Button x:Name="Button_tree_remove" Content="Удалить" HorizontalAlignment="Right" Width="90" Margin="0,0,1,0" Click="Button_struct_remove_Click"/>
+                            <Button x:Name="Button_tree_add" Content="Добавить" HorizontalAlignment="Center" Width="90" Click="Button_tree_add_Click"/>
+                            <Button x:Name="Button_tree_remove" Content="Удалить" HorizontalAlignment="Right" Width="90" Margin="0,0,1,0" Click="Button_tree_remove_Click"/>
                         </Grid>
                     </StackPanel>
                 </TabItem>

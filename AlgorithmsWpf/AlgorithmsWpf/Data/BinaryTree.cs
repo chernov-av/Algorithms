@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Algorithms.Data
 {
-    class BinaryTree<T> where T:IComparable<T>
+    class BinaryTree<T>: ITrees<T> where T:IComparable<T>
     {
         List<T> PrintList = new List<T>();
         TreeNode<T> root;
+        int treeSize = 0;
 
         public void TreeInsert(T _key)
         {
@@ -35,10 +36,14 @@ namespace Algorithms.Data
                 y.left = newNode;
             }
             else y.right = newNode;
+
+            this.treeSize++;            
         }
 
-        public void TreeDelete(TreeNode<T> deletedNode)
+        public void TreeDelete(T _key)
         {
+            TreeNode<T> deletedNode = IterativeTreeSearch(this.root, _key);
+
             if (deletedNode.left == null)
             {
                 Transplant(deletedNode, deletedNode.right);
@@ -60,6 +65,7 @@ namespace Algorithms.Data
                 y.left = deletedNode.left;
                 y.left.parent = y;
             }
+            this.treeSize--;
         }
 
         void Transplant(TreeNode<T> u, TreeNode<T> v)
@@ -77,6 +83,12 @@ namespace Algorithms.Data
             {
                 v.parent = u.parent;
             }
+        }
+
+        public void TreeWalk()
+        {
+            this.PrintList.Clear();
+            InorderTreeWalk(this.root);
         }
 
         public void InorderTreeWalk(TreeNode<T> _parent)
@@ -149,6 +161,16 @@ namespace Algorithms.Data
                 y = y.parent;
             }
             return y;
+        }
+
+        public int GetSize
+        {
+            get { return this.treeSize; }
+        }
+
+        public T[] GetTree
+        {
+            get { this.TreeWalk(); return this.PrintList.ToArray(); }
         }
     }
 
