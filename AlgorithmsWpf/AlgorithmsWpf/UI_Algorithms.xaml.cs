@@ -22,10 +22,11 @@ namespace AlgorithmsWpf
     /// </summary>
     public partial class UI_Algorithms : Window
     {
-        StructStack st;
-        StructQueue qu;
-        StructDeque dq;
-        StructLinkedList sll;
+        StructStack stackStruct;
+        StructQueue queueStruct;
+        StructDeque dequeStruct;
+        StructLinkedList linkedListStruct;
+        BinaryTree<double> binaryTree;
 
         public UI_Algorithms()
         {
@@ -33,6 +34,7 @@ namespace AlgorithmsWpf
             InitSortTab();
             InitSelectTab();
             InitStructTab();
+            InitTreeTab();
         }
 
         private void InitSortTab()
@@ -69,11 +71,18 @@ namespace AlgorithmsWpf
 
         private void InitStructTab()
         {
-            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Стек", FuncStruct = ()=> { st = new StructStack(); } });
-            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Очередь", FuncStruct = () => { qu = new StructQueue(Int32.Parse(this.TextBox_struct.Text)); } });
-            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Дек", FuncStruct = () => { dq = new StructDeque(); } });
-            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Связанный список", FuncStruct = () => { sll = new StructLinkedList(); } });
+            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Стек", FuncStruct = ()=> { stackStruct = new StructStack(); } });
+            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Очередь", FuncStruct = () => { queueStruct = new StructQueue(Int32.Parse(this.TextBox_struct.Text)); } });
+            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Дек", FuncStruct = () => { dequeStruct = new StructDeque(); } });
+            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Связанный список", FuncStruct = () => { linkedListStruct = new StructLinkedList(); } });
             this.ComboBox_struct.SelectedIndex = 0;
+        }
+
+        private void InitTreeTab()
+        {
+            this.ComboBox_tree.Items.Add(new CmbItems { Name = "Бинарное", FuncTree = () => { binaryTree = new BinaryTree<double>(); } });
+
+            this.ComboBox_tree.SelectedIndex = 0;
         }
 
         private void Button_sort_gen_rand_Click(object sender, RoutedEventArgs e)
@@ -266,13 +275,13 @@ namespace AlgorithmsWpf
                 {
                     case "Стек":                        
                             newElement = Double.Parse(this.TextBox_struct.Text);
-                            st.Push(newElement);
+                            stackStruct.Push(newElement);
                             this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");                        
                         break;
 
                     case "Очередь":
                         newElement = Double.Parse(this.TextBox_struct.Text);
-                        qu.Enqueue(newElement);
+                        queueStruct.Enqueue(newElement);
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
                         break;
 
@@ -280,17 +289,17 @@ namespace AlgorithmsWpf
                         newElement = Double.Parse(this.TextBox_struct.Text);
                         if (this.SliderDeque.Value == 0)
                         {
-                            dq.PushLeft(newElement);
+                            dequeStruct.PushLeft(newElement);
                         }
                         else
                         {
-                            dq.PushRight(newElement);
+                            dequeStruct.PushRight(newElement);
                         }
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
                         break;
                     case "Связанный список":
                         newElement = Double.Parse(this.TextBox_struct.Text);
-                        sll.ListInsert(newElement);
+                        linkedListStruct.ListInsert(newElement);
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
                         break;
                 }                
@@ -315,7 +324,7 @@ namespace AlgorithmsWpf
                     case "Стек":
                         try
                         {
-                            extractedElement = st.Pop();
+                            extractedElement = stackStruct.Pop();
                             this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         }
                         catch (SystemException ex)
@@ -327,7 +336,7 @@ namespace AlgorithmsWpf
                     case "Очередь":
                         try
                         {
-                            extractedElement = qu.Dequeue();
+                            extractedElement = queueStruct.Dequeue();
                             this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         }
                         catch (SystemException ex)
@@ -341,11 +350,11 @@ namespace AlgorithmsWpf
                         {
                             if (this.SliderDeque.Value == 0)
                             {
-                                extractedElement = dq.PopLeft();
+                                extractedElement = dequeStruct.PopLeft();
                             }
                             else
                             {
-                                extractedElement = dq.PopRight();
+                                extractedElement = dequeStruct.PopRight();
                             }
                             this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         }
@@ -359,7 +368,7 @@ namespace AlgorithmsWpf
                         try
                         {
                             extractedElement = Double.Parse(this.TextBox_struct.Text);
-                            sll.ListDelete(sll.ListSearch(extractedElement));
+                            linkedListStruct.ListDelete(linkedListStruct.ListSearch(extractedElement));
                             this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         }
                         catch (SystemException ex)
