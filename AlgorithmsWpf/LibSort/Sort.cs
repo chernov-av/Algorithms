@@ -5,23 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace Algorithms.Data
+namespace LibSort
 {
-    static class Sort
+    [AttributeUsage(AttributeTargets.Method)]
+    public class ExecuteAttribute : Attribute
     {
-        public static bool CheckSortUp(double[] array)
+        public string Name { get; }
+        public ExecuteAttribute(string name)
+        {
+            this.Name = name;
+        }
+    }
+
+    public class Sort
+    {
+        [Execute("Проверить по возрастанию")]
+        public bool CheckSortUp(double[] array)
         {
             bool res = array.SequenceEqual(array.OrderBy(e => e));
             return res;
         }
-
-        public static bool CheckSortDown(double[] array)
+        [Execute("Проверить по убыванию")]
+        public bool CheckSortDown(double[] array)
         {
             bool res = array.SequenceEqual(array.OrderByDescending(e => e));
             return res;
         }
-
-        public static Tuple<double[],string> InsertionSortUp(double[] array_for_sorting)
+        [Execute("Вставкой(В)")]
+        public Tuple<double[], string> InsertionSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -43,10 +54,10 @@ namespace Algorithms.Data
                 array_for_sorting[i + 1] = key;
             }
             sw.Stop();
-            return Tuple.Create(array_for_sorting,sw.Elapsed.ToString());
+            return Tuple.Create(array_for_sorting, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[],string> InsertionSortDown(double[] array_for_sorting)
+        [Execute("Вставкой(У)")]
+        public Tuple<double[], string> InsertionSortDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -71,17 +82,17 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(array_for_sorting, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[],string> MergeSortUp(double[] array_for_sorting)
+        [Execute("Слиянием(В)")]
+        public Tuple<double[], string> MergeSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            double[] output = MergeSUp(array_for_sorting, 0, array_for_sorting.Length-1);
+            double[] output = MergeSUp(array_for_sorting, 0, array_for_sorting.Length - 1);
             sw.Stop();
-            return Tuple.Create(output,sw.Elapsed.ToString());
+            return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> MergeSortDown(double[] array_for_sorting)
+        [Execute("Слиянием(У)")]
+        public Tuple<double[], string> MergeSortDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -89,8 +100,8 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> QuickSortUp(double[] array_for_sorting)
+        [Execute("Быстрая(В)")]
+        public Tuple<double[], string> QuickSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -98,8 +109,8 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> QuickSortDown(double[] array_for_sorting)
+        [Execute("Быстрая(У)")]
+        public Tuple<double[], string> QuickSortDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -107,8 +118,8 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> QuickSortRandomizedUp(double[] array_for_sorting)
+        [Execute("Быстрая(Сл,В)")]
+        public Tuple<double[], string> QuickSortRandomizedUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -116,8 +127,8 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> QuickSortRandomizedDown(double[] array_for_sorting)
+        [Execute("Быстрая(Сл,У)")]
+        public Tuple<double[], string> QuickSortRandomizedDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -125,12 +136,12 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[],string> BubbleSortUp(double[] array_for_sorting)
+        [Execute("Пузырьковая(В)")]
+        public Tuple<double[], string> BubbleSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            
+
             double[] output = new double[array_for_sorting.Length];
 
             for (int i = 0; i < output.Length; i++)
@@ -149,15 +160,15 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> BubbleSortDown(double[] array_for_sorting)
+        [Execute("Пузырьковая(У)")]
+        public Tuple<double[], string> BubbleSortDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
             double[] output = new double[array_for_sorting.Length];
 
-            for (int i = output.Length-1; i > -1; i--)
+            for (int i = output.Length - 1; i > -1; i--)
             {
                 for (int j = 0; j < i; j++)
                 {
@@ -173,8 +184,8 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[],string> HeapSortUp(double[] array_for_sorting)
+        [Execute("Пирамидальная(В)")]
+        public Tuple<double[], string> HeapSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -185,8 +196,8 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> HeapSortDown(double[] array_for_sorting)
+        [Execute("Пирамидальная(У)")]
+        public Tuple<double[], string> HeapSortDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -197,14 +208,14 @@ namespace Algorithms.Data
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> CountingSortUp(double[] array_for_sorting)
+        [Execute("Подсчетом(В)")]
+        public Tuple<double[], string> CountingSortUp(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
             double[] output = new double[array_for_sorting.Length];
             try
-            {                
+            {
                 double k = array_for_sorting.Max() + 1;
                 double[] C = new double[(int)Math.Floor(k)];
 
@@ -227,12 +238,12 @@ namespace Algorithms.Data
                     --C[(int)array_for_sorting[j]];
                 }
             }
-            catch (IndexOutOfRangeException) { }             
+            catch (IndexOutOfRangeException) { }
             sw.Stop();
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
-
-        public static Tuple<double[], string> CountingSortDown(double[] array_for_sorting)
+        [Execute("Подсчетом(У)")]
+        public Tuple<double[], string> CountingSortDown(double[] array_for_sorting)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -267,17 +278,17 @@ namespace Algorithms.Data
             return Tuple.Create(output, sw.Elapsed.ToString());
         }
 
-        private static double[] QuickUp(double[] array,int p,int r)
-        {   
+        private double[] QuickUp(double[] array, int p, int r)
+        {
             if (p < r)
             {
                 int q = PartitionUp(array, p, r);
                 array = QuickUp(array, p, q - 1);
                 array = QuickUp(array, q + 1, r);
-            }            
+            }
             return array;
         }
-        private static double[] QuickDown(double[] array, int p, int r)
+        private double[] QuickDown(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -288,7 +299,7 @@ namespace Algorithms.Data
             return array;
         }
 
-        private static double[] QuickRandomizedUp(double[] array, int p, int r)
+        private double[] QuickRandomizedUp(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -298,7 +309,7 @@ namespace Algorithms.Data
             }
             return array;
         }
-        private static double[] QuickRandomizedDown(double[] array, int p, int r)
+        private double[] QuickRandomizedDown(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -309,14 +320,14 @@ namespace Algorithms.Data
             return array;
         }
 
-        public static int PartitionUp(double[] array, int p, int r)
+        public int PartitionUp(double[] array, int p, int r)
         {
             var x = array[r];
             int i = p;
             for (int j = p; j < r; j++)
             {
                 if (array[j] <= x)
-                {                    
+                {
                     var temp = array[i];
                     array[i] = array[j];
                     array[j] = temp;
@@ -328,7 +339,7 @@ namespace Algorithms.Data
             array[r] = temp2;
             return i;
         }
-        public static int PartitionDown(double[] array, int p, int r)
+        public int PartitionDown(double[] array, int p, int r)
         {
             var x = array[r];
             int i = p;
@@ -348,16 +359,16 @@ namespace Algorithms.Data
             return i;
         }
 
-        public static int PartitionRandomizedUp(double[] array, int p, int r)
+        public int PartitionRandomizedUp(double[] array, int p, int r)
         {
             Random rand = new Random();
             int i = rand.Next(p, r);
             var temp = array[r];
             array[r] = array[i];
             array[i] = temp;
-            return PartitionUp(array,p,r);
+            return PartitionUp(array, p, r);
         }
-        public static int PartitionRandomizedDown(double[] array, int p, int r)
+        public int PartitionRandomizedDown(double[] array, int p, int r)
         {
             Random rand = new Random();
             int i = rand.Next(p, r);
@@ -367,7 +378,7 @@ namespace Algorithms.Data
             return PartitionDown(array, p, r);
         }
 
-        private static double[] MergeSUp(double[] array, int p, int r)
+        private double[] MergeSUp(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -379,7 +390,7 @@ namespace Algorithms.Data
             }
             return array;
         }
-        private static double[] MergeUp(double[] array, int p, int q, int r)
+        private double[] MergeUp(double[] array, int p, int q, int r)
         {
             int n1 = q - p + 1; //Length A[p..q]
             int n2 = r - q;//length A[q+1..r]
@@ -421,7 +432,7 @@ namespace Algorithms.Data
 
             return array;
         }
-        private static double[] MergeSDown(double[] array, int p, int r)
+        private double[] MergeSDown(double[] array, int p, int r)
         {
             if (p < r)
             {
@@ -432,8 +443,8 @@ namespace Algorithms.Data
             }
             return array;
         }
-        private static double[] MergeDown(double[] array, int p, int q, int r)
-        {            
+        private double[] MergeDown(double[] array, int p, int q, int r)
+        {
             double[] aux = new double[array.Length];
 
             int i = p;
@@ -446,7 +457,7 @@ namespace Algorithms.Data
 
             for (int k = p; k <= r; k++)
             {
-                
+
                 if (i > q) { array[k] = aux[j]; j++; }
                 else if (j > r) { array[k] = aux[i]; i++; }
                 else if (aux[j] > aux[i]) { array[k] = aux[j]; j++; }

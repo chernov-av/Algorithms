@@ -44,7 +44,7 @@ namespace Algorithms.Data
             sw.Start();
 
             double median;
-            array = Sort.QuickSortUp(array).Item1;
+            //array = Sort.QuickSortUp(array).Item1;
             if (array.Length % 2 == 1) { median = array[array.Length / 2]; }
             else { median = (array[array.Length / 2 - 1] + array[array.Length / 2]) / 2; }
 
@@ -123,7 +123,8 @@ namespace Algorithms.Data
         private static double SelectRandMax(double[] array, int p, int r, int i)
         {
             if (p == r) { return array[p]; }
-            int q = Sort.PartitionRandomizedUp(array, p, r);
+            // int q = Sort.PartitionRandomizedUp(array, p, r);
+            int q = 0;
             int k = q - p + 1;
             if (i == k) { return array[q]; }
             else if (i < k) { return SelectRandMax(array, p, q - 1, i); }
@@ -132,7 +133,8 @@ namespace Algorithms.Data
         private static double SelectRandMin(double[] array, int p, int r, int i)
         {
             if (p == r) { return array[p]; }
-            int q = Sort.PartitionRandomizedDown(array, p, r);
+            // int q = Sort.PartitionRandomizedDown(array, p, r);
+            int q = 0;
             int k = q - p + 1;
             if (i == k) { return array[q]; }
             else if (i < k) { return SelectRandMin(array, p, q - 1, i); }

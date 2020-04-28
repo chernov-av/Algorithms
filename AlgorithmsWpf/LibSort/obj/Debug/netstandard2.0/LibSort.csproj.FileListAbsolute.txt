@@ -1,0 +1,9 @@
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\bin\Debug\netstandard2.0\LibSort.deps.json
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\bin\Debug\netstandard2.0\LibSort.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\bin\Debug\netstandard2.0\LibSort.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.csprojAssemblyReference.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.csproj.CoreCompileInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.AssemblyInfoInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.AssemblyInfo.cs
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.pdb
