@@ -70,17 +70,7 @@ namespace AlgorithmsWpf
             sb.Append("----------------------");
             this.Richtextbox_log.AppendText(sb.ToString().Trim() + '\n');
             this.Richtextbox_log.ScrollToEnd();
-        }
-
-        private void DisplayCheckSortUp(double[] input)
-        {            
-            if (Sort.CheckSortUp(input)) this.TextBlockLog.Text = "Отсортировано"; else this.TextBlockLog.Text = "Не отсортировано";
-        }
-
-        private void DisplayCheckSortDown(double[] input)
-        {
-            if (Sort.CheckSortDown(input)) this.TextBlockLog.Text = "Отсортировано"; else this.TextBlockLog.Text = "Не отсортировано";
-        }
+        }               
 
         private void DisplayStruct()
         {

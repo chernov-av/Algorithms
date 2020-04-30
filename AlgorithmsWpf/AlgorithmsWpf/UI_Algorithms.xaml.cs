@@ -28,34 +28,31 @@ namespace AlgorithmsWpf
         StructLinkedList linkedListStruct;
         BinaryTree<double> binaryTree;
 
+        GetHeap getMaxHeap;
+        GetHeap getMinHeap;
+
+        string defaultModulePath = "Modules/";       
+
         public UI_Algorithms()
         {
             InitializeComponent();
-            InitSortTab();
+
+            loadExternalModule();            
+        }
+
+        private void loadExternalModule()
+        {
+            //Connect SortLib
+            IModuleConnector sortConnection = new SortConnector(defaultModulePath + "LibSort", this.ComboBox_sort_algorithms, this.TextBlockLog);
+            sortConnection.Connect();
+            sortConnection.InitTab();
+            this.getMaxHeap = ((IHeap)sortConnection).SortMaxFunc;
+            this.getMinHeap = ((IHeap)sortConnection).SortMinFunc;
+
             InitSelectTab();
             InitStructTab();
             InitTreeTab();
-        }
-
-        private void InitSortTab()
-        {
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.InsertionSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Вставкой(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.InsertionSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.MergeSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Слиянием(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.MergeSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пузырьковая(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.BubbleSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пузырьковая(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.BubbleSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пирамидальная(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.HeapSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Пирамидальная(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.HeapSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.QuickSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.QuickSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(Сл,В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Быстрая(Сл,У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.QuickSortRandomizedDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Подсчетом(В)", FuncSort = (input) => { Tuple<double[], string> res = Sort.CountingSortUp(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortUp(input); } });
-            this.ComboBox_sort_algorithms.Items.Add(new CmbItems { Name = "Подсчетом(У)", FuncSort = (input) => { Tuple<double[], string> res = Sort.CountingSortDown(input); return res; }, CheckSort = (input) => { this.DisplayCheckSortDown(input); } });
-
-            this.ComboBox_sort_algorithms.SelectedIndex = 0;
-        }
+        }  
 
         private void InitSelectTab()
         {
@@ -135,7 +132,7 @@ namespace AlgorithmsWpf
             output_array = res.Item1;
             this.TextBox_time.Text = res.Item2;
 
-            ((CmbItems)this.ComboBox_sort_algorithms.SelectedItem).CheckSort(output_array);
+            ((CmbItems)this.ComboBox_sort_algorithms.SelectedItem).CheckSort(output_array, this.ComboBox_sort_algorithms.SelectedIndex);
 
             TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
             this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_sort_algorithms.SelectedValue.ToString(), res.Item2);
@@ -153,7 +150,7 @@ namespace AlgorithmsWpf
         private void Button_sort_build_max_heap_Click(object sender, RoutedEventArgs e)
         {
             this.RichTextBox_output.Document.Blocks.Clear();
-
+            
             try
             {
                 string[] input_line = this.readRichtextbox(this.RichTextBox_input).Split(' ');
@@ -167,10 +164,7 @@ namespace AlgorithmsWpf
 
                 double[] output_array = new double[input_array.Length];
 
-                Heap heap = new Heap(input_array);
-
-                heap.BuildMaxHeap();
-                output_array = heap.GetHeap();
+                output_array = this.getMaxHeap(input_array);
 
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < output_array.Length; i++)
@@ -189,7 +183,7 @@ namespace AlgorithmsWpf
         private void Button_sort_build_min_heap_Click(object sender, RoutedEventArgs e)
         {
             this.RichTextBox_output.Document.Blocks.Clear();
-
+            
             try
             {
                 string[] input_line = this.readRichtextbox(this.RichTextBox_input).Split(' ');
@@ -203,10 +197,7 @@ namespace AlgorithmsWpf
 
                 double[] output_array = new double[input_array.Length];
 
-                Heap heap = new Heap(input_array);
-
-                heap.BuildMinHeap();
-                output_array = heap.GetHeap();
+                output_array = this.getMinHeap(input_array);
 
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < output_array.Length; i++)

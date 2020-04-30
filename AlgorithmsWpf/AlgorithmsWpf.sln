@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsWpf", "AlgorithmsWpf\AlgorithmsWpf.csproj", "{D5CB59FB-0BD5-4160-8406-643E0E795DE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmsWpf", "AlgorithmsWpf\AlgorithmsWpf.csproj", "{D5CB59FB-0BD5-4160-8406-643E0E795DE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibSort", "LibSort\LibSort.csproj", "{35068FEF-3847-41E0-BFED-AEC1D6C01F53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D5CB59FB-0BD5-4160-8406-643E0E795DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5CB59FB-0BD5-4160-8406-643E0E795DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5CB59FB-0BD5-4160-8406-643E0E795DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35068FEF-3847-41E0-BFED-AEC1D6C01F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35068FEF-3847-41E0-BFED-AEC1D6C01F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35068FEF-3847-41E0-BFED-AEC1D6C01F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35068FEF-3847-41E0-BFED-AEC1D6C01F53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

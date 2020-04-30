@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AlgorithmsWpf
 {
+
+    public delegate double[] GetHeap(double[] input);
+
     class Controller
     {
         
@@ -17,7 +20,7 @@ namespace AlgorithmsWpf
         public Action Action { get; set; }
 
         public Func<double[], Tuple<double[],string>> FuncSort { get; set; }
-        public Action<double[]> CheckSort { get; set; }
+        public Action<double[], int> CheckSort { get; set; }
 
         public Func<double[], Tuple<double,string>> FuncSelect { get; set; }
 
@@ -31,5 +34,7 @@ namespace AlgorithmsWpf
             return Name;
         }
     }
+
+    
 
 }

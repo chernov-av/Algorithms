@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Algorithms.Data
+namespace LibSort
 {
-    class Heap
+    public class Heap
     {
         double[] A;
         int heapSize;
@@ -15,7 +13,7 @@ namespace Algorithms.Data
         {
             this.A = A;
         }
-        
+
 
         //MAX HEAP
         public void MaxHeapify(int i)
@@ -24,7 +22,7 @@ namespace Algorithms.Data
             int r = this.Right(i);
             int largest;
 
-            if ((l<this.heapSize) && (this.A[l] > this.A[i]))
+            if ((l < this.heapSize) && (this.A[l] > this.A[i]))
             {
                 largest = l;
             }
@@ -37,10 +35,10 @@ namespace Algorithms.Data
             {
                 largest = r;
             }
-            
+
             if (largest != i)
             {
-                this.Swap(i, largest);                
+                this.Swap(i, largest);
                 MaxHeapify(largest);
             }
         }
@@ -48,11 +46,11 @@ namespace Algorithms.Data
         public void BuildMaxHeap()
         {
             this.heapSize = this.A.Length;
-            for (int i = (this.A.Length-1)/2; i >= 0; i--)
+            for (int i = (this.A.Length - 1) / 2; i >= 0; i--)
             {
                 this.MaxHeapify(i);
             }
-        }        
+        }
 
         public void HeapMaxSort()
         {
@@ -70,7 +68,7 @@ namespace Algorithms.Data
         {
             this.heapSize++;
             Array.Resize(ref this.A, this.heapSize);
-            this.A[this.heapSize-1] = Double.NegativeInfinity;
+            this.A[this.heapSize - 1] = Double.NegativeInfinity;
             this.HeapIncreaseKey(this.heapSize - 1, key);
         }
 
@@ -91,7 +89,7 @@ namespace Algorithms.Data
             if (key < this.A[i]) { throw new System.ArgumentException("New key is less than current one", "original"); }
             A[i] = key;
 
-            while ((i > 0) && (this.A[this.Parent(i)]<this.A[i]))
+            while ((i > 0) && (this.A[this.Parent(i)] < this.A[i]))
             {
                 this.Swap(i, this.Parent(i));
                 i = this.Parent(i);
@@ -104,7 +102,7 @@ namespace Algorithms.Data
             return this.A[0];
         }
 
-        
+
         //MIN HEAP
         public void MinHeapify(int i)
         {
@@ -202,7 +200,7 @@ namespace Algorithms.Data
         //get parent node number
         public int Parent(int i)
         {
-            return (i - 1) / 2 ;
+            return (i - 1) / 2;
         }
 
         //get left child node number
@@ -217,13 +215,11 @@ namespace Algorithms.Data
             return 2 * i + 2;
         }
 
-        public void Swap(int i,int j)
+        public void Swap(int i, int j)
         {
             var temp = this.A[i];
             this.A[i] = this.A[j];
             this.A[j] = temp;
         }
     }
-
-    
 }
