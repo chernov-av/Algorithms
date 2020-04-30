@@ -17,15 +17,20 @@ namespace LibSort
         }
     }
 
+    public class CheckAttribute : Attribute
+    {
+        
+    }
+
     public class Sort
     {
-        [Execute("Проверить по возрастанию")]
+        [Check]
         public bool CheckSortUp(double[] array)
         {
             bool res = array.SequenceEqual(array.OrderBy(e => e));
             return res;
         }
-        [Execute("Проверить по убыванию")]
+        [Check]
         public bool CheckSortDown(double[] array)
         {
             bool res = array.SequenceEqual(array.OrderByDescending(e => e));
