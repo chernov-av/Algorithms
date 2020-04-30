@@ -28,6 +28,9 @@ namespace AlgorithmsWpf
         StructLinkedList linkedListStruct;
         BinaryTree<double> binaryTree;
 
+        GetHeap getMaxHeap;
+        GetHeap getMinHeap;
+
         string defaultModulePath = "Modules/";       
 
         public UI_Algorithms()
@@ -43,12 +46,13 @@ namespace AlgorithmsWpf
             IModuleConnector sortConnection = new SortConnector(defaultModulePath + "LibSort", this.ComboBox_sort_algorithms, this.TextBlockLog);
             sortConnection.Connect();
             sortConnection.InitTab();
-           
+            this.getMaxHeap = ((IHeap)sortConnection).SortMaxFunc;
+            this.getMinHeap = ((IHeap)sortConnection).SortMinFunc;
+
             InitSelectTab();
             InitStructTab();
             InitTreeTab();
-        }
-              
+        }  
 
         private void InitSelectTab()
         {
@@ -146,7 +150,7 @@ namespace AlgorithmsWpf
         private void Button_sort_build_max_heap_Click(object sender, RoutedEventArgs e)
         {
             this.RichTextBox_output.Document.Blocks.Clear();
-            /*
+            
             try
             {
                 string[] input_line = this.readRichtextbox(this.RichTextBox_input).Split(' ');
@@ -160,10 +164,7 @@ namespace AlgorithmsWpf
 
                 double[] output_array = new double[input_array.Length];
 
-                Heap heap = new Heap(input_array);
-
-                heap.BuildMaxHeap();
-                output_array = heap.GetHeap();
+                output_array = this.getMaxHeap(input_array);
 
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < output_array.Length; i++)
@@ -176,13 +177,13 @@ namespace AlgorithmsWpf
             catch (FormatException ex)
             {
                 MessageBox.Show(ex.Message);
-            }*/
+            }
         }
 
         private void Button_sort_build_min_heap_Click(object sender, RoutedEventArgs e)
         {
             this.RichTextBox_output.Document.Blocks.Clear();
-            /*
+            
             try
             {
                 string[] input_line = this.readRichtextbox(this.RichTextBox_input).Split(' ');
@@ -196,10 +197,7 @@ namespace AlgorithmsWpf
 
                 double[] output_array = new double[input_array.Length];
 
-                Heap heap = new Heap(input_array);
-
-                heap.BuildMinHeap();
-                output_array = heap.GetHeap();
+                output_array = this.getMinHeap(input_array);
 
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < output_array.Length; i++)
@@ -212,7 +210,7 @@ namespace AlgorithmsWpf
             catch (FormatException ex)
             {
                 MessageBox.Show(ex.Message);
-            }*/
+            }
         }
         #endregion
 

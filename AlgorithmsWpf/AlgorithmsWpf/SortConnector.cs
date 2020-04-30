@@ -8,13 +8,17 @@ using System.Linq;
 
 namespace AlgorithmsWpf
 {
-    public class SortConnector: IModuleConnector
+    public class SortConnector: IModuleConnector, IHeap
     {
         string path;
         Assembly asm;
         Type ExecutionAttribute;
         Type Sort;
+        Type Heap;
+
         dynamic sort;
+        dynamic heap;
+
         ComboBox cmb;
         TextBlock txb;
 
@@ -48,6 +52,7 @@ namespace AlgorithmsWpf
             try
             {
                 this.Sort = this.asm.GetType("LibSort.Sort");
+                this.Heap = this.asm.GetType("LibSort.Heap");
                 this.ExecutionAttribute = this.asm.GetType("LibSort.ExecuteAttribute");
                 this.sort = Activator.CreateInstance(this.Sort);
             }
@@ -94,6 +99,40 @@ namespace AlgorithmsWpf
         private void DisplayCheckSortDown(double[] input)
         {
             if (sort.CheckSortDown(input)) this.txb.Text = "Отсортировано"; else this.txb.Text = "Не отсортировано";
+        }
+
+        private void BuildHeapInstance(double[] input)
+        {
+            this.heap = Activator.CreateInstance(this.Heap, input);
+        }
+
+        private void BuildMaxHeap()
+        {
+            this.heap.BuildMaxHeap();
+        }
+
+        private void BuildMinHeap()
+        {
+            this.heap.BuildMinHeap();
+        }
+
+        private double[] GetHeap()
+        {
+            return this.heap.GetHeap();
+        }
+
+        public double[] SortMaxFunc(double[] input)
+        {
+            BuildHeapInstance(input);
+            BuildMaxHeap();
+            return GetHeap();
+        }
+
+        public double[] SortMinFunc(double[] input)
+        {
+            BuildHeapInstance(input);
+            BuildMinHeap();
+            return GetHeap();
         }
 
     }

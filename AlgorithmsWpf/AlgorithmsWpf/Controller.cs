@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AlgorithmsWpf
 {
+
+    public delegate double[] GetHeap(double[] input);
+
     class Controller
     {
         
@@ -31,5 +34,7 @@ namespace AlgorithmsWpf
             return Name;
         }
     }
+
+    
 
 }

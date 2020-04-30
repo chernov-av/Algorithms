@@ -6,10 +6,14 @@ using System.Windows.Controls;
 namespace AlgorithmsWpf
 {
     public interface IModuleConnector
-    {
-        //dynamic getModuleInstance();
-        // void InitTab(ComboBox cmb);
+    { 
         void Connect();
         void InitTab();
+    }
+
+    public interface IHeap
+    {
+        double[] SortMaxFunc(double[] input);
+        double[] SortMinFunc(double[] input);
     }
 }
