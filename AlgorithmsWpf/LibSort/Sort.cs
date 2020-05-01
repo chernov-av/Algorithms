@@ -4,24 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using CommonTypes;
 
 namespace LibSort
-{
-    [AttributeUsage(AttributeTargets.Method)]
-    public class ExecuteAttribute : Attribute
-    {
-        public string Name { get; }
-        public ExecuteAttribute(string name)
-        {
-            this.Name = name;
-        }
-    }
-
-    public class CheckAttribute : Attribute
-    {
-        
-    }
-
+{   
     public class Sort
     {
         [Check]

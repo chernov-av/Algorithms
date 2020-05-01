@@ -7,3 +7,6 @@ D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.
 D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.AssemblyInfo.cs
 D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.dll
 D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\bin\Debug\netstandard2.0\CommonTypes.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\bin\Debug\netstandard2.0\CommonTypes.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSort\obj\Debug\netstandard2.0\LibSort.csproj.CopyComplete

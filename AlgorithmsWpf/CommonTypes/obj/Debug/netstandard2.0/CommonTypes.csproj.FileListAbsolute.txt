@@ -1,0 +1,8 @@
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\bin\Debug\netstandard2.0\CommonTypes.deps.json
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\bin\Debug\netstandard2.0\CommonTypes.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\bin\Debug\netstandard2.0\CommonTypes.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.csproj.CoreCompileInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.AssemblyInfoInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.AssemblyInfo.cs
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.pdb

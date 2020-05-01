@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
+using CommonTypes;
 
 namespace AlgorithmsWpf
 {
@@ -53,7 +54,7 @@ namespace AlgorithmsWpf
             {
                 this.Sort = this.asm.GetType("LibSort.Sort");
                 this.Heap = this.asm.GetType("LibSort.Heap");
-                this.ExecutionAttribute = this.asm.GetType("LibSort.ExecuteAttribute");
+                this.ExecutionAttribute = typeof(ExecuteAttribute);
                 this.sort = Activator.CreateInstance(this.Sort);
             }
             catch (System.Exception ex)

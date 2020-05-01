@@ -17,3 +17,6 @@ D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\Alg
 D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.pdb
 D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.csproj.CoreCompileInputs.cache
 D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.genruntimeconfig.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\bin\Debug\netcoreapp3.1\CommonTypes.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\bin\Debug\netcoreapp3.1\CommonTypes.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\AlgorithmsWpf\obj\Debug\netcoreapp3.1\AlgorithmsWpf.csproj.CopyComplete

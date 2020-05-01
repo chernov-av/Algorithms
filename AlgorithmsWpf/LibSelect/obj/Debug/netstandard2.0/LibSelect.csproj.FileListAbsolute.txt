@@ -1,0 +1,14 @@
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\bin\Debug\netstandard2.0\LibSelect.deps.json
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\bin\Debug\netstandard2.0\LibSelect.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\bin\Debug\netstandard2.0\LibSelect.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\bin\Debug\netstandard2.0\CommonTypes.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\bin\Debug\netstandard2.0\LibSort.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\bin\Debug\netstandard2.0\CommonTypes.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\bin\Debug\netstandard2.0\LibSort.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\obj\Debug\netstandard2.0\LibSelect.csprojAssemblyReference.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\obj\Debug\netstandard2.0\LibSelect.csproj.CoreCompileInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\obj\Debug\netstandard2.0\LibSelect.AssemblyInfoInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\obj\Debug\netstandard2.0\LibSelect.AssemblyInfo.cs
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\obj\Debug\netstandard2.0\LibSelect.csproj.CopyComplete
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\obj\Debug\netstandard2.0\LibSelect.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibSelect\obj\Debug\netstandard2.0\LibSelect.pdb
