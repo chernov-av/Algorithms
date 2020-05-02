@@ -6,3 +6,4 @@ D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\Comm
 D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.AssemblyInfo.cs
 D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.dll
 D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\CommonTypes\obj\Debug\netstandard2.0\CommonTypes.csprojAssemblyReference.cache

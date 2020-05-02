@@ -57,7 +57,13 @@ namespace AlgorithmsWpf
             selectConnection.Connect();
             selectConnection.InitTab();
 
-            InitStructTab();
+            //Connect StructLib
+            IModuleConnector structConnection = new StructConnector(defaultModulePath + "LibStructures", this.ComboBox_struct);
+            //Iconnector
+            structConnection.Connect();
+            structConnection.InitTab();
+
+            //InitStructTab();
             InitTreeTab();
         }  
                 

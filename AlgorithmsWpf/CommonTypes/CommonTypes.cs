@@ -16,4 +16,13 @@ namespace CommonTypes
     {
 
     }
+
+    public class ExecuteClassAttribute : Attribute
+    {
+        public string Name { get; }
+        public ExecuteClassAttribute(string name)
+        {
+            this.Name = name;
+        }
+    }
 }
