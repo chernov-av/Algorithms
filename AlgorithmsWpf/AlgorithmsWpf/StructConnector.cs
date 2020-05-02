@@ -9,12 +9,14 @@ using CommonTypes;
 
 namespace AlgorithmsWpf
 {
-    class StructConnector : IModuleConnector
+    class StructConnector : IModuleConnector, IStack
     {
         string path;
         Assembly asm;
         Type ExecutionAttribute;
-        Type Select;
+        Type[] typesStruct;
+
+        dynamic[] structure = new dynamic[4];
 
         ComboBox cmb;
 
@@ -46,7 +48,6 @@ namespace AlgorithmsWpf
         {
             try
             {
-               // this.Select = this.asm.GetType("LibStructures.Select");
                 this.ExecutionAttribute = typeof(ExecuteClassAttribute);
             }
             catch (System.Exception ex)
@@ -58,21 +59,35 @@ namespace AlgorithmsWpf
         public void InitTab()
         {
             //get method list
-            Type[] types = asm.GetTypes().Where(m => m.GetCustomAttributes(ExecutionAttribute, false).Length > 0)
-                      .ToArray();
+            typesStruct = asm.GetTypes().Where(m => m.GetCustomAttributes(ExecutionAttribute, false).Length > 0).ToArray();
 
             //get name list
             PropertyInfo pI = ExecutionAttribute.GetProperty("Name");
             string[] names = asm.GetTypes().SelectMany(m => m.GetCustomAttributes(ExecutionAttribute, false)).Select(k=>pI.GetValue(k,null).ToString()).ToArray();
-            //string[] names = asm.GetTypes().SelectMany(t => t.GetMethods()).SelectMany(m => m.GetCustomAttributes(ExecutionAttribute, false)).Select(k => pI.GetValue(k, null).ToString()).ToArray();
+            
             //Invoke static method from static class Select
-            for (int i = 0; i < types.Length; i++)
+            for (int i = 0; i < typesStruct.Length; i++)
             {
-                Type type = types[i];
-                this.cmb.Items.Add(new CmbItems { Name = names[i], FuncSelect = (input) => { object[] args = { input }; Tuple<double, string> res = new Tuple<double, string>(1,""); return res; } });
+                Type type = typesStruct[i];
+                this.cmb.Items.Add(new CmbItems { Name = names[i], FuncStruct = (input) => { this.structure[input] = Activator.CreateInstance(typesStruct[input]); } });
             }
 
             cmb.SelectedIndex = 0;
+        }    
+
+        void IStack.Push(double newElement)
+        {
+            this.structure[3].Push(newElement);
+        }
+
+        double IStack.Pop()
+        {
+            return this.structure[3].Pop();
+        }
+
+        double[] IStack.GetStruct()
+        {            
+            return this.structure[3].GetStruct;
         }
     }
 }

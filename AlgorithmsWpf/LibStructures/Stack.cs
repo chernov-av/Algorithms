@@ -6,7 +6,7 @@ using CommonTypes;
 namespace LibStructures
 {
     [ExecuteClass("Стек")]
-    struct StructStack
+    public struct StructStack
     {
         double[] stack;
         int stackSize;

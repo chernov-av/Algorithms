@@ -22,7 +22,6 @@ namespace AlgorithmsWpf
     /// </summary>
     public partial class UI_Algorithms : Window
     {
-        StructStack stackStruct;
         StructQueue queueStruct;
         StructDeque dequeStruct;
         StructLinkedList linkedListStruct;
@@ -30,6 +29,11 @@ namespace AlgorithmsWpf
 
         GetHeap getMaxHeap;
         GetHeap getMinHeap;
+
+        AddElement pushStack;
+        GetElement popStack;
+        GetStruct getStack;
+
 
         string defaultModulePath = "Modules/";       
 
@@ -63,18 +67,13 @@ namespace AlgorithmsWpf
             structConnection.Connect();
             structConnection.InitTab();
 
+            this.pushStack = ((IStack)structConnection).Push;
+            this.popStack = ((IStack)structConnection).Pop;
+            this.getStack = ((IStack)structConnection).GetStruct;
+
+
             //InitStructTab();
             InitTreeTab();
-        }  
-                
-
-        private void InitStructTab()
-        {
-            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Стек", FuncStruct = () => { stackStruct = new StructStack(); } });
-            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Очередь", FuncStruct = () => { queueStruct = new StructQueue(Int32.Parse(this.TextBox_struct.Text)); } });
-            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Дек", FuncStruct = () => { dequeStruct = new StructDeque(); } });
-            this.ComboBox_struct.Items.Add(new CmbItems { Name = "Связанный список", FuncStruct = () => { linkedListStruct = new StructLinkedList(); } });
-            this.ComboBox_struct.SelectedIndex = 0;
         }
 
         private void InitTreeTab()
@@ -249,7 +248,7 @@ namespace AlgorithmsWpf
         private void Button_struct_Click(object sender, RoutedEventArgs e)
         {
             this.RichTextBox_output.Document.Blocks.Clear();
-            ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStruct();
+            ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStruct(this.ComboBox_struct.SelectedIndex);
 
             TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
 
@@ -268,7 +267,7 @@ namespace AlgorithmsWpf
                 {
                     case "Стек":
                         newElement = Double.Parse(this.TextBox_struct.Text);
-                        stackStruct.Push(newElement);
+                        this.pushStack(newElement);
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
                         break;
 
@@ -316,7 +315,7 @@ namespace AlgorithmsWpf
                 switch (this.ComboBox_struct.SelectedItem.ToString())
                 {
                     case "Стек":
-                        extractedElement = stackStruct.Pop();
+                        extractedElement = popStack();
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         break;
 

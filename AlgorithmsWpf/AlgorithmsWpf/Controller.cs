@@ -9,6 +9,10 @@ namespace AlgorithmsWpf
 
     public delegate double[] GetHeap(double[] input);
 
+    public delegate void AddElement(double newElement);
+    public delegate double GetElement();
+    public delegate double[] GetStruct();
+
     class Controller
     {
         
@@ -24,7 +28,7 @@ namespace AlgorithmsWpf
 
         public Func<double[], Tuple<double,string>> FuncSelect { get; set; }
 
-        public Action FuncStruct { get; set; }
+        public Action<int> FuncStruct { get; set; }
 
         public Action FuncTree { get; set; }
 

@@ -78,7 +78,7 @@ namespace AlgorithmsWpf
             switch (this.ComboBox_struct.SelectedItem.ToString())
             {
                 case "Стек":
-                    output_array = stackStruct.GetStruct;
+                    output_array = this.getStack();
                     break;
 
                 case "Очередь":
