@@ -1,0 +1,12 @@
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\bin\Debug\netstandard2.0\LibStructures.deps.json
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\bin\Debug\netstandard2.0\LibStructures.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\bin\Debug\netstandard2.0\LibStructures.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\bin\Debug\netstandard2.0\CommonTypes.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\bin\Debug\netstandard2.0\CommonTypes.pdb
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\obj\Debug\netstandard2.0\LibStructures.csprojAssemblyReference.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\obj\Debug\netstandard2.0\LibStructures.csproj.CoreCompileInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\obj\Debug\netstandard2.0\LibStructures.AssemblyInfoInputs.cache
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\obj\Debug\netstandard2.0\LibStructures.AssemblyInfo.cs
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\obj\Debug\netstandard2.0\LibStructures.csproj.CopyComplete
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\obj\Debug\netstandard2.0\LibStructures.dll
+D:\Project\devAlgorithms\AlgorithmsWpf\LibStructures\obj\Debug\netstandard2.0\LibStructures.pdb

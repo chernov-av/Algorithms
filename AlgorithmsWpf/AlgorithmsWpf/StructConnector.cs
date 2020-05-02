@@ -63,12 +63,13 @@ namespace AlgorithmsWpf
 
             //get name list
             PropertyInfo pI = ExecutionAttribute.GetProperty("Name");
+            string[] names = asm.GetTypes().SelectMany(m => m.GetCustomAttributes(ExecutionAttribute, false)).Select(k=>pI.GetValue(k,null).ToString()).ToArray();
             //string[] names = asm.GetTypes().SelectMany(t => t.GetMethods()).SelectMany(m => m.GetCustomAttributes(ExecutionAttribute, false)).Select(k => pI.GetValue(k, null).ToString()).ToArray();
             //Invoke static method from static class Select
             for (int i = 0; i < types.Length; i++)
             {
                 Type type = types[i];
-                this.cmb.Items.Add(new CmbItems { Name = type.ToString(), FuncSelect = (input) => { object[] args = { input }; Tuple<double, string> res = new Tuple<double, string>(1,""); return res; } });
+                this.cmb.Items.Add(new CmbItems { Name = names[i], FuncSelect = (input) => { object[] args = { input }; Tuple<double, string> res = new Tuple<double, string>(1,""); return res; } });
             }
 
             cmb.SelectedIndex = 0;

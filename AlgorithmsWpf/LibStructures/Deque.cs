@@ -5,6 +5,7 @@ using CommonTypes;
 
 namespace LibStructures
 {
+    [ExecuteClass("Дек")]
     struct StructDeque
     {
         double[] deque;
