@@ -23,4 +23,11 @@ namespace AlgorithmsWpf
         double Pop();
         double[] GetStruct();
     }
+
+    public interface IQueue
+    {
+        void Push(double newElement);
+        double Pop();
+        double[] GetStruct();
+    }
 }

@@ -28,7 +28,8 @@ namespace AlgorithmsWpf
 
         public Func<double[], Tuple<double,string>> FuncSelect { get; set; }
 
-        public Action<int> FuncStruct { get; set; }
+        public Action<object[]> FuncStruct { get; set; }
+        public Action<int,double> FuncStructPush { get; set; }
 
         public Action FuncTree { get; set; }
 

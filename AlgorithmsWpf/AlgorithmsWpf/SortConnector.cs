@@ -77,7 +77,17 @@ namespace AlgorithmsWpf
             for (int i = 0; i < methods.Length; i++)
             {
                 MethodInfo method = methods[i];
-                this.cmb.Items.Add(new CmbItems { Name = names[i], FuncSort = (input) => { object[] args = { input }; Tuple<double[], string> res = method.Invoke(sort, args); return res; }, CheckSort = (input, index) => { DisplayCheckSort(input, index); } });
+                this.cmb.Items.Add(new CmbItems 
+                { 
+                    Name = names[i],
+                    FuncSort = (input) => 
+                    { 
+                        object[] args = { input };
+                        Tuple<double[], string> res = method.Invoke(sort, args);
+                        return res;
+                    },
+                    CheckSort = (input, index) => { DisplayCheckSort(input, index); } 
+                });
             }
 
             cmb.SelectedIndex = 0;            

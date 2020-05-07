@@ -82,7 +82,7 @@ namespace AlgorithmsWpf
                     break;
 
                 case "Очередь":
-                    output_array = queueStruct.GetStruct;
+                    //output_array = queueStruct.GetStruct;
                     break;
 
                 case "Дек":

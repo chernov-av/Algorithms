@@ -6,7 +6,7 @@ using CommonTypes;
 namespace LibStructures
 {
     [ExecuteClass("Очередь")]
-    struct StructQueue
+    public struct StructQueue
     {
         double[] queue;
         int queueSize;
@@ -21,7 +21,7 @@ namespace LibStructures
             this.tail = 0;
         }
 
-        public void Enqueue(double element)
+        public void Push(double element)
         {
             if ((this.head == this.tail + 1) || (this.head == 0 && this.tail == this.queue.Length))
             {
@@ -42,7 +42,7 @@ namespace LibStructures
             }
         }
 
-        public double Dequeue()
+        public double Pop()
         {
             if (this.head == this.tail)
             {
