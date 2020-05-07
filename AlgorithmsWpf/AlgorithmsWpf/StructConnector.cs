@@ -88,14 +88,21 @@ namespace AlgorithmsWpf
                         }
                     },
 
-                    FuncStructPush = (inputIndex, inputElement) =>
-                    {
-                        this.structure[inputIndex].Push(inputElement);
+                    FuncStructPush = (parameters) =>
+                    {                       
+                        if (typesStruct[(int)parameters[0]].GetMethod("Push").GetParameters().Length == 1)
+                        {
+                            this.structure[(int)parameters[0]].Push((double)parameters[1]);
+                        }
+                        else
+                        {
+                            this.structure[(int)parameters[0]].Push((double)parameters[1],(double)parameters[2]);
+                        }
                     },
 
                     FuncStructPop = (parameters) =>
                     {
-                        if (typesStruct[(int)parameters[0]].GetMethod("Pop").GetParameters() == null)
+                        if (typesStruct[(int)parameters[0]].GetMethod("Pop").GetParameters().Length == 0)
                         {
                             return this.structure[(int)parameters[0]].Pop();
                         }

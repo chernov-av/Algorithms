@@ -250,43 +250,10 @@ namespace AlgorithmsWpf
                 TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
                 newElement = Double.Parse(this.TextBox_struct.Text);
 
-                ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructPush(this.ComboBox_struct.SelectedIndex,newElement);
+                ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructPush(new object[] { this.ComboBox_struct.SelectedIndex, newElement, this.SliderDeque.Value }) ;
 
                 this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
-                /*
-                switch (this.ComboBox_struct.SelectedItem.ToString())
-                {
-                    case "Стек":
-                        newElement = Double.Parse(this.TextBox_struct.Text);
-                        this.pushStack(newElement);
-                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
-                        break;
-
-                    case "Очередь":
-                        newElement = Double.Parse(this.TextBox_struct.Text);
-                        //queueStruct.Enqueue(newElement);
-                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
-                        break;
-
-                    case "Дек":
-                        newElement = Double.Parse(this.TextBox_struct.Text);
-                        if (this.SliderDeque.Value == 0)
-                        {
-                            dequeStruct.PushLeft(newElement);
-                        }
-                        else
-                        {
-                            dequeStruct.PushRight(newElement);
-                        }
-                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
-                        break;
-
-                    case "Связанный список":
-                        newElement = Double.Parse(this.TextBox_struct.Text);
-                        linkedListStruct.ListInsert(newElement);
-                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
-                        break;
-                }*/
+                
                 DisplayStruct();
             }
             catch (SystemException ex)
@@ -303,40 +270,15 @@ namespace AlgorithmsWpf
                 double extractedElement = 0;
                 TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
 
+                if (this.ComboBox_struct.SelectedItem.ToString() == "Дек")
+                {
+                    this.TextBox_struct.Text = this.SliderDeque.Value.ToString();
+                }
+
                 extractedElement = ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructPop(new object[] { this.ComboBox_struct.SelectedIndex, Double.Parse(this.TextBox_struct.Text) });
 
                 this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
-                /*
-                switch (this.ComboBox_struct.SelectedItem.ToString())
-                {
-                    case "Стек":
-                       // extractedElement = popStack();
-                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
-                        break;
-
-                    case "Очередь":
-                        //extractedElement = queueStruct.Dequeue();
-                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
-                        break;
-
-                    case "Дек":
-                        if (this.SliderDeque.Value == 0)
-                        {
-                            extractedElement = dequeStruct.PopLeft();
-                        }
-                        else
-                        {
-                            extractedElement = dequeStruct.PopRight();
-                        }
-                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
-                        break;
-
-                    case "Связанный список":
-                        extractedElement = Double.Parse(this.TextBox_struct.Text);
-                        linkedListStruct.ListDelete(linkedListStruct.ListSearch(extractedElement));
-                        this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
-                        break;
-                }*/
+                
                 DisplayStruct();
             }
             catch (NullReferenceException ex)
