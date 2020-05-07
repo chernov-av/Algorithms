@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CommonTypes;
 
-namespace Algorithms.Data
+namespace LibStructures
 {
-    struct StructLinkedList : IStructures
+    [ExecuteClass("Связанный список")]
+    public struct StructLinkedList
     {
         double[] list;
         int linkedListSize;
@@ -12,7 +14,7 @@ namespace Algorithms.Data
         Node head;
         Node tail;
 
-        public void ListInsert(double key)
+        public void Push(double key)
         {
             Node node = new Node(key);
             node.next = head;
@@ -24,7 +26,7 @@ namespace Algorithms.Data
             node.prev = null;
         }
 
-        public Node ListSearch(double _key)
+        Node ListSearch(double _key)
         {
             Node current = head;
             while (current!=null && current.key != _key)
@@ -34,8 +36,9 @@ namespace Algorithms.Data
             return current;
         }
         
-        public void ListDelete(Node node)
+        public void Pop(double _key)
         {
+            Node node = ListSearch(_key);
             if (node.prev != null)
             {
                 node.prev.next = node.next;
@@ -70,7 +73,7 @@ namespace Algorithms.Data
 
         public double[] GetStruct
         {
-            get { return this.list; }
+            get { this.MakeArray(); return this.list; }
         }
     }
 

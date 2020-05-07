@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "+FwreiQ4uONyKra7carcIRXa5Xhao1GJG+1aNR/dwl7oU24dwGDj3glgmMurZ+1Al5QEeq2i5IJ1AjOJK+zhCg==",
+  "success": true,
+  "projectFilePath": "D:\\Project\\devAlgorithms\\AlgorithmsWpf\\LibStructures\\LibStructures.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\1\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\1\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

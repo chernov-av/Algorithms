@@ -15,5 +15,6 @@ namespace AlgorithmsWpf
     {
         double[] SortMaxFunc(double[] input);
         double[] SortMinFunc(double[] input);
-    }
+    }   
+    
 }

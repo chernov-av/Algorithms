@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CommonTypes;
 
-namespace Algorithms.Data
+namespace LibStructures
 {
-    struct StructStack : IStructures
+    [ExecuteClass("Стек")]
+    public struct StructStack
     {
         double[] stack;
         int stackSize;

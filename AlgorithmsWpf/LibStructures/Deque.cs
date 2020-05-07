@@ -1,29 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CommonTypes;
 
-namespace Algorithms.Data
+namespace LibStructures
 {
-    struct StructDeque : IStructures
+    [ExecuteClass("Дек")]
+    public struct StructDeque
     {
         double[] deque;
         int dequeSize;
 
-        public void PushRight(double element)
+        public void Push(double element, double side)
+        {
+            if (side == 0)
+            {
+                this.PushLeft(element);
+            }
+            else this.PushRight(element);
+        }
+
+        public void Pop(double side)
+        {
+            if (side == 0)
+            {
+                this.PopLeft();
+            }
+            else this.PopRight();
+        }
+
+        void PushRight(double element)
         {
             this.dequeSize += 1;
             ResizeRight();
             this.deque[this.dequeSize - 1] = element;
         }
 
-        public void PushLeft(double element)
+        void PushLeft(double element)
         {
             this.dequeSize += 1;
             ResizeLeftPush();
             this.deque[0] = element;
         }
 
-        public double PopRight()
+        double PopRight()
         {
             if (DequeIsEmpty())
             {
@@ -38,7 +58,7 @@ namespace Algorithms.Data
             }
         }
 
-        public double PopLeft()
+        double PopLeft()
         {
             if (DequeIsEmpty())
             {

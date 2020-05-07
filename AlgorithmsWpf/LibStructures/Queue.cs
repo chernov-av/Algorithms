@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CommonTypes;
 
-namespace Algorithms.Data
+namespace LibStructures
 {
-    struct StructQueue : IStructures
+    [ExecuteClass("Очередь")]
+    public struct StructQueue
     {
         double[] queue;
         int queueSize;
@@ -19,7 +21,7 @@ namespace Algorithms.Data
             this.tail = 0;
         }
 
-        public void Enqueue(double element)
+        public void Push(double element)
         {
             if ((this.head == this.tail + 1) || (this.head == 0 && this.tail == this.queue.Length))
             {
@@ -40,7 +42,7 @@ namespace Algorithms.Data
             }
         }
 
-        public double Dequeue()
+        public double Pop()
         {
             if (this.head == this.tail)
             {

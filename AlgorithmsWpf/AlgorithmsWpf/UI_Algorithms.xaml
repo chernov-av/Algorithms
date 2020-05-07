@@ -51,7 +51,7 @@
                         <Button x:Name="Button_select" Content="Выбор" Width="90" Click="Button_select_Click" Height="20" Margin="0,2,1,0" HorizontalAlignment="Right"/>
                     </StackPanel>
                 </TabItem>
-                <TabItem x:Name="TabItem_Struct" Header="Структуры" Height="20" VerticalAlignment="Top">
+                <TabItem x:Name="TabItem_Struct" Header="Структуры">
                     <StackPanel x:Name="StackPanelStruct" Height="119" Width="330" Margin="0,0,0,0">
                         <Label x:Name="Label_struct" Content="Алгоритм:" Height="26" Width="66" HorizontalAlignment="Left"/>
                         <ComboBox x:Name="ComboBox_struct" Width="328" Height="22" HorizontalAlignment="Left" Margin="1,0,1,0"/>

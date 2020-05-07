@@ -75,25 +75,8 @@ namespace AlgorithmsWpf
         private void DisplayStruct()
         {
             double[] output_array= new double[0];
-            switch (this.ComboBox_struct.SelectedItem.ToString())
-            {
-                case "Стек":
-                    output_array = stackStruct.GetStruct;
-                    break;
 
-                case "Очередь":
-                    output_array = queueStruct.GetStruct;
-                    break;
-
-                case "Дек":
-                    output_array = dequeStruct.GetStruct;
-                    break;
-
-                case "Связанный список":
-                    linkedListStruct.MakeArray();
-                    output_array = linkedListStruct.GetStruct;
-                    break;
-            }
+            output_array = ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructGet(this.ComboBox_struct.SelectedIndex);       
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < output_array.Length; i++)
