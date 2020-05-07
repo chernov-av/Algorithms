@@ -9,9 +9,7 @@ namespace AlgorithmsWpf
 
     public delegate double[] GetHeap(double[] input);
 
-    public delegate void AddElement(double newElement);
-    public delegate double GetElement();
-    public delegate double[] GetStruct();
+
 
     class Controller
     {
@@ -30,6 +28,8 @@ namespace AlgorithmsWpf
 
         public Action<object[]> FuncStruct { get; set; }
         public Action<int,double> FuncStructPush { get; set; }
+        public Func<int,double> FuncStructPop { get; set; }
+        public Func<int,double[]> FuncStructGet { get; set; }
 
         public Action FuncTree { get; set; }
 

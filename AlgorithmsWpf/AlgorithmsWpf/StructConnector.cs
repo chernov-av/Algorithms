@@ -11,7 +11,7 @@ using System.Reflection.Metadata;
 
 namespace AlgorithmsWpf
 {
-    class StructConnector : IModuleConnector, IStack, IQueue
+    class StructConnector : IModuleConnector
     {
         string path;
         Assembly asm;
@@ -71,10 +71,10 @@ namespace AlgorithmsWpf
             for (int i = 0; i < typesStruct.Length; i++)
             {
                 Type type = typesStruct[i];
-                this.cmb.Items.Add(new CmbItems 
-                { 
-                    Name = names[i], 
-                    FuncStruct = (parameters) => 
+                this.cmb.Items.Add(new CmbItems
+                {
+                    Name = names[i],
+                    FuncStruct = (parameters) =>
                     {
                         //if struct constructor has no size param
                         if (typesStruct[(int)parameters[0]].GetConstructor(new Type[] { typeof(int) }) == null)
@@ -83,43 +83,25 @@ namespace AlgorithmsWpf
                         }
                         else
                         {
-                            this.structure[(int)parameters[0]] = Activator.CreateInstance(typesStruct[(int)parameters[0]],(int)parameters[1]);
-                        }                                
+                            this.structure[(int)parameters[0]] = Activator.CreateInstance(typesStruct[(int)parameters[0]], (int)parameters[1]);
+                        }
                     },
-                    FuncStructPush = (inputIndex,inputElement) =>
+                    FuncStructPush = (inputIndex, inputElement) =>
                     {
                         this.structure[inputIndex].Push(inputElement);
-                    }
+                    },
+                    FuncStructPop = (inputIndex) =>
+                    {
+                        return this.structure[inputIndex].Pop();
+                    },
+                    FuncStructGet = (inputIndex) =>
+                    {
+                        return this.structure[inputIndex].GetStruct;
+                    }                    
                 });
             }
 
             cmb.SelectedIndex = 0;
         }    
-
-        void IStack.Push(double newElement)
-        {
-            this.structure[3].Push(newElement);
-        }
-        double IStack.Pop()
-        {
-            return this.structure[3].Pop();
-        }
-        double[] IStack.GetStruct()
-        {            
-            return this.structure[3].GetStruct;
-        }
-
-        void IQueue.Push(double newElement)
-        {
-            this.structure[2].Enqueue(newElement);
-        }
-        double IQueue.Pop()
-        {
-            return this.structure[2].Dequeue();
-        }
-        double[] IQueue.GetStruct()
-        {
-            return this.structure[2].GetStruct;
-        }
     }
 }

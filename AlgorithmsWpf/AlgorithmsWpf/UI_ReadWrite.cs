@@ -75,6 +75,9 @@ namespace AlgorithmsWpf
         private void DisplayStruct()
         {
             double[] output_array= new double[0];
+
+            output_array = ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructGet(this.ComboBox_struct.SelectedIndex);
+            /*
             switch (this.ComboBox_struct.SelectedItem.ToString())
             {
                 case "Стек":
@@ -93,7 +96,9 @@ namespace AlgorithmsWpf
                     linkedListStruct.MakeArray();
                     output_array = linkedListStruct.GetStruct;
                     break;
-            }
+            }*/
+
+
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < output_array.Length; i++)

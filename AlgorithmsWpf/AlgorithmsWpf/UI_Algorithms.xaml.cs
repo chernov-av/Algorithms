@@ -21,19 +21,11 @@ namespace AlgorithmsWpf
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class UI_Algorithms : Window
-    {
-        //StructQueue queueStruct;
-        StructDeque dequeStruct;
-        StructLinkedList linkedListStruct;
+    {       
         BinaryTree<double> binaryTree;
 
         GetHeap getMaxHeap;
         GetHeap getMinHeap;
-
-        AddElement pushStack;
-        GetElement popStack;
-        GetStruct getStack;
-
 
         string defaultModulePath = "Modules/";       
 
@@ -66,11 +58,6 @@ namespace AlgorithmsWpf
             //Iconnector
             structConnection.Connect();
             structConnection.InitTab();
-
-            this.pushStack = ((IStack)structConnection).Push;
-            this.popStack = ((IStack)structConnection).Pop;
-            this.getStack = ((IStack)structConnection).GetStruct;
-
 
             InitTreeTab();
         }
@@ -262,6 +249,7 @@ namespace AlgorithmsWpf
                 double newElement;
                 TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
                 newElement = Double.Parse(this.TextBox_struct.Text);
+
                 ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructPush(this.ComboBox_struct.SelectedIndex,newElement);
 
                 this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), this.TextBox_struct.Text.ToString() + " добавлен");
@@ -315,10 +303,14 @@ namespace AlgorithmsWpf
                 double extractedElement = 0;
                 TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
 
+                extractedElement = ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructPop(this.ComboBox_struct.SelectedIndex);
+
+                this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
+                /*
                 switch (this.ComboBox_struct.SelectedItem.ToString())
                 {
                     case "Стек":
-                        extractedElement = popStack();
+                       // extractedElement = popStack();
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         break;
 
@@ -344,7 +336,7 @@ namespace AlgorithmsWpf
                         linkedListStruct.ListDelete(linkedListStruct.ListSearch(extractedElement));
                         this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                         break;
-                }
+                }*/
                 DisplayStruct();
             }
             catch (NullReferenceException ex)

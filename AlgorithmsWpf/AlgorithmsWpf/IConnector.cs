@@ -15,19 +15,6 @@ namespace AlgorithmsWpf
     {
         double[] SortMaxFunc(double[] input);
         double[] SortMinFunc(double[] input);
-    }
-
-    public interface IStack
-    {
-        void Push(double newElement);
-        double Pop();
-        double[] GetStruct();
-    }
-
-    public interface IQueue
-    {
-        void Push(double newElement);
-        double Pop();
-        double[] GetStruct();
-    }
+    }   
+    
 }
