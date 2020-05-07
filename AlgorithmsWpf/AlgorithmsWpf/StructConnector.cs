@@ -71,6 +71,7 @@ namespace AlgorithmsWpf
             for (int i = 0; i < typesStruct.Length; i++)
             {
                 Type type = typesStruct[i];
+                //set combobox with delegates
                 this.cmb.Items.Add(new CmbItems
                 {
                     Name = names[i],
@@ -86,14 +87,25 @@ namespace AlgorithmsWpf
                             this.structure[(int)parameters[0]] = Activator.CreateInstance(typesStruct[(int)parameters[0]], (int)parameters[1]);
                         }
                     },
+
                     FuncStructPush = (inputIndex, inputElement) =>
                     {
                         this.structure[inputIndex].Push(inputElement);
                     },
-                    FuncStructPop = (inputIndex) =>
+
+                    FuncStructPop = (parameters) =>
                     {
-                        return this.structure[inputIndex].Pop();
+                        if (typesStruct[(int)parameters[0]].GetMethod("Pop").GetParameters() == null)
+                        {
+                            return this.structure[(int)parameters[0]].Pop();
+                        }
+                        else
+                        {
+                            this.structure[(int)parameters[0]].Pop((double)parameters[1]);
+                            return (double)parameters[1];
+                        }                        
                     },
+
                     FuncStructGet = (inputIndex) =>
                     {
                         return this.structure[inputIndex].GetStruct;

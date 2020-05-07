@@ -303,7 +303,7 @@ namespace AlgorithmsWpf
                 double extractedElement = 0;
                 TabItem selectedTab = (this.TabControl_Algorithms.SelectedItem as TabItem);
 
-                extractedElement = ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructPop(this.ComboBox_struct.SelectedIndex);
+                extractedElement = ((CmbItems)this.ComboBox_struct.SelectedItem).FuncStructPop(new object[] { this.ComboBox_struct.SelectedIndex, Double.Parse(this.TextBox_struct.Text) });
 
                 this.DisplayAction(selectedTab.Header.ToString(), this.ComboBox_struct.SelectedValue.ToString(), extractedElement.ToString() + " извлечен");
                 /*

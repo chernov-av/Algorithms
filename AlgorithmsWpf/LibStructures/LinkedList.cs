@@ -6,7 +6,7 @@ using CommonTypes;
 namespace LibStructures
 {
     [ExecuteClass("Связанный список")]
-    struct StructLinkedList
+    public struct StructLinkedList
     {
         double[] list;
         int linkedListSize;
@@ -14,7 +14,7 @@ namespace LibStructures
         Node head;
         Node tail;
 
-        public void ListInsert(double key)
+        public void Push(double key)
         {
             Node node = new Node(key);
             node.next = head;
@@ -26,7 +26,7 @@ namespace LibStructures
             node.prev = null;
         }
 
-        public Node ListSearch(double _key)
+        Node ListSearch(double _key)
         {
             Node current = head;
             while (current!=null && current.key != _key)
@@ -36,8 +36,9 @@ namespace LibStructures
             return current;
         }
         
-        public void ListDelete(Node node)
+        public void Pop(double _key)
         {
+            Node node = ListSearch(_key);
             if (node.prev != null)
             {
                 node.prev.next = node.next;
@@ -72,7 +73,7 @@ namespace LibStructures
 
         public double[] GetStruct
         {
-            get { return this.list; }
+            get { this.MakeArray(); return this.list; }
         }
     }
 
